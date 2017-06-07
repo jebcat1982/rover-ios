@@ -17,6 +17,7 @@
 		DB2153CA1ED3342800B90A87 /* RoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2153C91ED3342800B90A87 /* RoverTests.swift */; };
 		DB2153CC1ED3342800B90A87 /* Rover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE762B91DE382CF00183297 /* Rover.framework */; };
 		DB492F591E8EC04400224076 /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB492F581E8EC04400224076 /* Rover.swift */; };
+		DBA104EB1EE89FE200837A2D /* RoverFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA104EA1EE89FE200837A2D /* RoverFoundation.framework */; };
 		DBE762CA1DE382CF00183297 /* Rover.h in Headers */ = {isa = PBXBuildFile; fileRef = DBE762BC1DE382CF00183297 /* Rover.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		DB2153C91ED3342800B90A87 /* RoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverTests.swift; sourceTree = "<group>"; };
 		DB2153CB1ED3342800B90A87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB492F581E8EC04400224076 /* Rover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
+		DBA104EA1EE89FE200837A2D /* RoverFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RoverFoundation.framework; path = "../../Library/Developer/Xcode/DerivedData/Rover-glnryvzimzzsvgdthzrrhyysrxck/Build/Products/Debug-iphonesimulator/RoverFoundation.framework"; sourceTree = "<group>"; };
 		DBE762B91DE382CF00183297 /* Rover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Rover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE762BC1DE382CF00183297 /* Rover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rover.h; sourceTree = "<group>"; };
 		DBE762BD1DE382CF00183297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBA104EB1EE89FE200837A2D /* RoverFoundation.framework in Frameworks */,
 				DB2153CC1ED3342800B90A87 /* Rover.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +79,7 @@
 		DB1CA32A1E56C3D000E2DB23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBA104EA1EE89FE200837A2D /* RoverFoundation.framework */,
 				DB2153A51ED32EBC00B90A87 /* RoverFoundation.framework */,
 				DB2153A31ED32EB800B90A87 /* RoverHTTP.framework */,
 				DB2153A11ED32EB300B90A87 /* RoverEvents.framework */,
@@ -450,6 +454,7 @@
 				DB2153D11ED3342800B90A87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DBE762B31DE382CF00183297 /* Build configuration list for PBXProject "Rover" */ = {
 			isa = XCConfigurationList;
