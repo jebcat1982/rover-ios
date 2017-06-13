@@ -28,15 +28,15 @@ public class Rover {
     }
     
     @discardableResult public static func assemble(accountToken: String) -> Rover {
-        let assemblers: [Assembler] = [
-            HTTPAssembler(accountToken: accountToken),
-            EventsAssembler(),
-            SyncAssembler(),
-            UserAssembler(),
-            PushAssembler()
+        let plugins: [Plugin] = [
+            HTTPPlugin(accountToken: accountToken),
+            EventsPlugin(),
+            SyncPlugin(),
+            UserPlugin(),
+            PushPlugin()
         ]
         
-        let container = Container(assemblers: assemblers)
+        let container = Container(plugins: plugins)
         let rover = Rover(container: container)
         sharedInstance = rover
         return rover
@@ -79,7 +79,7 @@ extension Rover {
 extension Rover {
     
     public var currentUser: User? {
-        return container.resolve(SyncState.self)?.user
+        return container.resolve(SyncPlugin.self)?.user
     }
     
     public func sync(completionHandler: (() -> Void)?) {
