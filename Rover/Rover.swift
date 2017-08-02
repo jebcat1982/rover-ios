@@ -36,7 +36,9 @@ public class Rover {
             PushPlugin()
         ]
         
-        let container = Container(plugins: plugins)
+        let container = Container()
+        container.register(plugins)
+        
         let rover = Rover(container: container)
         sharedInstance = rover
         return rover
@@ -54,8 +56,7 @@ public class Rover {
 extension Rover {
     
     public func trackEvent(name: String, attributes: Attributes? = nil) {
-        let operation = TrackEventOperation(name: name, attributes: attributes)
-        container.addOperation(operation)
+        container.trackEvent(name: name, attributes: attributes)
     }
 }
 
@@ -63,14 +64,12 @@ extension Rover {
 
 extension Rover {
     
-    public func captureDeviceToken(_ tokenData: Data) {
-        let operation = CaptureDeviceTokenOperation(tokenData: tokenData)
-        container.addOperation(operation)
+    public func addDeviceToken(_ data: Data) {
+        container.addDeviceToken(data)
     }
     
     public func removeDeviceToken() {
-        let operation = RemoveDeviceTokenOperation()
-        container.addOperation(operation)
+        container.removeDeviceToken()
     }
 }
 
@@ -79,14 +78,11 @@ extension Rover {
 extension Rover {
     
     public var currentUser: User? {
-        return container.resolve(SyncPlugin.self)?.user
+        return container.resolve(SyncPlugin.self).user
     }
     
     public func sync(completionHandler: (() -> Void)?) {
-        let operation = SyncOperation()
-        container.addOperation(operation) { _ in
-            completionHandler?()
-        }
+        container.sync(completionHandler: completionHandler)
     }
 }
 
@@ -95,19 +91,14 @@ extension Rover {
 extension Rover {
 
     public func anonymizeUser() {
-        let operation = AnonymizeUserOperation()
-        container.addOperation(operation)
+        container.anonymize()
     }
     
     public func identifyUser(userID: UserID) {
-        let operation = IdentifyUserOperation(userID: userID)
-        container.addOperation(operation)
+        container.identify(userID: userID)
     }
     
     public func updateUser(updates: [UserUpdate], completionHandler: ((User?) -> Void)?) {
-        let operation = UpdateUserOperation(updates: updates)
-        container.addOperation(operation) { _ in
-            completionHandler?(self.currentUser)
-        }
+        
     }
 }
