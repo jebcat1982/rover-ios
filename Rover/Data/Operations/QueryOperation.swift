@@ -22,7 +22,7 @@ class QueryOperation<T>: ContainerOperation where T: GraphQLQuery {
         let credentials = self.credentials ?? resolver.currentState.credentials
         let authHeaders = self.authHeaders(from: credentials)
         
-        uploadTask = resolver.currentState.apiClient.uploadTask(with: query, authHeaders: authHeaders) { result in
+        uploadTask = resolver.currentState.dataClient.uploadTask(with: query, authHeaders: authHeaders) { result in
             self.result = result
             
             switch result {

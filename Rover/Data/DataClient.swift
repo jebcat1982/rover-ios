@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct APIClient {
+struct DataClient {
     var baseURL = URL(string: "https://api.rover.io/")!
     var path = "graphql"
     var session: HTTPSession = URLSession(configuration: URLSessionConfiguration.default)
 }
 
-extension APIClient: GraphQLClient { }
+extension DataClient: GraphQLClient { }

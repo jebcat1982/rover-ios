@@ -42,7 +42,7 @@
 		DBE1FC291F421178004B3C9D /* QueryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC281F421178004B3C9D /* QueryOperation.swift */; };
 		DBE1FC2C1F4211E6004B3C9D /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC2B1F4211E6004B3C9D /* Credentials.swift */; };
 		DBE1FC2E1F421217004B3C9D /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC2D1F421217004B3C9D /* ID.swift */; };
-		DBE1FC301F4212ED004B3C9D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC2F1F4212ED004B3C9D /* APIClient.swift */; };
+		DBE1FC301F4212ED004B3C9D /* DataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC2F1F4212ED004B3C9D /* DataClient.swift */; };
 		DBE1FC331F421346004B3C9D /* ConfigureAPIClientOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC321F421346004B3C9D /* ConfigureAPIClientOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,7 +99,7 @@
 		DBE1FC281F421178004B3C9D /* QueryOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOperation.swift; sourceTree = "<group>"; };
 		DBE1FC2B1F4211E6004B3C9D /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		DBE1FC2D1F421217004B3C9D /* ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID.swift; sourceTree = "<group>"; };
-		DBE1FC2F1F4212ED004B3C9D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		DBE1FC2F1F4212ED004B3C9D /* DataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClient.swift; sourceTree = "<group>"; };
 		DBE1FC321F421346004B3C9D /* ConfigureAPIClientOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureAPIClientOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,7 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				DBE1FC2A1F4211DA004B3C9D /* Credentials */,
-				DBE1FC111F420FA3004B3C9D /* APIClient */,
+				DBE1FC111F420FA3004B3C9D /* Data */,
 				DBE1FBE61F3E4A86004B3C9D /* Extensions */,
 				DBE1FBED1F3E4C91004B3C9D /* Logger */,
 				DBE1FBE31F3E4191004B3C9D /* Container */,
@@ -241,15 +241,15 @@
 			path = CoreTelephony;
 			sourceTree = "<group>";
 		};
-		DBE1FC111F420FA3004B3C9D /* APIClient */ = {
+		DBE1FC111F420FA3004B3C9D /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				DBE1FC231F421118004B3C9D /* GraphQL */,
 				DBE1FC121F420FB2004B3C9D /* HTTP */,
 				DBE1FC311F421329004B3C9D /* Operations */,
-				DBE1FC2F1F4212ED004B3C9D /* APIClient.swift */,
+				DBE1FC2F1F4212ED004B3C9D /* DataClient.swift */,
 			);
-			path = APIClient;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		DBE1FC121F420FB2004B3C9D /* HTTP */ = {
@@ -436,7 +436,7 @@
 				DBE1FBF91F41F8E2004B3C9D /* Resolver.swift in Sources */,
 				DBE1FC2E1F421217004B3C9D /* ID.swift in Sources */,
 				DBE1FBF51F3E4E24004B3C9D /* ApplicationContainer.swift in Sources */,
-				DBE1FC301F4212ED004B3C9D /* APIClient.swift in Sources */,
+				DBE1FC301F4212ED004B3C9D /* DataClient.swift in Sources */,
 				DBE1FC1A1F421026004B3C9D /* HTTPTask.swift in Sources */,
 				DBE1FC011F420E37004B3C9D /* UIDevice.swift in Sources */,
 				DBBC7DB21F3CBDC100E0E2EE /* Rover.swift in Sources */,

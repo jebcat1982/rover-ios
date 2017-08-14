@@ -7,7 +7,7 @@
 //
 
 struct ContainerState {
-    var apiClient = APIClient()
+    var dataClient = DataClient()
     //    var context = Context()
     var credentials = Credentials()
     //    var eventQueue = EventQueue()

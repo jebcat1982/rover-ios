@@ -24,22 +24,22 @@ class ConfigureAPIClientOperation: ContainerOperation {
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         reducer.reduce { state in
-            var nextAPIClient = state.apiClient
+            var nextClient = state.dataClient
             
             if let baseURL = self.baseURL {
-                nextAPIClient.baseURL = baseURL
+                nextClient.baseURL = baseURL
             }
             
             if let path = self.path {
-                nextAPIClient.path = path
+                nextClient.path = path
             }
             
             if let session = self.session {
-                nextAPIClient.session = session
+                nextClient.session = session
             }
             
             var nextState = state
-            nextState.apiClient = nextAPIClient
+            nextState.dataClient = nextClient
             return nextState
         }
         completionHandler()
