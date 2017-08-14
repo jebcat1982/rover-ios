@@ -6,99 +6,156 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-import RoverEvents
-import RoverFoundation
-import RoverHTTP
-import RoverPush
-import RoverSync
-import RoverUser
-
-public class Rover {
-    
+public class Rover: ApplicationContainer {
     static var sharedInstance: Rover?
     
-    public static var shared: Rover {
+    let serialQueue: OperationQueue = {
+        let q = OperationQueue()
+        q.maxConcurrentOperationCount = 1
+        return q
+    }()
+    
+    let pulseInterval: Double
+    let application: UIApplicationProtocol
+    
+    var currentState = ContainerState()
+    var previousState = ContainerState()
+    var backgroundTask = UIBackgroundTaskInvalid
+    var pulseTimer: Timer?
+    
+    init(pulseInterval: Double = 30.0, application: UIApplicationProtocol = UIApplication.shared, notificationCenter: NotificationCenterProtocol = NotificationCenter.default) {
+        self.pulseInterval = pulseInterval
+        self.application = application
+        
+        observeApplicationNotifications(notificationCenter: notificationCenter)
+    }
+}
+
+extension Rover {
+    
+    @discardableResult public static func assemble(accountToken: String) -> Rover {
+        let rover = Rover()
+        sharedInstance = rover
+        return rover
+    }
+    
+    static var shared: Rover {
         guard let sharedInstance = sharedInstance else {
             fatalError("Shared instance accessed before calling assemble")
         }
         
         return sharedInstance
     }
+}
+
+// MARK: Application LifeCycle
+
+extension Rover {
     
-    @discardableResult public static func assemble(accountToken: String) -> Rover {
-        let plugins: [Plugin] = [
-            HTTPPlugin(accountToken: accountToken),
-            EventsPlugin(),
-            SyncPlugin(),
-            UserPlugin(),
-            PushPlugin()
-        ]
-        
-        let container = Container()
-        container.register(plugins)
-        
-        let rover = Rover(container: container)
-        sharedInstance = rover
-        return rover
-    }
+//    override func applicationDidBecomeActive() {
+//        let timestamp = Date()
+//        let operations = [
+//            TrackEventOperation(eventName: "App Opened", attributes: nil, timestamp: timestamp),
+//            SyncOperation()
+//        ]
+//        let group = ContainerOperation(operations: operations)
+//        dispatch(group)
+//    }
     
-    var container: Container
+//    override func applicationDidPulse() {
+//        let operation = FlushEventsOperation(minBatchSize: 1)
+//
+//    }
     
-    init(container: Container) {
-        self.container = container
-    }
+//    public func applicationDidPulse() -> ContainerOperation? {
+//        return FlushEventsOperation(minBatchSize: 1)
+//    }
+    
+//    public func applicationDidEnterBackground() -> ContainerOperation? {
+//        return FlushEventsOperation(minBatchSize: 1)
+//    }
 }
 
 // MARK: Events
 
-extension Rover {
+public protocol Events {
+    
+    func trackEvent(name: String, attributes: Attributes?)
+}
+
+extension Rover: Events {
+    
+    public static var events: Events {
+        return shared
+    }
     
     public func trackEvent(name: String, attributes: Attributes? = nil) {
-        container.trackEvent(name: name, attributes: attributes)
+//        container.trackEvent(name: name, attributes: attributes)
     }
 }
 
 // MARK: Push
 
-extension Rover {
+public protocol Push {
+    
+    func addDeviceToken(_ data: Data)
+    
+    func removeDeviceToken()
+}
+
+extension Rover: Push {
+    
+    public static var push: Push {
+        return shared
+    }
     
     public func addDeviceToken(_ data: Data) {
-        container.addDeviceToken(data)
+//        container.addDeviceToken(data: data)
     }
     
     public func removeDeviceToken() {
-        container.removeDeviceToken()
+//        container.removeDeviceToken()
     }
 }
 
 // MARK: Sync
 
-extension Rover {
+public protocol Sync {
     
-    public var currentUser: User? {
-        return container.resolve(SyncPlugin.self).user
+    func sync(completionHandler: (() -> Void)?)
+}
+
+extension Rover: Sync {
+    
+    public static var sync: Sync {
+        return shared
     }
     
     public func sync(completionHandler: (() -> Void)?) {
-        container.sync(completionHandler: completionHandler)
+
     }
 }
 
-// MARK: User 
+// MARK: Profile
 
 extension Rover {
-
-    public func anonymizeUser() {
-        container.anonymize()
-    }
     
-    public func identifyUser(userID: UserID) {
-        container.identify(userID: userID)
-    }
-    
-    public func updateUser(updates: [UserUpdate], completionHandler: ((User?) -> Void)?) {
-        
-    }
+//    public var current: Profile {
+//        return container.resolve(DataPlugin.self).profile
+//    }
+//    
+//    public func anonymize() {
+//        container.anonymize()
+//    }
+//    
+//    public func identify(profileID: ID) {
+//        container.identify(profileID: profileID)
+//    }
+//    
+//    public func updateProfile(attributes: Attributes, completionHandler: ((Profile) -> Void)?) {
+//        container.updateProfile(attributes: attributes)
+//    }
 }
+

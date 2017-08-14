@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Rover
 
 class RoverTests: XCTestCase {
     
