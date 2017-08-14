@@ -126,7 +126,7 @@ extension Rover: PushContainer {
 // MARK: SyncContainer
 
 public protocol SyncContainer {
-    func sync(completionHandler: (() -> Void)?)
+    func now(completionHandler: (() -> Void)?)
 }
 
 extension Rover: SyncContainer {
@@ -135,9 +135,11 @@ extension Rover: SyncContainer {
         return shared
     }
     
-    public func sync(completionHandler: (() -> Void)?) {
-//        let operation = SyncOperation()
-//        dispatch(operation, completionHandler: completionHandler)
+    public func now(completionHandler: (() -> Void)?) {
+        let operation = SyncOperation()
+        dispatch(operation) { (previousState, currentState) in
+            completionHandler?()
+        }
     }
 }
 
@@ -148,7 +150,7 @@ public protocol ProfileContainer {
     
     func anonymize()
     func identify(profileID: ID)
-    func updateProfile(attributes: Attributes, completionHandler: ((Profile) -> Void)?)
+    func updateProfile(attributes: Attributes, completionHandler: (() -> Void)?)
 }
 
 extension Rover: ProfileContainer {
@@ -171,10 +173,10 @@ extension Rover: ProfileContainer {
         dispatch(operation)
     }
     
-    public func updateProfile(attributes: Attributes, completionHandler: ((Profile) -> Void)?) {
+    public func updateProfile(attributes: Attributes, completionHandler: (() -> Void)?) {
         let operation = UpdateProfileOperation(attributes: attributes)
         dispatch(operation) { (previousState, currentState) in
-            completionHandler?(currentState.profile)
+            completionHandler?()
         }
     }
 }

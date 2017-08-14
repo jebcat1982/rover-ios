@@ -23,6 +23,7 @@
 		DBDE83861F4239ED00FABDA6 /* RestoreProfileIDFromUserDefaultsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83851F4239ED00FABDA6 /* RestoreProfileIDFromUserDefaultsOperation.swift */; };
 		DBDE83891F423A5600FABDA6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83881F423A5600FABDA6 /* Profile.swift */; };
 		DBDE838B1F423A8300FABDA6 /* UpdateProfileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE838A1F423A8300FABDA6 /* UpdateProfileOperation.swift */; };
+		DBDFE3101F424E92005E7850 /* SyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFE30F1F424E92005E7850 /* SyncOperation.swift */; };
 		DBE1FBE51F3E41E8004B3C9D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBE41F3E41E8004B3C9D /* Container.swift */; };
 		DBE1FBE81F3E4A9A004B3C9D /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBE71F3E4A9A004B3C9D /* NotificationCenter.swift */; };
 		DBE1FBEC1F3E4AC6004B3C9D /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBEB1F3E4AC6004B3C9D /* UIApplication.swift */; };
@@ -107,6 +108,7 @@
 		DBDE83851F4239ED00FABDA6 /* RestoreProfileIDFromUserDefaultsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreProfileIDFromUserDefaultsOperation.swift; sourceTree = "<group>"; };
 		DBDE83881F423A5600FABDA6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		DBDE838A1F423A8300FABDA6 /* UpdateProfileOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileOperation.swift; sourceTree = "<group>"; };
+		DBDFE30F1F424E92005E7850 /* SyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOperation.swift; sourceTree = "<group>"; };
 		DBE1FBE41F3E41E8004B3C9D /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		DBE1FBE71F3E4A9A004B3C9D /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		DBE1FBEB1F3E4AC6004B3C9D /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				DB01C60E1F42430C0047D1D5 /* Events */,
 				DBE1FBED1F3E4C91004B3C9D /* Logger */,
 				DBDE83801F42389900FABDA6 /* Profile */,
+				DBDFE30E1F424E7D005E7850 /* Sync */,
 				DBE1FC1D1F421082004B3C9D /* Vendor */,
 				DBE1FC221F4210D8004B3C9D /* Supporting Files */,
 				DBF8B7BE1F424CB500359EC2 /* ActivateOperation.swift */,
@@ -257,6 +260,14 @@
 				DBDE838A1F423A8300FABDA6 /* UpdateProfileOperation.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		DBDFE30E1F424E7D005E7850 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				DBDFE30F1F424E92005E7850 /* SyncOperation.swift */,
+			);
+			path = Sync;
 			sourceTree = "<group>";
 		};
 		DBE1FBE31F3E4191004B3C9D /* Container */ = {
@@ -532,6 +543,7 @@
 				DBE1FC291F421178004B3C9D /* QueryOperation.swift in Sources */,
 				DBE1FBFD1F41F907004B3C9D /* Dispatcher.swift in Sources */,
 				DBDE837D1F4235DD00FABDA6 /* AddProfileIDToCredentialsOperation.swift in Sources */,
+				DBDFE3101F424E92005E7850 /* SyncOperation.swift in Sources */,
 				DBF8B79F1F42466200359EC2 /* AddLocaleToContextOperation.swift in Sources */,
 				DBE1FBF11F3E4DAD004B3C9D /* ContainerOperation.swift in Sources */,
 				DBF8B7AE1F4248C000359EC2 /* AddEventOperation.swift in Sources */,
