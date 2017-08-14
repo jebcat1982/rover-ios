@@ -11,6 +11,14 @@ import UIKit
 public class Rover: ApplicationContainer {
     static var sharedInstance: Rover?
     
+    static var shared: Rover {
+        guard let sharedInstance = sharedInstance else {
+            fatalError("Rover accessed before calling assemble")
+        }
+        
+        return sharedInstance
+    }
+    
     let serialQueue: OperationQueue = {
         let q = OperationQueue()
         q.maxConcurrentOperationCount = 1
@@ -33,54 +41,36 @@ public class Rover: ApplicationContainer {
     }
 }
 
+// MARK: Assemble
+
 extension Rover {
     
     @discardableResult public static func assemble(accountToken: String) -> Rover {
         let rover = Rover()
-//        let timestamp = Date()
-        let operation = ContainerOperation(operations: [
-            AddAccountTokenToCredentialsOperation(accountToken: accountToken),
-            AddDeviceIDToCredentialsOperation(),
-            RestoreProfileIDFromUserDefaultsOperation(),
-//            CaptureContextOperation(),
-//            TrackAppUpdateOperation(timestamp: timestamp)
-        ])
-        
+        let operation = AssembleOperation(accountToken: accountToken)
         rover.dispatch(operation)
         sharedInstance = rover
         return rover
-    }
-    
-    static var shared: Rover {
-        guard let sharedInstance = sharedInstance else {
-            fatalError("Shared instance accessed before calling assemble")
-        }
-        
-        return sharedInstance
     }
 }
 
 // MARK: Application LifeCycle
 
 extension Rover {
+    
     func applicationDidBecomeActive() {
-//        let timestamp = Date()
-//        let operations = [
-//            TrackEventOperation(eventName: "App Opened", attributes: nil, timestamp: timestamp),
-//            SyncOperation()
-//        ]
-//        let group = ContainerOperation(operations: operations)
-//        dispatch(group)
+        let operation = ActivateOperation()
+        dispatch(operation)
     }
     
     func applicationDidPulse() {
-//        let operation = FlushEventsOperation(minBatchSize: 1)
-//        dispatch(operation)
+        let operation = FlushEventsOperation(minBatchSize: 1)
+        dispatch(operation)
     }
     
     func applicationDidEnterBackground() {
-//        let operation = FlushEventsOperation(minBatchSize: 1)
-//        dispatch(operation)
+        let operation = FlushEventsOperation(minBatchSize: 1)
+        dispatch(operation)
     }
 }
 
@@ -92,19 +82,20 @@ public protocol EventsContainer {
 }
 
 extension Rover: EventsContainer {
+    
     public static var events: EventsContainer {
         return shared
     }
     
     public func configureEventQueue(flushAt: Int? = nil, maxBatchSize: Int? = nil, maxQueueSize: Int? = nil) {
-//        let operation = ConfigureEventQueueOperation(flushAt: flushAt, maxBatchSize: maxBatchSize, maxQueueSize: maxQueueSize)
-//        dispatch(operation)
+        let operation = ConfigureEventQueueOperation(flushAt: flushAt, maxBatchSize: maxBatchSize, maxQueueSize: maxQueueSize)
+        dispatch(operation)
     }
     
     public func trackEvent(name: String, attributes: Attributes? = nil) {
-//        let timestamp = Date()
-//        let operation = TrackEventOperation(eventName: name, attributes: attributes, timestamp: timestamp)
-//        dispatch(operation)
+        let timestamp = Date()
+        let operation = TrackEventOperation(eventName: name, attributes: attributes, timestamp: timestamp)
+        dispatch(operation)
     }
 }
 
@@ -116,6 +107,7 @@ public protocol PushContainer {
 }
 
 extension Rover: PushContainer {
+    
     public static var push: PushContainer {
         return shared
     }
@@ -138,6 +130,7 @@ public protocol SyncContainer {
 }
 
 extension Rover: SyncContainer {
+    
     public static var sync: SyncContainer {
         return shared
     }
@@ -159,6 +152,7 @@ public protocol ProfileContainer {
 }
 
 extension Rover: ProfileContainer {
+    
     static var profile: ProfileContainer {
         return shared
     }
