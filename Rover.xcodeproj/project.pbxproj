@@ -64,10 +64,6 @@
 		DB2412A41F3CB32B0064F353 /* RoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverTests.swift; sourceTree = "<group>"; };
 		DB2412A61F3CB32B0064F353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
-		DBBC7DB41F3CC6B800E0E2EE /* RoverUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RoverUI.framework; path = "../Debug-iphonesimulator/RoverUI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBBC7DB51F3CC6B800E0E2EE /* RoverFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RoverFoundation.framework; path = "../Debug-iphonesimulator/RoverFoundation.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBBC7DB61F3CC6B800E0E2EE /* RoverData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RoverData.framework; path = "../Debug-iphonesimulator/RoverData.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBE1FBB01F3D0191004B3C9D /* RoverPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RoverPush.framework; path = "../Debug-iphonesimulator/RoverPush.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE1FBE41F3E41E8004B3C9D /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		DBE1FBE71F3E4A9A004B3C9D /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		DBE1FBEB1F3E4AC6004B3C9D /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -128,7 +124,6 @@
 				DB2412981F3CB32B0064F353 /* Rover */,
 				DB2412A31F3CB32B0064F353 /* RoverTests */,
 				DB2412971F3CB32B0064F353 /* Products */,
-				DBBC7DB31F3CC6B700E0E2EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,17 +160,6 @@
 				DB2412A61F3CB32B0064F353 /* Info.plist */,
 			);
 			path = RoverTests;
-			sourceTree = "<group>";
-		};
-		DBBC7DB31F3CC6B700E0E2EE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DBE1FBB01F3D0191004B3C9D /* RoverPush.framework */,
-				DBBC7DB61F3CC6B800E0E2EE /* RoverData.framework */,
-				DBBC7DB51F3CC6B800E0E2EE /* RoverFoundation.framework */,
-				DBBC7DB41F3CC6B800E0E2EE /* RoverUI.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DBE1FBE31F3E4191004B3C9D /* Container */ = {
