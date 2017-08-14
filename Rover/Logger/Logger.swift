@@ -8,19 +8,18 @@
 
 import Foundation
 
-public var logger = Logger()
+var logger = Logger()
 
-public struct Logger {
+struct Logger {
+    typealias Printer = (String) -> Void
     
-    public typealias Printer = (String) -> Void
-    
-    public enum Level: Int, CustomStringConvertible {
+    enum Level: Int, CustomStringConvertible {
         case debug
         case warn
         case error
         case none
         
-        public var description: String {
+        var description: String {
             switch self {
             case .debug:
                 return "Debug"
@@ -34,16 +33,16 @@ public struct Logger {
         }
     }
     
-    public var threshold: Level
+    var threshold: Level
     
-    public var printer: Printer
+    var printer: Printer
     
-    public init(threshold: Level = .warn, printer: @escaping Printer = { print($0) }) {
+    init(threshold: Level = .warn, printer: @escaping Printer = { print($0) }) {
         self.threshold = threshold
         self.printer = printer
     }
     
-    @discardableResult public func log(message: String, level: Level) -> String? {
+    @discardableResult func log(message: String, level: Level) -> String? {
         guard level.rawValue >= threshold.rawValue else {
             return nil
         }
@@ -53,19 +52,19 @@ public struct Logger {
         return output
     }
     
-    @discardableResult public func debug(_ message: String) -> String? {
+    @discardableResult func debug(_ message: String) -> String? {
         return log(message: message, level: .debug)
     }
     
-    @discardableResult public func warn(_ message: String) -> String? {
+    @discardableResult func warn(_ message: String) -> String? {
         return log(message: message, level: .warn)
     }
     
-    @discardableResult public func error(_ message: String) -> String? {
+    @discardableResult func error(_ message: String) -> String? {
         return log(message: message, level: .error)
     }
     
-    @discardableResult public func warnUnlessMainThread(_ message: String) -> String? {
+    @discardableResult func warnUnlessMainThread(_ message: String) -> String? {
         if !Thread.isMainThread {
             return logger.warn(message)
         }
@@ -73,7 +72,7 @@ public struct Logger {
         return nil
     }
     
-    @discardableResult public func warnIfMainThread(_ message: String) -> String? {
+    @discardableResult func warnIfMainThread(_ message: String) -> String? {
         if Thread.isMainThread {
             return logger.warn(message)
         }
@@ -81,4 +80,3 @@ public struct Logger {
         return nil
     }
 }
-

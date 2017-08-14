@@ -82,7 +82,7 @@ extension Rover {
 
 public protocol Events {
     
-    func trackEvent(name: String, attributes: Attributes?)
+    func trackEvent(name: String, attributes: [String: Any]?)
 }
 
 extension Rover: Events {
@@ -91,7 +91,7 @@ extension Rover: Events {
         return shared
     }
     
-    public func trackEvent(name: String, attributes: Attributes? = nil) {
+    public func trackEvent(name: String, attributes: [String: Any]? = nil) {
 //        container.trackEvent(name: name, attributes: attributes)
     }
 }

@@ -8,33 +8,33 @@
 
 import Foundation
 
-public struct ID: Codable, Equatable, RawRepresentable {
+struct ID: Codable, Equatable, RawRepresentable {
     
-    public var rawValue: String
+    var rawValue: String
     
-    public init(rawValue: String) {
+    init(rawValue: String) {
         self.rawValue = rawValue
     }
     
-    public init(extendedGraphemeClusterLiteral value: String) {
+    init(extendedGraphemeClusterLiteral value: String) {
         self.rawValue = value
     }
     
-    public init(unicodeScalarLiteral value: String) {
+    init(unicodeScalarLiteral value: String) {
         self.rawValue = value
     }
 }
 
 extension ID: ExpressibleByStringLiteral {
     
-    public init(stringLiteral value: String) {
+    init(stringLiteral value: String) {
         self.rawValue = value
     }
 }
 
 extension ID: Hashable {
     
-    public var hashValue: Int {
+    var hashValue: Int {
         return rawValue.hashValue
     }
 }

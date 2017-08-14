@@ -6,17 +6,15 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-public struct Credentials {
-    public var accountToken: String?
-    public var deviceID: ID?
-    public var profileID: ID?
-    
-    public init() { }
+struct Credentials {
+    var accountToken: String?
+    var deviceID: ID?
+    var profileID: ID?
 }
 
 extension Credentials: Equatable {
     
-    public static func == (lhs: Credentials, rhs: Credentials) -> Bool {
+    static func == (lhs: Credentials, rhs: Credentials) -> Bool {
         return lhs.accountToken == rhs.accountToken && lhs.deviceID == rhs.deviceID && lhs.profileID == rhs.profileID
     }
 }

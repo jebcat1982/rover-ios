@@ -33,21 +33,21 @@ import zlib
 /**
  Compression level with constants based on the zlib's constants.
  */
-public typealias CompressionLevel = Int32
-public extension CompressionLevel {
+typealias CompressionLevel = Int32
+extension CompressionLevel {
     
-    public static let noCompression = Z_NO_COMPRESSION
-    public static let bestSpeed = Z_BEST_SPEED
-    public static let bestCompression = Z_BEST_COMPRESSION
+    static let noCompression = Z_NO_COMPRESSION
+    static let bestSpeed = Z_BEST_SPEED
+    static let bestCompression = Z_BEST_COMPRESSION
     
-    public static let defaultCompression = Z_DEFAULT_COMPRESSION
+    static let defaultCompression = Z_DEFAULT_COMPRESSION
 }
 
 
 /**
  Errors on gzipping/gunzipping based on the zlib error codes.
  */
-public enum GzipError: Error {
+enum GzipError: Error {
     // cf. http://www.zlib.net/manual.html
     
     /**
@@ -132,7 +132,7 @@ public enum GzipError: Error {
     }
     
     
-    public var localizedDescription: String {
+    var localizedDescription: String {
         
         let description: String = {
             switch self {
@@ -157,12 +157,12 @@ public enum GzipError: Error {
 }
 
 
-public extension Data {
+extension Data {
     
     /**
      Whether the data is compressed in gzip format.
      */
-    public var isGzipped: Bool {
+    var isGzipped: Bool {
         
         return self.starts(with: [0x1f, 0x8b])  // check magic number
     }
@@ -178,7 +178,7 @@ public extension Data {
      - throws: `GzipError`
      - returns: Gzip-compressed `Data` object.
      */
-    public func gzipped(level: CompressionLevel = .defaultCompression) throws -> Data {
+    func gzipped(level: CompressionLevel = .defaultCompression) throws -> Data {
         
         guard !self.isEmpty else {
             return Data()
@@ -226,7 +226,7 @@ public extension Data {
      - throws: `GzipError`
      - returns: Gzip-decompressed `Data` object.
      */
-    public func gunzipped() throws -> Data {
+    func gunzipped() throws -> Data {
         
         guard !self.isEmpty else {
             return Data()
