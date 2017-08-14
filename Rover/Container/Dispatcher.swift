@@ -10,3 +10,10 @@ protocol Dispatcher {
     
     func dispatch(_ operation: ContainerOperation, completionHandler: ((ContainerState, ContainerState) -> Void)?)
 }
+
+extension Dispatcher {
+    
+    func dispatch(_ operation: ContainerOperation) {
+        dispatch(operation, completionHandler: nil)
+    }
+}

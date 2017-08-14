@@ -37,6 +37,16 @@ extension Rover {
     
     @discardableResult public static func assemble(accountToken: String) -> Rover {
         let rover = Rover()
+//        let timestamp = Date()
+        let operation = ContainerOperation(operations: [
+            AddAccountTokenToCredentialsOperation(accountToken: accountToken),
+            AddDeviceIDToCredentialsOperation(),
+            RestoreProfileIDFromUserDefaultsOperation(),
+//            CaptureContextOperation(),
+//            TrackAppUpdateOperation(timestamp: timestamp)
+        ])
+        
+        rover.dispatch(operation)
         sharedInstance = rover
         return rover
     }
@@ -53,8 +63,7 @@ extension Rover {
 // MARK: Application LifeCycle
 
 extension Rover {
-    
-//    override func applicationDidBecomeActive() {
+    func applicationDidBecomeActive() {
 //        let timestamp = Date()
 //        let operations = [
 //            TrackEventOperation(eventName: "App Opened", attributes: nil, timestamp: timestamp),
@@ -62,100 +71,116 @@ extension Rover {
 //        ]
 //        let group = ContainerOperation(operations: operations)
 //        dispatch(group)
-//    }
+    }
     
-//    override func applicationDidPulse() {
+    func applicationDidPulse() {
 //        let operation = FlushEventsOperation(minBatchSize: 1)
-//
-//    }
+//        dispatch(operation)
+    }
     
-//    public func applicationDidPulse() -> ContainerOperation? {
-//        return FlushEventsOperation(minBatchSize: 1)
-//    }
-    
-//    public func applicationDidEnterBackground() -> ContainerOperation? {
-//        return FlushEventsOperation(minBatchSize: 1)
-//    }
+    func applicationDidEnterBackground() {
+//        let operation = FlushEventsOperation(minBatchSize: 1)
+//        dispatch(operation)
+    }
 }
 
-// MARK: Events
+// MARK: EventsContainer
 
-public protocol Events {
-    
-    func trackEvent(name: String, attributes: [String: Any]?)
+public protocol EventsContainer {
+    func trackEvent(name: String, attributes: Attributes?)
+    func configureEventQueue(flushAt: Int?, maxBatchSize: Int?, maxQueueSize: Int?)
 }
 
-extension Rover: Events {
-    
-    public static var events: Events {
+extension Rover: EventsContainer {
+    public static var events: EventsContainer {
         return shared
     }
     
-    public func trackEvent(name: String, attributes: [String: Any]? = nil) {
-//        container.trackEvent(name: name, attributes: attributes)
+    public func configureEventQueue(flushAt: Int? = nil, maxBatchSize: Int? = nil, maxQueueSize: Int? = nil) {
+//        let operation = ConfigureEventQueueOperation(flushAt: flushAt, maxBatchSize: maxBatchSize, maxQueueSize: maxQueueSize)
+//        dispatch(operation)
+    }
+    
+    public func trackEvent(name: String, attributes: Attributes? = nil) {
+//        let timestamp = Date()
+//        let operation = TrackEventOperation(eventName: name, attributes: attributes, timestamp: timestamp)
+//        dispatch(operation)
     }
 }
 
-// MARK: Push
+// MARK: PushContainer
 
-public protocol Push {
-    
+public protocol PushContainer {
     func addDeviceToken(_ data: Data)
-    
     func removeDeviceToken()
 }
 
-extension Rover: Push {
-    
-    public static var push: Push {
+extension Rover: PushContainer {
+    public static var push: PushContainer {
         return shared
     }
     
     public func addDeviceToken(_ data: Data) {
-//        container.addDeviceToken(data: data)
+//        let operation = AddPushTokenOperation(data: data)
+//        dispatch(operation)
     }
     
     public func removeDeviceToken() {
-//        container.removeDeviceToken()
+//        let operation = RemovePushTokenOperation()
+//        dispatch(operation)
     }
 }
 
-// MARK: Sync
+// MARK: SyncContainer
 
-public protocol Sync {
-    
+public protocol SyncContainer {
     func sync(completionHandler: (() -> Void)?)
 }
 
-extension Rover: Sync {
-    
-    public static var sync: Sync {
+extension Rover: SyncContainer {
+    public static var sync: SyncContainer {
         return shared
     }
     
     public func sync(completionHandler: (() -> Void)?) {
-
+//        let operation = SyncOperation()
+//        dispatch(operation, completionHandler: completionHandler)
     }
 }
 
-// MARK: Profile
+// MARK: ProfileContainer
 
-extension Rover {
+public protocol ProfileContainer {
+    var current: Profile { get }
     
-//    public var current: Profile {
-//        return container.resolve(DataPlugin.self).profile
-//    }
-//    
-//    public func anonymize() {
-//        container.anonymize()
-//    }
-//    
-//    public func identify(profileID: ID) {
-//        container.identify(profileID: profileID)
-//    }
-//    
-//    public func updateProfile(attributes: Attributes, completionHandler: ((Profile) -> Void)?) {
-//        container.updateProfile(attributes: attributes)
-//    }
+    func anonymize()
+    func identify(profileID: ID)
+    func updateProfile(attributes: Attributes, completionHandler: ((Profile) -> Void)?)
 }
 
+extension Rover: ProfileContainer {
+    static var profile: ProfileContainer {
+        return shared
+    }
+    
+    public var current: Profile {
+        return currentState.profile
+    }
+    
+    public func anonymize() {
+        let operation = AnonymizeOperation()
+        dispatch(operation)
+    }
+    
+    public func identify(profileID: ID) {
+        let operation = IdentifyOperation(profileID: profileID)
+        dispatch(operation)
+    }
+    
+    public func updateProfile(attributes: Attributes, completionHandler: ((Profile) -> Void)?) {
+        let operation = UpdateProfileOperation(attributes: attributes)
+        dispatch(operation) { (previousState, currentState) in
+            completionHandler?(currentState.profile)
+        }
+    }
+}

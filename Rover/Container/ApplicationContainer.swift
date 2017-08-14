@@ -13,6 +13,14 @@ protocol ApplicationContainer: Container {
     var application: UIApplicationProtocol { get }
     var backgroundTask: UIBackgroundTaskIdentifier { get set }
     var pulseTimer: Timer? { get set }
+    
+    func applicationDidFinishLaunching(withOptions options: [UIApplicationLaunchOptionsKey: Any]?)
+    func applicationDidBecomeActive()
+    func applicationWillResignActive()
+    func applicationDidEnterBackground()
+    func applicationWillEnterForeground()
+    func applicationWillTerminate()
+    func applicationDidPulse()
 }
 
 // MARK: Application Notifications

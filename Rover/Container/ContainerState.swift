@@ -8,8 +8,8 @@
 
 struct ContainerState {
     var dataClient = DataClient()
-    //    var context = Context()
     var credentials = Credentials()
-    //    var eventQueue = EventQueue()
-    //    var profile = Profile()
+//    var eventQueue = EventQueue()
+//    var context = Context()
+    var profile = Profile()
 }
