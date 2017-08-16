@@ -13,6 +13,8 @@
 		DB2412A01F3CB32B0064F353 /* Rover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2412961F3CB32B0064F353 /* Rover.framework */; };
 		DB2412A51F3CB32B0064F353 /* RoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2412A41F3CB32B0064F353 /* RoverTests.swift */; };
 		DB2412A71F3CB32B0064F353 /* Rover.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2412991F3CB32B0064F353 /* Rover.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB4834711F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */; };
+		DB4834741F44F1CC00CC308A /* UNUserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */; };
 		DBBC7DB21F3CBDC100E0E2EE /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */; };
 		DBDE83791F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */; };
 		DBDE837B1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837A1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift */; };
@@ -102,6 +104,8 @@
 		DB24129F1F3CB32B0064F353 /* RoverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2412A41F3CB32B0064F353 /* RoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverTests.swift; sourceTree = "<group>"; };
 		DB2412A61F3CB32B0064F353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotificationSettingsToContextOperation.swift; sourceTree = "<group>"; };
+		DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenter.swift; sourceTree = "<group>"; };
 		DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTokenToCredentialsOperation.swift; sourceTree = "<group>"; };
 		DBDE837A1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceIDToCredentialsOperation.swift; sourceTree = "<group>"; };
@@ -251,6 +255,14 @@
 			path = RoverTests;
 			sourceTree = "<group>";
 		};
+		DB4834721F44F1BE00CC308A /* UserNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */,
+			);
+			path = UserNotifications;
+			sourceTree = "<group>";
+		};
 		DBDE83801F42389900FABDA6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,8 +328,9 @@
 			isa = PBXGroup;
 			children = (
 				DBE1FC0C1F420ED0004B3C9D /* CoreTelephony */,
-				DBE1FBEA1F3E4ABC004B3C9D /* UIKit */,
 				DBE1FBE91F3E4AA3004B3C9D /* Foundation */,
+				DBE1FBEA1F3E4ABC004B3C9D /* UIKit */,
+				DB4834721F44F1BE00CC308A /* UserNotifications */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -438,6 +451,7 @@
 				DBF8B7A61F42473100359EC2 /* AddReachabilityInfoToContextOperation.swift */,
 				DBF8B7A81F42476100359EC2 /* CaptureContextOperation.swift */,
 				DBF8B7AA1F4247DB00359EC2 /* UpdateContextOperation.swift */,
+				DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */,
 			);
 			path = "Context Operations";
 			sourceTree = "<group>";
@@ -599,6 +613,7 @@
 				DBE1FC071F420EA3004B3C9D /* Locale.swift in Sources */,
 				DB01C6141F42432E0047D1D5 /* Context.swift in Sources */,
 				DBDE83791F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift in Sources */,
+				DB4834711F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift in Sources */,
 				DBE1FC1F1F421095004B3C9D /* Data+Gzip.swift in Sources */,
 				DBF8B7B61F4249AA00359EC2 /* PersistEventsOperation.swift in Sources */,
 				DBE1FC161F420FFF004B3C9D /* HTTPResult.swift in Sources */,
@@ -623,6 +638,7 @@
 				DBF8B7B41F42498800359EC2 /* SendEventsOperation.swift in Sources */,
 				DBE1FC101F420F6B004B3C9D /* CTTelephonyNetworkInfo.swift in Sources */,
 				DBE1FC051F420E89004B3C9D /* Bundle.swift in Sources */,
+				DB4834741F44F1CC00CC308A /* UNUserNotificationCenter.swift in Sources */,
 				DBF8B7B01F42492900359EC2 /* ConfigureEventQueueOperation.swift in Sources */,
 				DBF8B7AB1F4247DB00359EC2 /* UpdateContextOperation.swift in Sources */,
 				DBF8B7BD1F424C2B00359EC2 /* AssembleOperation.swift in Sources */,

@@ -11,4 +11,5 @@ Pod::Spec.new do |s|
   s.frameworks   = "CoreTelephony"
   s.frameworks   = "Foundation"
   s.frameworks   = "UIKit"
+  s.frameworks   = "UserNotifications"
 end

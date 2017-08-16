@@ -13,6 +13,7 @@ class UpdateContextOperation: ContainerOperation {
     init() {
         super.init(operations: [
             AddLocaleToContextOperation(),
+            AddNotificationSettingsToContextOperation(),
             AddTelephonyInfoToContextOperation(),
             AddTimeZoneToContextOperation(),
             AddReachabilityInfoToContextOperation()
