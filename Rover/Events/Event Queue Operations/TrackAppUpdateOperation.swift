@@ -20,8 +20,8 @@ class TrackAppUpdateOperation: ContainerOperation {
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
-        let previousVersion = userDefaults.string(forKey: "io.rover.AppVersion")
-        let previousBuild = userDefaults.string(forKey: "io.rover.AppBuild")
+        let previousVersion = userDefaults.string(forKey: "io.rover.appVersion")
+        let previousBuild = userDefaults.string(forKey: "io.rover.appBuild")
         
         let context = resolver.currentState.context
         let currentVersion = context.appVersion
@@ -47,8 +47,8 @@ class TrackAppUpdateOperation: ContainerOperation {
             addOperation(operation)
         }
         
-        userDefaults.set(currentVersion, forKey: "io.rover.AppVersion")
-        userDefaults.set(currentBuild, forKey: "io.rover.AppBuild")
+        userDefaults.set(currentVersion, forKey: "io.rover.appVersion")
+        userDefaults.set(currentBuild, forKey: "io.rover.appBuild")
         completionHandler()
     }
 }
