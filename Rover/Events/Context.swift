@@ -40,5 +40,5 @@ struct Context: Codable {
     var pushToken: String?
     var pushEnvironment: String?
     
-    var isNotificationsEnabled: Bool?
+    var notificationAuthorization: String?
 }

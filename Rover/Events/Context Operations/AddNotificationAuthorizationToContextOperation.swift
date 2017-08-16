@@ -1,5 +1,5 @@
 //
-//  AddNotificationSettingsToContextOperation.swift
+//  AddNotificationAuthorizationToContextOperation.swift
 //  Rover
 //
 //  Created by Sean Rucker on 2017-08-16.
@@ -8,7 +8,7 @@
 
 import UserNotifications
 
-class AddNotificationSettingsToContextOperation: ContainerOperation {
+class AddNotificationAuthorizationToContextOperation: ContainerOperation {
     let notificationCenter: UNUserNotificationCenterProtocol
     
     init(notificationCenter: UNUserNotificationCenterProtocol = UNUserNotificationCenter.current()) {
@@ -24,11 +24,11 @@ class AddNotificationSettingsToContextOperation: ContainerOperation {
                 
                 switch settings.authorizationStatus {
                 case .authorized:
-                    nextContext.isNotificationsEnabled = true
+                    nextContext.notificationAuthorization = "authorized"
                 case .denied:
-                    nextContext.isNotificationsEnabled = false
+                    nextContext.notificationAuthorization = "denied"
                 case .notDetermined:
-                    nextContext.isNotificationsEnabled = nil
+                    nextContext.notificationAuthorization = "notDetermined"
                 }
                 
                 var nextState = state
