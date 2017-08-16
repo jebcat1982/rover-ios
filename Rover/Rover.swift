@@ -36,7 +36,6 @@ public class Rover: ApplicationContainer {
     init(pulseInterval: Double = 30.0, application: UIApplicationProtocol = UIApplication.shared, notificationCenter: NotificationCenterProtocol = NotificationCenter.default) {
         self.pulseInterval = pulseInterval
         self.application = application
-        
         observeApplicationNotifications(notificationCenter: notificationCenter)
     }
 }
@@ -113,13 +112,13 @@ extension Rover: PushContainer {
     }
     
     public func addDeviceToken(_ data: Data) {
-//        let operation = AddPushTokenOperation(data: data)
-//        dispatch(operation)
+        let operation = AddPushTokenOperation(data: data)
+        dispatch(operation)
     }
     
     public func removeDeviceToken() {
-//        let operation = RemovePushTokenOperation()
-//        dispatch(operation)
+        let operation = RemovePushTokenOperation()
+        dispatch(operation)
     }
 }
 

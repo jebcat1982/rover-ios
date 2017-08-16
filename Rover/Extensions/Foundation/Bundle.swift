@@ -14,6 +14,8 @@ protocol BundleProtocol {
     var bundleIdentifier: String? { get }
     
     init?(identifier: String)
+    
+    func path(forResource name: String?, ofType ext: String?) -> String?
 }
 
 extension Bundle: BundleProtocol { }

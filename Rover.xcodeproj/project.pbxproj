@@ -24,6 +24,10 @@
 		DBDE83891F423A5600FABDA6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83881F423A5600FABDA6 /* Profile.swift */; };
 		DBDE838B1F423A8300FABDA6 /* UpdateProfileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE838A1F423A8300FABDA6 /* UpdateProfileOperation.swift */; };
 		DBDFE3101F424E92005E7850 /* SyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFE30F1F424E92005E7850 /* SyncOperation.swift */; };
+		DBDFE3141F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFE3131F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift */; };
+		DBDFE3161F44ADA2005E7850 /* AddPushTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFE3151F44ADA2005E7850 /* AddPushTokenOperation.swift */; };
+		DBDFE3181F44AE36005E7850 /* TrackPushTokenChangeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFE3171F44AE36005E7850 /* TrackPushTokenChangeOperation.swift */; };
+		DBDFE31A1F44AEAF005E7850 /* RemovePushTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFE3191F44AEAF005E7850 /* RemovePushTokenOperation.swift */; };
 		DBE1FBE51F3E41E8004B3C9D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBE41F3E41E8004B3C9D /* Container.swift */; };
 		DBE1FBE81F3E4A9A004B3C9D /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBE71F3E4A9A004B3C9D /* NotificationCenter.swift */; };
 		DBE1FBEC1F3E4AC6004B3C9D /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBEB1F3E4AC6004B3C9D /* UIApplication.swift */; };
@@ -109,6 +113,10 @@
 		DBDE83881F423A5600FABDA6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		DBDE838A1F423A8300FABDA6 /* UpdateProfileOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileOperation.swift; sourceTree = "<group>"; };
 		DBDFE30F1F424E92005E7850 /* SyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOperation.swift; sourceTree = "<group>"; };
+		DBDFE3131F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPushEnvironmentToContextOperation.swift; sourceTree = "<group>"; };
+		DBDFE3151F44ADA2005E7850 /* AddPushTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPushTokenOperation.swift; sourceTree = "<group>"; };
+		DBDFE3171F44AE36005E7850 /* TrackPushTokenChangeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPushTokenChangeOperation.swift; sourceTree = "<group>"; };
+		DBDFE3191F44AEAF005E7850 /* RemovePushTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePushTokenOperation.swift; sourceTree = "<group>"; };
 		DBE1FBE41F3E41E8004B3C9D /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		DBE1FBE71F3E4A9A004B3C9D /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		DBE1FBEB1F3E4AC6004B3C9D /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -221,6 +229,7 @@
 				DB01C60E1F42430C0047D1D5 /* Events */,
 				DBE1FBED1F3E4C91004B3C9D /* Logger */,
 				DBDE83801F42389900FABDA6 /* Profile */,
+				DBDFE3111F44A6AB005E7850 /* Push */,
 				DBDFE30E1F424E7D005E7850 /* Sync */,
 				DBE1FC1D1F421082004B3C9D /* Vendor */,
 				DBE1FC221F4210D8004B3C9D /* Supporting Files */,
@@ -268,6 +277,25 @@
 				DBDFE30F1F424E92005E7850 /* SyncOperation.swift */,
 			);
 			path = Sync;
+			sourceTree = "<group>";
+		};
+		DBDFE3111F44A6AB005E7850 /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				DBDFE3121F44A7D6005E7850 /* Operations */,
+			);
+			path = Push;
+			sourceTree = "<group>";
+		};
+		DBDFE3121F44A7D6005E7850 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				DBDFE3131F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift */,
+				DBDFE3151F44ADA2005E7850 /* AddPushTokenOperation.swift */,
+				DBDFE3191F44AEAF005E7850 /* RemovePushTokenOperation.swift */,
+				DBDFE3171F44AE36005E7850 /* TrackPushTokenChangeOperation.swift */,
+			);
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		DBE1FBE31F3E4191004B3C9D /* Container */ = {
@@ -549,6 +577,7 @@
 				DBF8B7AE1F4248C000359EC2 /* AddEventOperation.swift in Sources */,
 				DBE1FBFB1F41F8F8004B3C9D /* Reducer.swift in Sources */,
 				DBF8B7A11F42469300359EC2 /* AddScreenSizeToContextOperation.swift in Sources */,
+				DBDFE3141F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift in Sources */,
 				DBF8B7BF1F424CB500359EC2 /* ActivateOperation.swift in Sources */,
 				DBDE83841F4239B100FABDA6 /* IdentifyOperation.swift in Sources */,
 				DBE1FC211F4210A7004B3C9D /* Reachability.swift in Sources */,
@@ -565,6 +594,8 @@
 				DBE1FBF31F3E4DFE004B3C9D /* ContainerState.swift in Sources */,
 				DB01C6121F4243280047D1D5 /* EventQueue.swift in Sources */,
 				DBDE83861F4239ED00FABDA6 /* RestoreProfileIDFromUserDefaultsOperation.swift in Sources */,
+				DBDFE31A1F44AEAF005E7850 /* RemovePushTokenOperation.swift in Sources */,
+				DBDFE3161F44ADA2005E7850 /* AddPushTokenOperation.swift in Sources */,
 				DBE1FC071F420EA3004B3C9D /* Locale.swift in Sources */,
 				DB01C6141F42432E0047D1D5 /* Context.swift in Sources */,
 				DBDE83791F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift in Sources */,
@@ -600,6 +631,7 @@
 				DBF8B7BB1F424AD500359EC2 /* TrackAppUpdateOperation.swift in Sources */,
 				DBF8B7991F4244A400359EC2 /* AddApplicationInfoToContextOperation.swift in Sources */,
 				DBDE83821F4238B700FABDA6 /* AnonymizeOperation.swift in Sources */,
+				DBDFE3181F44AE36005E7850 /* TrackPushTokenChangeOperation.swift in Sources */,
 				DBF8B7A71F42473100359EC2 /* AddReachabilityInfoToContextOperation.swift in Sources */,
 				DBF8B79B1F4244EB00359EC2 /* AddDeviceInfoToContextOperation.swift in Sources */,
 				DBE1FBE51F3E41E8004B3C9D /* Container.swift in Sources */,
