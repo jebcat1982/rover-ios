@@ -1,5 +1,5 @@
 //
-//  AssembleOperation.swift
+//  InitializeOperation.swift
 //  Rover
 //
 //  Created by Sean Rucker on 2017-08-14.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AssembleOperation: ContainerOperation {
+class InitializeOperation: ContainerOperation {
     
     init(accountToken: String) {
         let timestamp = Date()
@@ -19,6 +19,6 @@ class AssembleOperation: ContainerOperation {
             CaptureContextOperation(),
             TrackAppUpdateOperation(timestamp: timestamp)
             ])
-        self.name = "Assemble"
+        self.name = "Initialize"
     }
 }

@@ -124,7 +124,7 @@
 		DBF8B7B61F4249AA00359EC2 /* PersistEventsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7B51F4249AA00359EC2 /* PersistEventsOperation.swift */; };
 		DBF8B7B81F424A8300359EC2 /* TrackEventOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7B71F424A8300359EC2 /* TrackEventOperation.swift */; };
 		DBF8B7BB1F424AD500359EC2 /* TrackAppUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7BA1F424AD500359EC2 /* TrackAppUpdateOperation.swift */; };
-		DBF8B7BD1F424C2B00359EC2 /* AssembleOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7BC1F424C2B00359EC2 /* AssembleOperation.swift */; };
+		DBF8B7BD1F424C2B00359EC2 /* InitializeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7BC1F424C2B00359EC2 /* InitializeOperation.swift */; };
 		DBF8B7BF1F424CB500359EC2 /* ActivateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7BE1F424CB500359EC2 /* ActivateOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -259,7 +259,7 @@
 		DBF8B7B51F4249AA00359EC2 /* PersistEventsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistEventsOperation.swift; sourceTree = "<group>"; };
 		DBF8B7B71F424A8300359EC2 /* TrackEventOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackEventOperation.swift; sourceTree = "<group>"; };
 		DBF8B7BA1F424AD500359EC2 /* TrackAppUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAppUpdateOperation.swift; sourceTree = "<group>"; };
-		DBF8B7BC1F424C2B00359EC2 /* AssembleOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssembleOperation.swift; sourceTree = "<group>"; };
+		DBF8B7BC1F424C2B00359EC2 /* InitializeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializeOperation.swift; sourceTree = "<group>"; };
 		DBF8B7BE1F424CB500359EC2 /* ActivateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivateOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -328,7 +328,7 @@
 				DBE1FC1D1F421082004B3C9D /* Vendor */,
 				DBE1FC221F4210D8004B3C9D /* Supporting Files */,
 				DBF8B7BE1F424CB500359EC2 /* ActivateOperation.swift */,
-				DBF8B7BC1F424C2B00359EC2 /* AssembleOperation.swift */,
+				DBF8B7BC1F424C2B00359EC2 /* InitializeOperation.swift */,
 				DBE1FBFE1F41FD2E004B3C9D /* Attributes.swift */,
 				DBE1FC2D1F421217004B3C9D /* ID.swift */,
 				DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */,
@@ -893,7 +893,7 @@
 				DB4834D61F46234300CC308A /* BlockView.swift in Sources */,
 				DB4834D91F46234300CC308A /* ImageBlockView.swift in Sources */,
 				DBF8B7AB1F4247DB00359EC2 /* UpdateContextOperation.swift in Sources */,
-				DBF8B7BD1F424C2B00359EC2 /* AssembleOperation.swift in Sources */,
+				DBF8B7BD1F424C2B00359EC2 /* InitializeOperation.swift in Sources */,
 				DBE1FC181F421016004B3C9D /* HTTPSession.swift in Sources */,
 				DBE1FC091F420EB5004B3C9D /* NSTimeZone.swift in Sources */,
 				DB48349E1F4605D100CC308A /* ExperienceViewController.swift in Sources */,

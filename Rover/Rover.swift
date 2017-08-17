@@ -19,12 +19,19 @@ public class Rover {
         return sharedInstance
     }
     
-    @discardableResult public static func assemble(accountToken: String) -> Rover {
+    public static func initialize(accountToken: String, logLevel: LogLevel = .warn) {
+        logger.threshold = logLevel
+        logger.warnUnlessMainThread("Rover must be initialized on the main thread")
+        
+        if sharedInstance != nil {
+            logger.warn("Rover already initialized")
+            return
+        }
+        
         let rover = Rover()
-        let operation = AssembleOperation(accountToken: accountToken)
+        let operation = InitializeOperation(accountToken: accountToken)
         rover.dispatch(operation)
         sharedInstance = rover
-        return rover
     }
     
     let serialQueue: OperationQueue = {
@@ -70,14 +77,7 @@ extension Rover: ApplicationContainer {
 
 extension Rover {
     
-    public static var logLevel: LogLevel {
-        get {
-            return logger.threshold
-        }
-        set {
-            logger.threshold = newValue
-        }
-    }
+    
 }
 
 // MARK: EventsContainer
