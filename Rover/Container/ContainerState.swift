@@ -12,4 +12,5 @@ struct ContainerState {
     var eventQueue = EventQueue()
     var context = Context()
     var profile = Profile()
+    var experiences = ExperienceCache()
 }

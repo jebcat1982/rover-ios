@@ -106,7 +106,7 @@ class ContainerOperation: Operation {
         logger.debug("\(name ?? "Unknown operation") cancelled")
     }
     
-    func execute() {
+    private func execute() {
         guard let reducer = reducer, let resolver = resolver else {
             logger.error("Container operation started with nil reducer and/or resolver")
             finish()

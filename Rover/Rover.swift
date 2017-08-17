@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class Rover: ApplicationContainer {
+public class Rover {
     static var sharedInstance: Rover?
     
     static var shared: Rover {
@@ -17,6 +17,14 @@ public class Rover: ApplicationContainer {
         }
         
         return sharedInstance
+    }
+    
+    @discardableResult public static func assemble(accountToken: String) -> Rover {
+        let rover = Rover()
+        let operation = AssembleOperation(accountToken: accountToken)
+        rover.dispatch(operation)
+        sharedInstance = rover
+        return rover
     }
     
     let serialQueue: OperationQueue = {
@@ -40,22 +48,9 @@ public class Rover: ApplicationContainer {
     }
 }
 
-// MARK: Assemble
+// MARK: ApplicationContainer
 
-extension Rover {
-    
-    @discardableResult public static func assemble(accountToken: String) -> Rover {
-        let rover = Rover()
-        let operation = AssembleOperation(accountToken: accountToken)
-        rover.dispatch(operation)
-        sharedInstance = rover
-        return rover
-    }
-}
-
-// MARK: Application LifeCycle
-
-extension Rover {
+extension Rover: ApplicationContainer {
     
     func applicationDidBecomeActive() {
         let operation = ActivateOperation()
@@ -95,6 +90,35 @@ extension Rover: EventsContainer {
         let timestamp = Date()
         let operation = TrackEventOperation(eventName: name, attributes: attributes, timestamp: timestamp)
         dispatch(operation)
+    }
+}
+
+// MARK: ExperiencesContainer {
+
+public protocol ExperiencesContainer {
+    func fetch(experienceID: ID, completionHandler: ((Experience?) -> Void)?)
+}
+
+extension Rover: ExperiencesContainer {
+    
+    public static var experiences: ExperiencesContainer {
+        return shared
+    }
+    
+    public func find(experienceID: ID, completionHandler: ((Experience?) -> Void)?) {
+        let operation = FindExperienceOperation(experienceID: experienceID)
+        dispatch(operation) { (previousState, currentState) in
+            let experience = currentState.experiences[experienceID]
+            completionHandler?(experience)
+        }
+    }
+    
+    public func fetch(experienceID: ID, completionHandler: ((Experience?) -> Void)?) {
+        let operation = FetchExperienceOperation(experienceID: experienceID)
+        dispatch(operation) { (previousState, currentState) in
+            let experience = currentState.experiences[experienceID]
+            completionHandler?(experience)
+        }
     }
 }
 
@@ -177,5 +201,19 @@ extension Rover: ProfileContainer {
         dispatch(operation) { (previousState, currentState) in
             completionHandler?()
         }
+    }
+}
+
+// MARK: UXCoordinator
+
+public protocol UXCoordinator {
+    
+    
+}
+
+extension Rover: UXCoordinator {
+    
+    static var ux: UXCoordinator {
+        return shared
     }
 }
