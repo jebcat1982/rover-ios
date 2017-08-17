@@ -32,12 +32,12 @@ class AddPushEnvironmentToContextOperation: ContainerOperation {
     
     var pushEnvironment: String? {
         guard let path = bundle.path(forResource: "embedded", ofType: "mobileprovision") else {
-            logger.debug("Could not detect push environment: Provisioning profile not found")
+            logger.warn("Could not detect push environment: Provisioning profile not found")
             return nil
         }
         
         guard let embeddedProfile = try? String(contentsOfFile: path, encoding: String.Encoding.ascii) else {
-            logger.debug("Could not detect push environment: Failed to read provisioning profile at \(path)")
+            logger.warn("Could not detect push environment: Failed to read provisioning profile at \(path)")
             return nil
         }
         
@@ -45,17 +45,17 @@ class AddPushEnvironmentToContextOperation: ContainerOperation {
         var string: NSString?
         
         guard scanner.scanUpTo("<?xml version=\"1.0\" encoding=\"UTF-8\"?>", into: nil), scanner.scanUpTo("</plist>", into: &string) else {
-            logger.debug("Could not detect push environment: Unrecognized provisioning profile structure")
+            logger.warn("Could not detect push environment: Unrecognized provisioning profile structure")
             return nil
         }
         
         guard let data = string?.appending("</plist>").data(using: String.Encoding.utf8) else {
-            logger.debug("Could not detect push environment: Failed to decode provisioning profile")
+            logger.warn("Could not detect push environment: Failed to decode provisioning profile")
             return nil
         }
         
         guard let plist = (try? PropertyListSerialization.propertyList(from: data, options: [], format: nil)) as? [String: Any] else {
-            logger.debug("Could not detect push environment: Failed to serialize provisioning profile")
+            logger.warn("Could not detect push environment: Failed to serialize provisioning profile")
             return nil
         }
         
