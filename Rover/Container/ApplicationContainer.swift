@@ -29,7 +29,7 @@ extension ApplicationContainer {
     
     func observeApplicationNotifications(notificationCenter: NotificationCenterProtocol) {
         notificationCenter.addObserver(forName: .UIApplicationDidFinishLaunching, object: application, queue: nil) { notification in
-            let options = notification.userInfo as! [UIApplicationLaunchOptionsKey: Any]
+            let options = notification.userInfo as? [UIApplicationLaunchOptionsKey: Any]
             self.applicationDidFinishLaunching(withOptions: options)
         }
         
