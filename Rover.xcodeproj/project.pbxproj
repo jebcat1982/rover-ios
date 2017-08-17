@@ -231,9 +231,9 @@
 		DB2412981F3CB32B0064F353 /* Rover */ = {
 			isa = PBXGroup;
 			children = (
+				DBE1FBE61F3E4A86004B3C9D /* Protocol Shims */,
 				DBE1FBE31F3E4191004B3C9D /* Container */,
 				DBE1FC111F420FA3004B3C9D /* Data */,
-				DBE1FBE61F3E4A86004B3C9D /* Extensions */,
 				DB01C60E1F42430C0047D1D5 /* Events */,
 				DBE1FBED1F3E4C91004B3C9D /* Logger */,
 				DBDE83801F42389900FABDA6 /* Profile */,
@@ -336,7 +336,7 @@
 			path = Container;
 			sourceTree = "<group>";
 		};
-		DBE1FBE61F3E4A86004B3C9D /* Extensions */ = {
+		DBE1FBE61F3E4A86004B3C9D /* Protocol Shims */ = {
 			isa = PBXGroup;
 			children = (
 				DB4834771F45D31300CC308A /* CoreLocation */,
@@ -345,7 +345,7 @@
 				DBE1FBEA1F3E4ABC004B3C9D /* UIKit */,
 				DB4834721F44F1BE00CC308A /* UserNotifications */,
 			);
-			path = Extensions;
+			path = "Protocol Shims";
 			sourceTree = "<group>";
 		};
 		DBE1FBE91F3E4AA3004B3C9D /* Foundation */ = {
