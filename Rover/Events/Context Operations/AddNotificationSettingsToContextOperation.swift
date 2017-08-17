@@ -1,5 +1,5 @@
 //
-//  AddNotificationAuthorizationToContextOperation.swift
+//  AddNotificationSettingsToContextOperation.swift
 //  Rover
 //
 //  Created by Sean Rucker on 2017-08-16.
@@ -8,7 +8,7 @@
 
 import UserNotifications
 
-class AddNotificationAuthorizationToContextOperation: ContainerOperation {
+class AddNotificationSettingsToContextOperation: ContainerOperation {
     let notificationCenter: UNUserNotificationCenterProtocol
     
     init(notificationCenter: UNUserNotificationCenterProtocol = UNUserNotificationCenter.current()) {

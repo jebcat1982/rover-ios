@@ -41,4 +41,7 @@ struct Context: Codable {
     var pushEnvironment: String?
     
     var notificationAuthorization: String?
+    
+    var locationAuthorization: String?
+    var isLocationServicesEnabled: Bool?
 }

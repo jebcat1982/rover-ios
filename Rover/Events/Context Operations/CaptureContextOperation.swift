@@ -14,6 +14,7 @@ class CaptureContextOperation: ContainerOperation {
             AddDeviceInfoToContextOperation(),
             AddSDKVersionToContextOperation(),
             AddLocaleToContextOperation(),
+            AddLocationSettingsToContextOperation(),
             AddNotificationSettingsToContextOperation(),
             AddPushEnvironmentToContextOperation(),
             AddScreenSizeToContextOperation(),
