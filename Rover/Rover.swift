@@ -68,6 +68,18 @@ extension Rover: ApplicationContainer {
     }
 }
 
+extension Rover {
+    
+    public static var logLevel: LogLevel {
+        get {
+            return logger.threshold
+        }
+        set {
+            logger.threshold = newValue
+        }
+    }
+}
+
 // MARK: EventsContainer
 
 public protocol EventsContainer {

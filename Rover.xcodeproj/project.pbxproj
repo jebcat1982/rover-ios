@@ -13,6 +13,7 @@
 		DB2412A01F3CB32B0064F353 /* Rover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2412961F3CB32B0064F353 /* Rover.framework */; };
 		DB2412A51F3CB32B0064F353 /* RoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2412A41F3CB32B0064F353 /* RoverTests.swift */; };
 		DB2412A71F3CB32B0064F353 /* Rover.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2412991F3CB32B0064F353 /* Rover.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB2D531A1F4634BE003CB5F4 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D53191F4634BE003CB5F4 /* LogLevel.swift */; };
 		DB4834711F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */; };
 		DB4834741F44F1CC00CC308A /* UNUserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */; };
 		DB4834761F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */; };
@@ -147,6 +148,7 @@
 		DB24129F1F3CB32B0064F353 /* RoverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2412A41F3CB32B0064F353 /* RoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverTests.swift; sourceTree = "<group>"; };
 		DB2412A61F3CB32B0064F353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB2D53191F4634BE003CB5F4 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotificationSettingsToContextOperation.swift; sourceTree = "<group>"; };
 		DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenter.swift; sourceTree = "<group>"; };
 		DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationSettingsToContextOperation.swift; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				DBE1FBEE1F3E4C9C004B3C9D /* Logger.swift */,
+				DB2D53191F4634BE003CB5F4 /* LogLevel.swift */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				DB01C6101F42431E0047D1D5 /* Event.swift in Sources */,
 				DBF8B7A91F42476100359EC2 /* CaptureContextOperation.swift in Sources */,
 				DBF8B7B21F42495800359EC2 /* FlushEventsOperation.swift in Sources */,
+				DB2D531A1F4634BE003CB5F4 /* LogLevel.swift in Sources */,
 				DBF8B79D1F42453500359EC2 /* AddSDKVersionToContextOperation.swift in Sources */,
 				DB4834791F45D32B00CC308A /* CLLocationManager.swift in Sources */,
 				DBE1FC251F421131004B3C9D /* GraphQLClient.swift in Sources */,

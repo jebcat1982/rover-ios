@@ -13,36 +13,15 @@ var logger = Logger()
 struct Logger {
     typealias Printer = (String) -> Void
     
-    enum Level: Int, CustomStringConvertible {
-        case debug
-        case warn
-        case error
-        case none
-        
-        var description: String {
-            switch self {
-            case .debug:
-                return "Debug"
-            case .warn:
-                return "Warn"
-            case .error:
-                return "Error"
-            case .none:
-                return ""
-            }
-        }
-    }
-    
-    var threshold: Level
-    
+    var threshold: LogLevel
     var printer: Printer
     
-    init(threshold: Level = .warn, printer: @escaping Printer = { print($0) }) {
+    init(threshold: LogLevel = .warn, printer: @escaping Printer = { print($0) }) {
         self.threshold = threshold
         self.printer = printer
     }
     
-    @discardableResult func log(message: String, level: Level) -> String? {
+    @discardableResult func log(message: String, level: LogLevel) -> String? {
         guard level.rawValue >= threshold.rawValue else {
             return nil
         }
