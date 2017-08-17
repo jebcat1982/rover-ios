@@ -34,5 +34,7 @@ class AddDeviceIDToCredentialsOperation: ContainerOperation {
             nextState.credentials = nextCredentials
             return nextState
         }
+        
+        completionHandler()
     }
 }
