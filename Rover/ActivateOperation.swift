@@ -14,7 +14,7 @@ class ActivateOperation: Operation {
         let timestamp = Date()
         super.init(operations: [
             TrackEventOperation(eventName: "App Opened", attributes: nil, timestamp: timestamp),
-            //SyncOperation()
+            SyncOperation()
             ])
         self.name = "Activate"
     }
