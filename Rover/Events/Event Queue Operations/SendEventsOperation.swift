@@ -18,13 +18,13 @@ class SendEventsOperation: QueryOperation<SendEventsQuery> {
     }
     
     override func handleResponse(_ response: SendEventsResponse, reducer: Reducer, resolver: Resolver) {
-        logger.debug("Successfully uploaded \(query.events.count) events")
+        delegate?.debug("Successfully uploaded \(query.events.count) events", operation: self)
         removeEvents(reducer: reducer)
     }
     
     override func handleError(error: Error?, shouldRetry: Bool, reducer: Reducer, resolver: Resolver) {
         let nextSteps = shouldRetry ? "Will retry" : "Discarding events"
-        logger.error("Failed to upload events: \(nextSteps)")
+        delegate?.error("Failed to upload events: \(nextSteps)", operation: self)
         
         if !shouldRetry {
             removeEvents(reducer: reducer)

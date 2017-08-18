@@ -12,4 +12,8 @@ protocol OperationDelegate: class {
     func operationDidStart(_ operation: Operation)
     func operationDidCancel(_ operation: Operation)
     func operationDidFinish(_ operation: Operation)
+    
+    func debug(_ message: String, operation: Operation)
+    func warn(_ message: String, operation: Operation)
+    func error(_ message: String, operation: Operation)
 }

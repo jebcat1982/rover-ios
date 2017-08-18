@@ -19,19 +19,19 @@ class AddSDKVersionToContextOperation: Operation {
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         guard let bundle = bundleType.init(identifier: "io.rover.Rover") else {
-            logger.warn("Failed to capture SDK version: Bundle not found")
+            delegate?.warn("Failed to capture SDK version: Bundle not found", operation: self)
             completionHandler()
             return
         }
         
         guard let dictionary = bundle.infoDictionary else {
-            logger.warn("Failed to capture SDK version: Invalid bundle")
+            delegate?.warn("Failed to capture SDK version: Invalid bundle", operation: self)
             completionHandler()
             return
         }
         
         guard let version = dictionary["CFBundleShortVersionString"] as? String else {
-            logger.warn("Failed to capture SDK version: No version found in bundle")
+            delegate?.warn("Failed to capture SDK version: No version found in bundle", operation: self)
             completionHandler()
             return
         }

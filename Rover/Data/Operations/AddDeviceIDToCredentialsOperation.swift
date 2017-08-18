@@ -19,7 +19,7 @@ class AddDeviceIDToCredentialsOperation: Operation {
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         guard let identifierForVendor = currentDevice.identifierForVendor?.uuidString else {
-            logger.error("Failed to obtain identifierForVendor")
+            delegate?.error("Failed to obtain identifierForVendor", operation: self)
             completionHandler()
             return
         }

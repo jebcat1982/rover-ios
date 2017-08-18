@@ -28,7 +28,7 @@ class QueryOperation<T>: Operation where T: GraphQLQuery {
             switch result {
             case let .error(error, shouldRetry):
                 if let error = error {
-                    logger.error("Query failed: \(error.localizedDescription)")
+                    self.delegate?.error("Query failed: \(error.localizedDescription)", operation: self)
                 }
                 
                 self.handleError(error: error, shouldRetry: shouldRetry, reducer: reducer, resolver: resolver)

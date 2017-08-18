@@ -50,11 +50,11 @@ class AddTelephonyInfoToContextOperation: Operation {
             nextContext.radio = currentRadio
             
             if nextContext.carrierName == nil {
-                logger.warn("Failed to capture carrier name")
+                delegate?.warn("Failed to capture carrier name", operation: self)
             }
             
             if nextContext.radio == nil {
-                logger.warn("Failed to capture radio type")
+                delegate?.warn("Failed to capture radio type", operation: self)
             }
             
             var nextState = state

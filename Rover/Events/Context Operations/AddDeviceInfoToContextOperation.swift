@@ -27,7 +27,7 @@ class AddDeviceInfoToContextOperation: Operation {
             if let deviceModel = self.deviceModel() {
                 nextContext.deviceModel = deviceModel
             } else {
-                logger.warn("Failed to capture device model")
+                delegate?.warn("Failed to capture device model", operation: self)
             }
             
             var nextState = state

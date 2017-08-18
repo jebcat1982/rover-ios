@@ -17,7 +17,7 @@ class AddReachabilityInfoToContextOperation: Operation {
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         guard let reachability = self.reachability else {
-            logger.warn("Failed to initialize Reachability client")
+            delegate?.warn("Failed to initialize Reachability client", operation: self)
             completionHandler()
             return
         }

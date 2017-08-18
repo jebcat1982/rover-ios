@@ -74,7 +74,7 @@ class Operation: Foundation.Operation {
     
     func addOperation(_ operation: Operation) {
         guard !finishOperation.isFinished && !finishOperation.isExecuting else {
-            logger.error("Cannot add new operations after the operation has completed")
+            delegate?.error("Cannot add new operations after the operation has completed", operation: self)
             return
         }
         
@@ -110,7 +110,7 @@ class Operation: Foundation.Operation {
     
     private func execute() {
         guard let reducer = reducer, let resolver = resolver else {
-            logger.error("Operation started with nil reducer and/or resolver")
+            delegate?.error("Operation started with nil reducer and/or resolver", operation: self)
             finish()
             return
         }
@@ -151,5 +151,17 @@ extension Operation: OperationDelegate {
     
     func operationDidFinish(_ operation: Operation) {
         delegate?.operationDidFinish(operation)
+    }
+    
+    func debug(_ message: String, operation: Operation) {
+        delegate?.debug(message, operation: operation)
+    }
+    
+    func warn(_ message: String, operation: Operation) {
+        delegate?.warn(message, operation: operation)
+    }
+    
+    func error(_ message: String, operation: Operation) {
+        delegate?.error(message, operation: operation)
     }
 }

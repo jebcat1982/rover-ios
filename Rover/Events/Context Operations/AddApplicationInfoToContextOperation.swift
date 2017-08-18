@@ -25,7 +25,7 @@ class AddApplicationInfoToContextOperation: Operation {
                 info[key] = value
             }
         } else {
-            logger.warn("Failed to load infoDictionary from main bundle")
+            delegate?.warn("Failed to load infoDictionary from main bundle", operation: self)
         }
         
         if let localizedInfoDictionary = bundle.localizedInfoDictionary {
@@ -42,25 +42,25 @@ class AddApplicationInfoToContextOperation: Operation {
             } else if let bundleName = info["CFBundleName"] as? String {
                 nextContext.appName = bundleName
             } else {
-                logger.warn("Failed to capture app name")
+                delegate?.warn("Failed to capture app name", operation: self)
             }
             
             if let shortVersion = info["CFBundleShortVersionString"] as? String {
                 nextContext.appVersion = shortVersion
             } else {
-                logger.warn("Failed to capture app version")
+                delegate?.warn("Failed to capture app version", operation: self)
             }
             
             if let bundleVersion = info["CFBundleVersion"] as? String {
                 nextContext.appBuild = bundleVersion
             } else {
-                logger.warn("Failed to capture app build")
+                delegate?.warn("Failed to capture app build", operation: self)
             }
             
             if let bundleIdentifier = bundle.bundleIdentifier {
                 nextContext.appNamespace = bundleIdentifier
             } else {
-                logger.warn("Failed to capture app namespace")
+                delegate?.warn("Failed to capture app namespace", operation: self)
             }
             
             var nextState = state

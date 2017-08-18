@@ -185,6 +185,7 @@ extension Rover: OperationDelegate {
     func calculateDepth(_ operation: Operation) -> Int {
         var depth = 0
         var child = operation
+        
         while let parent = child.delegate as? Operation {
             depth += 1
             child = parent
@@ -192,23 +193,65 @@ extension Rover: OperationDelegate {
         return depth
     }
     
-    func log(_ operation: Operation, message: String) {
+    func indent(depth: Int) -> String {
+        return String(repeating: " ", count: depth * 4)
+    }
+    
+    func indentedMessage(_ message: String, operation: Operation) -> String {
         let depth = calculateDepth(operation)
-        let padding = String(repeating: " ", count: depth * 4)
-        logger.debug(padding + message)
+        return indent(depth: depth) + message
     }
     
     func operationDidStart(_ operation: Operation) {
         let name = operation.name ?? "Unknown"
-        log(operation, message: "\(name) {")
+        let depth = calculateDepth(operation)
+        let message = indent(depth: depth) + "\(name) {"
+        logger.debug(message)
     }
     
     func operationDidCancel(_ operation: Operation) {
-        log(operation, message: "cancelled")
+        let depth = calculateDepth(operation)
+        let message = indent(depth: depth) + "cancelled"
+        logger.debug(message)
     }
     
     func operationDidFinish(_ operation: Operation) {
-        log(operation, message: "}")
+        let depth = calculateDepth(operation)
+        let message = indent(depth: depth) + "}"
+        logger.debug(message)
+    }
+    
+    func debug(_ message: String, operation: Operation) {
+        switch logger.threshold {
+        case .debug:
+            let depth = calculateDepth(operation) + 1
+            let message = indent(depth: depth) + "- " + message
+            logger.debug(message)
+        default:
+            logger.debug(message)
+        }
+    }
+    
+    func warn(_ message: String, operation: Operation) {
+        switch logger.threshold {
+        case .debug:
+            let depth = calculateDepth(operation) + 1
+            let message = indent(depth: depth) + "- " + message
+            logger.warn(message)
+        default:
+            logger.warn(message)
+        }
+    }
+    
+    func error(_ message: String, operation: Operation) {
+        switch logger.threshold {
+        case .debug:
+            let depth = calculateDepth(operation) + 1
+            let message = indent(depth: depth) + "- " + message
+            logger.error(message)
+        default:
+            logger.error(message)
+        }
     }
 }
 

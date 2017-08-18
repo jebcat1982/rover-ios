@@ -19,7 +19,7 @@ class RestoreProfileIDFromUserDefaultsOperation: Operation {
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         guard let profileID = userDefaults.string(forKey: "io.rover.profileID").map({ ID(rawValue: $0) }) else {
-            logger.debug("No profile ID found in UserDefaults")
+            delegate?.debug("No profile ID found in UserDefaults", operation: self)
             completionHandler()
             return
         }

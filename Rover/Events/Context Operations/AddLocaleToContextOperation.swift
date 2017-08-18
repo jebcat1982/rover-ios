@@ -26,11 +26,11 @@ class AddLocaleToContextOperation: Operation {
             nextContext.localeScript = locale.scriptCode
             
             if nextContext.localeLanguage == nil {
-                logger.warn("Failed to capture locale language")
+                delegate?.warn("Failed to capture locale language", operation: self)
             }
             
             if nextContext.localeRegion == nil {
-                logger.warn("Failed to capture locale region")
+                delegate?.warn("Failed to capture locale region", operation: self)
             }
             
             var nextState = state

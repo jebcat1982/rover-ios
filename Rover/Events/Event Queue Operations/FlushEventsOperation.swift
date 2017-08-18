@@ -20,7 +20,7 @@ class FlushEventsOperation: Operation {
         let minBatchSize = self.minBatchSize ?? eventQueue.flushAt
         
         guard let batch = nextBatch(events: eventQueue.events, minSize: minBatchSize, maxBatchSize: eventQueue.maxBatchSize) else {
-            logger.debug("Skipping flush – less than \(minBatchSize) events in the queue")
+            delegate?.debug("Skipping flush – less than \(minBatchSize) events in the queue", operation: self)
             completionHandler()
             return
         }
