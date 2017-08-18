@@ -13,7 +13,7 @@ public class Rover {
     
     static var shared: Rover {
         guard let sharedInstance = sharedInstance else {
-            fatalError("Rover accessed before calling assemble")
+            fatalError("Rover accessed before calling initialize")
         }
         
         return sharedInstance
