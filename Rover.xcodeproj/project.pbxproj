@@ -75,16 +75,11 @@
 		DBDFE3161F44ADA2005E7850 /* AddPushTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFE3151F44ADA2005E7850 /* AddPushTokenOperation.swift */; };
 		DBDFE3181F44AE36005E7850 /* TrackPushTokenChangeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFE3171F44AE36005E7850 /* TrackPushTokenChangeOperation.swift */; };
 		DBDFE31A1F44AEAF005E7850 /* RemovePushTokenOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFE3191F44AEAF005E7850 /* RemovePushTokenOperation.swift */; };
-		DBE1FBE51F3E41E8004B3C9D /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBE41F3E41E8004B3C9D /* Container.swift */; };
 		DBE1FBE81F3E4A9A004B3C9D /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBE71F3E4A9A004B3C9D /* NotificationCenter.swift */; };
 		DBE1FBEC1F3E4AC6004B3C9D /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBEB1F3E4AC6004B3C9D /* UIApplication.swift */; };
 		DBE1FBEF1F3E4C9C004B3C9D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBEE1F3E4C9C004B3C9D /* Logger.swift */; };
 		DBE1FBF11F3E4DAD004B3C9D /* ContainerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBF01F3E4DAD004B3C9D /* ContainerOperation.swift */; };
 		DBE1FBF31F3E4DFE004B3C9D /* ContainerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBF21F3E4DFE004B3C9D /* ContainerState.swift */; };
-		DBE1FBF51F3E4E24004B3C9D /* ApplicationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBF41F3E4E24004B3C9D /* ApplicationContainer.swift */; };
-		DBE1FBF91F41F8E2004B3C9D /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBF81F41F8E2004B3C9D /* Resolver.swift */; };
-		DBE1FBFB1F41F8F8004B3C9D /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBFA1F41F8F8004B3C9D /* Reducer.swift */; };
-		DBE1FBFD1F41F907004B3C9D /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBFC1F41F907004B3C9D /* Dispatcher.swift */; };
 		DBE1FBFF1F41FD2E004B3C9D /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBFE1F41FD2E004B3C9D /* Attributes.swift */; };
 		DBE1FC011F420E37004B3C9D /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC001F420E37004B3C9D /* UIDevice.swift */; };
 		DBE1FC031F420E50004B3C9D /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC021F420E50004B3C9D /* UIScreen.swift */; };
@@ -211,16 +206,11 @@
 		DBDFE3151F44ADA2005E7850 /* AddPushTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPushTokenOperation.swift; sourceTree = "<group>"; };
 		DBDFE3171F44AE36005E7850 /* TrackPushTokenChangeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPushTokenChangeOperation.swift; sourceTree = "<group>"; };
 		DBDFE3191F44AEAF005E7850 /* RemovePushTokenOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovePushTokenOperation.swift; sourceTree = "<group>"; };
-		DBE1FBE41F3E41E8004B3C9D /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		DBE1FBE71F3E4A9A004B3C9D /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		DBE1FBEB1F3E4AC6004B3C9D /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		DBE1FBEE1F3E4C9C004B3C9D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		DBE1FBF01F3E4DAD004B3C9D /* ContainerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerOperation.swift; sourceTree = "<group>"; };
 		DBE1FBF21F3E4DFE004B3C9D /* ContainerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerState.swift; sourceTree = "<group>"; };
-		DBE1FBF41F3E4E24004B3C9D /* ApplicationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationContainer.swift; sourceTree = "<group>"; };
-		DBE1FBF81F41F8E2004B3C9D /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
-		DBE1FBFA1F41F8F8004B3C9D /* Reducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
-		DBE1FBFC1F41F907004B3C9D /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		DBE1FBFE1F41FD2E004B3C9D /* Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
 		DBE1FC001F420E37004B3C9D /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		DBE1FC021F420E50004B3C9D /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
@@ -524,14 +514,9 @@
 		DBE1FBE31F3E4191004B3C9D /* Container */ = {
 			isa = PBXGroup;
 			children = (
-				DBE1FBF41F3E4E24004B3C9D /* ApplicationContainer.swift */,
-				DBE1FBE41F3E41E8004B3C9D /* Container.swift */,
 				DBE1FBF01F3E4DAD004B3C9D /* ContainerOperation.swift */,
 				DB2D531B1F464366003CB5F4 /* ContainerOperationDelegate.swift */,
 				DBE1FBF21F3E4DFE004B3C9D /* ContainerState.swift */,
-				DBE1FBFC1F41F907004B3C9D /* Dispatcher.swift */,
-				DBE1FBF81F41F8E2004B3C9D /* Resolver.swift */,
-				DBE1FBFA1F41F8F8004B3C9D /* Reducer.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -803,7 +788,6 @@
 				DBDE838B1F423A8300FABDA6 /* UpdateProfileOperation.swift in Sources */,
 				DB4834A21F4606EB00CC308A /* ScreenViewLayoutAttributes.swift in Sources */,
 				DBE1FC291F421178004B3C9D /* QueryOperation.swift in Sources */,
-				DBE1FBFD1F41F907004B3C9D /* Dispatcher.swift in Sources */,
 				DBDE837D1F4235DD00FABDA6 /* AddProfileIDToCredentialsOperation.swift in Sources */,
 				DB48348C1F4602CA00CC308A /* Length.swift in Sources */,
 				DBDFE3101F424E92005E7850 /* SyncOperation.swift in Sources */,
@@ -812,7 +796,6 @@
 				DB4834DD1F46234300CC308A /* WebViewBlockView.swift in Sources */,
 				DBE1FBF11F3E4DAD004B3C9D /* ContainerOperation.swift in Sources */,
 				DBF8B7AE1F4248C000359EC2 /* AddEventOperation.swift in Sources */,
-				DBE1FBFB1F41F8F8004B3C9D /* Reducer.swift in Sources */,
 				DBF8B7A11F42469300359EC2 /* AddScreenSizeToContextOperation.swift in Sources */,
 				DB48347F1F46019700CC308A /* FetchExperienceOperation.swift in Sources */,
 				DBDFE3141F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift in Sources */,
@@ -859,12 +842,10 @@
 				DBE1FC161F420FFF004B3C9D /* HTTPResult.swift in Sources */,
 				DBE1FC0E1F420F58004B3C9D /* CTCarrier.swift in Sources */,
 				DB2D531C1F464366003CB5F4 /* ContainerOperationDelegate.swift in Sources */,
-				DBE1FBF91F41F8E2004B3C9D /* Resolver.swift in Sources */,
 				DBDE837F1F42368100FABDA6 /* RemoveProfileIDFromCredentialsOperation.swift in Sources */,
 				DBE1FC2E1F421217004B3C9D /* ID.swift in Sources */,
 				DB4834D11F46233D00CC308A /* TextBlockViewModel.swift in Sources */,
 				DBF8B7B81F424A8300359EC2 /* TrackEventOperation.swift in Sources */,
-				DBE1FBF51F3E4E24004B3C9D /* ApplicationContainer.swift in Sources */,
 				DBE1FC301F4212ED004B3C9D /* DataClient.swift in Sources */,
 				DBE1FC1A1F421026004B3C9D /* HTTPTask.swift in Sources */,
 				DB4834941F46034100CC308A /* ImageConfiguration.swift in Sources */,
@@ -910,7 +891,6 @@
 				DBF8B79B1F4244EB00359EC2 /* AddDeviceInfoToContextOperation.swift in Sources */,
 				DB4834C71F46233D00CC308A /* BackgroundViewModel.swift in Sources */,
 				DB4834C91F46233D00CC308A /* BlockViewModel.swift in Sources */,
-				DBE1FBE51F3E41E8004B3C9D /* Container.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

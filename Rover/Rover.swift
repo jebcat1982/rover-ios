@@ -51,27 +51,164 @@ public class Rover {
     init(pulseInterval: Double = 30.0, application: UIApplicationProtocol = UIApplication.shared, notificationCenter: NotificationCenterProtocol = NotificationCenter.default) {
         self.pulseInterval = pulseInterval
         self.application = application
-        observeApplicationNotifications(notificationCenter: notificationCenter)
+        
+        notificationCenter.addObserver(forName: .UIApplicationDidBecomeActive, object: application, queue: nil) { _ in
+            self.startPulseTimer()
+            
+            let operation = ActivateOperation()
+            self.dispatch(operation)
+        }
+        
+        notificationCenter.addObserver(forName: .UIApplicationWillResignActive, object: application, queue: nil) { _ in
+            self.stopPulseTimer()
+        }
+        
+        notificationCenter.addObserver(forName: .UIApplicationDidEnterBackground, object: application, queue: nil) { _ in
+            self.beginBackgroundTask()
+            self.flushEvents()
+            self.endBackgroundTask()
+        }
+    }
+    
+    func startPulseTimer() {
+        stopPulseTimer()
+        
+        serialQueue.addOperation {
+            guard self.pulseInterval > 0.0 else {
+                return
+            }
+            
+            let timer = Timer(timeInterval: self.pulseInterval, repeats: true) { _ in
+                self.flushEvents()
+            }
+            
+            DispatchQueue.main.async {
+                RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
+            }
+            
+            self.pulseTimer = timer
+        }
+    }
+    
+    func stopPulseTimer() {
+        serialQueue.addOperation {
+            guard let pulseTimer = self.pulseTimer else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                pulseTimer.invalidate()
+            }
+            
+            self.pulseTimer = nil
+        }
+    }
+    
+    func beginBackgroundTask() {
+        endBackgroundTask()
+        
+        serialQueue.addOperation {
+            self.backgroundTask = self.application.beginBackgroundTask() {
+                self.serialQueue.cancelAllOperations()
+                self.endBackgroundTask()
+            }
+        }
+    }
+    
+    func endBackgroundTask() {
+        serialQueue.addOperation {
+            if (self.backgroundTask != UIBackgroundTaskInvalid) {
+                self.application.endBackgroundTask(self.backgroundTask)
+                self.backgroundTask = UIBackgroundTaskInvalid
+            }
+        }
     }
 }
 
-// MARK: ApplicationContainer
+// MARK: Dispatcher
 
-extension Rover: ApplicationContainer {
+protocol Dispatcher {
+    func dispatch(_ operation: ContainerOperation)
+    func dispatch(_ operation: ContainerOperation, completionHandler: ((ContainerState, ContainerState) -> Void)?)
+}
+
+extension Rover: Dispatcher {
     
-    func applicationDidBecomeActive() {
-        let operation = ActivateOperation()
-        dispatch(operation)
+    func dispatch(_ operation: ContainerOperation) {
+        dispatch(operation, completionHandler: nil)
     }
     
-    func applicationDidPulse() {
-        let operation = FlushEventsOperation(minBatchSize: 1)
-        dispatch(operation)
+    func dispatch(_ operation: ContainerOperation, completionHandler: ((ContainerState, ContainerState) -> Void)?) {
+        logger.warnUnlessMainThread("dispatch should only be called from the main thread")
+        operation.delegate = self
+        operation.reducer = self
+        operation.resolver = self
+        
+        operation.completionBlock = {
+            DispatchQueue.main.async {
+                completionHandler?(self.previousState, self.currentState)
+            }
+        }
+        
+        serialQueue.addOperation(operation)
+    }
+}
+
+// MARK: Reducer
+
+protocol Reducer {    
+    func reduce(block: (ContainerState) -> ContainerState)
+}
+
+extension Rover: Reducer {
+    
+    func reduce(block: (ContainerState) -> ContainerState) {
+        logger.warnIfMainThread("reduce should only be called from within the execute method of a ContainerOperation")
+        previousState = currentState
+        currentState = block(currentState)
+    }
+}
+
+// MARK: Resolver
+
+protocol Resolver {
+    var currentState: ContainerState { get }
+    var previousState: ContainerState { get }
+}
+
+extension Rover: Resolver { }
+
+// MARK: ContainerOperationDelegate
+
+extension Rover: ContainerOperationDelegate {
+    
+    func calculateDepth(_ operation: ContainerOperation) -> Int {
+        var depth = 0
+        var child = operation
+        while let parent = child.delegate as? ContainerOperation {
+            depth += 1
+            child = parent
+        }
+        return depth
     }
     
-    func applicationDidEnterBackground() {
-        let operation = FlushEventsOperation(minBatchSize: 1)
-        dispatch(operation)
+    func log(_ operation: ContainerOperation, message: String) {
+        let depth = calculateDepth(operation)
+        let padding = String(repeating: " ", count: depth * 4)
+        logger.debug(padding + message)
+    }
+    
+    func operationDidStart(_ operation: ContainerOperation) {
+        let name = operation.name ?? "Unknown"
+        log(operation, message: "\(name) {")
+    }
+    
+    func operationDidCancel(_ operation: ContainerOperation) {
+        log(operation, message: "cancelled")
+    }
+    
+    func operationDidFinish(_ operation: ContainerOperation) {
+        log(operation, message: "}")
     }
 }
 
@@ -79,6 +216,7 @@ extension Rover: ApplicationContainer {
 
 public protocol EventsContainer {
     func trackEvent(name: String, attributes: Attributes?)
+    func flushEvents()
     func configureEventQueue(flushAt: Int?, maxBatchSize: Int?, maxQueueSize: Int?)
 }
 
@@ -90,6 +228,11 @@ extension Rover: EventsContainer {
     
     public func configureEventQueue(flushAt: Int? = nil, maxBatchSize: Int? = nil, maxQueueSize: Int? = nil) {
         let operation = ConfigureEventQueueOperation(flushAt: flushAt, maxBatchSize: maxBatchSize, maxQueueSize: maxQueueSize)
+        dispatch(operation)
+    }
+    
+    public func flushEvents() {
+        let operation = FlushEventsOperation(minBatchSize: 1)
         dispatch(operation)
     }
     
