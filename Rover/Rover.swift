@@ -202,56 +202,39 @@ extension Rover: OperationDelegate {
         return indent(depth: depth) + message
     }
     
+    func bulletedMessage(_ message: String, operation: Operation) -> String {
+        return indentedMessage("  • " + message, operation: operation)
+    }
+    
     func operationDidStart(_ operation: Operation) {
         let name = operation.name ?? "Unknown"
-        let depth = calculateDepth(operation)
-        let message = indent(depth: depth) + "\(name) {"
+        let message = indentedMessage("\(name) {", operation: operation)
         logger.debug(message)
     }
     
     func operationDidCancel(_ operation: Operation) {
-        let depth = calculateDepth(operation)
-        let message = indent(depth: depth) + "cancelled"
+        let message = indentedMessage("cancelled", operation: operation)
         logger.debug(message)
     }
     
     func operationDidFinish(_ operation: Operation) {
-        let depth = calculateDepth(operation)
-        let message = indent(depth: depth) + "}"
+        let message = indentedMessage("}", operation: operation)
         logger.debug(message)
     }
     
     func debug(_ message: String, operation: Operation) {
-        switch logger.threshold {
-        case .debug:
-            let depth = calculateDepth(operation) + 1
-            let message = indent(depth: depth) + "- " + message
-            logger.debug(message)
-        default:
-            logger.debug(message)
-        }
+        let message = logger.threshold == .debug ? bulletedMessage(message, operation: operation) : message
+        logger.debug(message)
     }
     
     func warn(_ message: String, operation: Operation) {
-        switch logger.threshold {
-        case .debug:
-            let depth = calculateDepth(operation) + 1
-            let message = indent(depth: depth) + "- " + message
-            logger.warn(message)
-        default:
-            logger.warn(message)
-        }
+        let message = logger.threshold == .debug ? bulletedMessage(message, operation: operation) : message
+        logger.warn(message)
     }
     
     func error(_ message: String, operation: Operation) {
-        switch logger.threshold {
-        case .debug:
-            let depth = calculateDepth(operation) + 1
-            let message = indent(depth: depth) + "- " + message
-            logger.error(message)
-        default:
-            logger.error(message)
-        }
+        let message = logger.threshold == .debug ? bulletedMessage(message, operation: operation) : message
+        logger.error(message)
     }
 }
 
