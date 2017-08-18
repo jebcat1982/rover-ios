@@ -47,7 +47,7 @@ struct Logger {
     
     @discardableResult func warnUnlessMainThread(_ message: String) -> String? {
         if !Thread.isMainThread {
-            return logger.warn(message)
+            return warn(message)
         }
         
         return nil
@@ -55,7 +55,7 @@ struct Logger {
     
     @discardableResult func warnIfMainThread(_ message: String) -> String? {
         if Thread.isMainThread {
-            return logger.warn(message)
+            return warn(message)
         }
         
         return nil
