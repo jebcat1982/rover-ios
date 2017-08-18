@@ -14,6 +14,7 @@
 		DB2412A51F3CB32B0064F353 /* RoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2412A41F3CB32B0064F353 /* RoverTests.swift */; };
 		DB2412A71F3CB32B0064F353 /* Rover.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2412991F3CB32B0064F353 /* Rover.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB2D531A1F4634BE003CB5F4 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D53191F4634BE003CB5F4 /* LogLevel.swift */; };
+		DB2D531C1F464366003CB5F4 /* ContainerOperationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D531B1F464366003CB5F4 /* ContainerOperationDelegate.swift */; };
 		DB4834711F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */; };
 		DB4834741F44F1CC00CC308A /* UNUserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */; };
 		DB4834761F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */; };
@@ -149,6 +150,7 @@
 		DB2412A41F3CB32B0064F353 /* RoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverTests.swift; sourceTree = "<group>"; };
 		DB2412A61F3CB32B0064F353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB2D53191F4634BE003CB5F4 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		DB2D531B1F464366003CB5F4 /* ContainerOperationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerOperationDelegate.swift; sourceTree = "<group>"; };
 		DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotificationSettingsToContextOperation.swift; sourceTree = "<group>"; };
 		DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenter.swift; sourceTree = "<group>"; };
 		DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationSettingsToContextOperation.swift; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 				DBE1FBF41F3E4E24004B3C9D /* ApplicationContainer.swift */,
 				DBE1FBE41F3E41E8004B3C9D /* Container.swift */,
 				DBE1FBF01F3E4DAD004B3C9D /* ContainerOperation.swift */,
+				DB2D531B1F464366003CB5F4 /* ContainerOperationDelegate.swift */,
 				DBE1FBF21F3E4DFE004B3C9D /* ContainerState.swift */,
 				DBE1FBFC1F41F907004B3C9D /* Dispatcher.swift */,
 				DBE1FBF81F41F8E2004B3C9D /* Resolver.swift */,
@@ -855,6 +858,7 @@
 				DB4834C81F46233D00CC308A /* BarcodeBlockViewModel.swift in Sources */,
 				DBE1FC161F420FFF004B3C9D /* HTTPResult.swift in Sources */,
 				DBE1FC0E1F420F58004B3C9D /* CTCarrier.swift in Sources */,
+				DB2D531C1F464366003CB5F4 /* ContainerOperationDelegate.swift in Sources */,
 				DBE1FBF91F41F8E2004B3C9D /* Resolver.swift in Sources */,
 				DBDE837F1F42368100FABDA6 /* RemoveProfileIDFromCredentialsOperation.swift in Sources */,
 				DBE1FC2E1F421217004B3C9D /* ID.swift in Sources */,

@@ -26,7 +26,9 @@ struct Logger {
             return nil
         }
         
-        let output = "[ROVER:\(level.description.uppercased())] \(message)"
+        let levelDescription = level.description.uppercased()
+        let padding = String(repeating: " ", count: 10 - levelDescription.count)
+        let output = "Rover     \(levelDescription)\(padding)\(message)"
         printer(output)
         return output
     }

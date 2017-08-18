@@ -50,6 +50,7 @@ class ContainerOperation: Operation {
     
     var finishOperation: BlockOperation!
     
+    var delegate: ContainerOperationDelegate?
     var reducer: Reducer?
     var resolver: Resolver?
     
@@ -77,6 +78,7 @@ class ContainerOperation: Operation {
             return
         }
         
+        operation.delegate = self
         finishOperation.addDependency(operation)
         serialQueue.addOperation(operation)
     }
@@ -93,7 +95,7 @@ class ContainerOperation: Operation {
     override func main() {
         if !isCancelled {
             _isExecuting = true
-            logger.debug("\(name ?? "Unknown operation") started")
+            delegate?.operationDidStart(self)
             execute()
         } else {
             finish()
@@ -103,7 +105,7 @@ class ContainerOperation: Operation {
     override func cancel() {
         serialQueue.cancelAllOperations()
         super.cancel()
-        logger.debug("\(name ?? "Unknown operation") cancelled")
+        delegate?.operationDidCancel(self)
     }
     
     private func execute() {
@@ -129,10 +131,25 @@ class ContainerOperation: Operation {
         _isExecuting = false
         _isFinished = true
         
-        logger.debug("\(name ?? "Unknown operation") finished")
+        delegate?.operationDidFinish(self)
     }
     
     func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         completionHandler()
+    }
+}
+
+extension ContainerOperation: ContainerOperationDelegate {
+    
+    func operationDidStart(_ operation: ContainerOperation) {
+        delegate?.operationDidStart(operation)
+    }
+    
+    func operationDidCancel(_ operation: ContainerOperation) {
+        delegate?.operationDidCancel(operation)
+    }
+    
+    func operationDidFinish(_ operation: ContainerOperation) {
+        delegate?.operationDidFinish(operation)
     }
 }

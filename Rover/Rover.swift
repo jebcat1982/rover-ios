@@ -75,11 +75,6 @@ extension Rover: ApplicationContainer {
     }
 }
 
-extension Rover {
-    
-    
-}
-
 // MARK: EventsContainer
 
 public protocol EventsContainer {
