@@ -8,7 +8,7 @@
 
 import CoreTelephony
 
-class AddTelephonyInfoToContextOperation: ContainerOperation {
+class AddTelephonyInfoToContextOperation: Operation {
     let telephonyNetworkInfo: CTTelephonyNetworkInfoProtocol
     let carrier: CTCarrierProtocol?
     

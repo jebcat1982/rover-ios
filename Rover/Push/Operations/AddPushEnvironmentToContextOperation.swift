@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AddPushEnvironmentToContextOperation: ContainerOperation {
+class AddPushEnvironmentToContextOperation: Operation {
     let bundle: BundleProtocol
     
     init(bundle: BundleProtocol = Bundle.main) {

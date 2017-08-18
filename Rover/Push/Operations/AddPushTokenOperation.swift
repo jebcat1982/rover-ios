@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AddPushTokenOperation: ContainerOperation {
+class AddPushTokenOperation: Operation {
     let data: Data
     
     init(data: Data) {

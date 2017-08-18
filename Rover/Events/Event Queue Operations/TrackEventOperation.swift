@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrackEventOperation: ContainerOperation {
+class TrackEventOperation: Operation {
     
     init(eventName: String, attributes: Attributes?, timestamp: Date) {
         super.init(operations: [

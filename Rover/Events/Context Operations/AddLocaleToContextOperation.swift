@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AddLocaleToContextOperation: ContainerOperation {
+class AddLocaleToContextOperation: Operation {
     let locale: LocaleProtocol
     
     init(locale: LocaleProtocol = Locale.current) {

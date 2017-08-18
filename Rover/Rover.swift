@@ -43,8 +43,8 @@ public class Rover {
     let pulseInterval: Double
     let application: UIApplicationProtocol
     
-    var currentState = ContainerState()
-    var previousState = ContainerState()
+    var currentState = ApplicationState()
+    var previousState = ApplicationState()
     var backgroundTask = UIBackgroundTaskInvalid
     var pulseTimer: Timer?
     
@@ -128,17 +128,17 @@ public class Rover {
 // MARK: Dispatcher
 
 protocol Dispatcher {
-    func dispatch(_ operation: ContainerOperation)
-    func dispatch(_ operation: ContainerOperation, completionHandler: ((ContainerState, ContainerState) -> Void)?)
+    func dispatch(_ operation: Operation)
+    func dispatch(_ operation: Operation, completionHandler: ((ApplicationState, ApplicationState) -> Void)?)
 }
 
 extension Rover: Dispatcher {
     
-    func dispatch(_ operation: ContainerOperation) {
+    func dispatch(_ operation: Operation) {
         dispatch(operation, completionHandler: nil)
     }
     
-    func dispatch(_ operation: ContainerOperation, completionHandler: ((ContainerState, ContainerState) -> Void)?) {
+    func dispatch(_ operation: Operation, completionHandler: ((ApplicationState, ApplicationState) -> Void)?) {
         logger.warnUnlessMainThread("dispatch should only be called from the main thread")
         operation.delegate = self
         operation.reducer = self
@@ -157,13 +157,13 @@ extension Rover: Dispatcher {
 // MARK: Reducer
 
 protocol Reducer {    
-    func reduce(block: (ContainerState) -> ContainerState)
+    func reduce(block: (ApplicationState) -> ApplicationState)
 }
 
 extension Rover: Reducer {
     
-    func reduce(block: (ContainerState) -> ContainerState) {
-        logger.warnIfMainThread("reduce should only be called from within the execute method of a ContainerOperation")
+    func reduce(block: (ApplicationState) -> ApplicationState) {
+        logger.warnIfMainThread("reduce should only be called from within the execute method of an Operation")
         previousState = currentState
         currentState = block(currentState)
     }
@@ -172,57 +172,57 @@ extension Rover: Reducer {
 // MARK: Resolver
 
 protocol Resolver {
-    var currentState: ContainerState { get }
-    var previousState: ContainerState { get }
+    var currentState: ApplicationState { get }
+    var previousState: ApplicationState { get }
 }
 
 extension Rover: Resolver { }
 
-// MARK: ContainerOperationDelegate
+// MARK: OperationDelegate
 
-extension Rover: ContainerOperationDelegate {
+extension Rover: OperationDelegate {
     
-    func calculateDepth(_ operation: ContainerOperation) -> Int {
+    func calculateDepth(_ operation: Operation) -> Int {
         var depth = 0
         var child = operation
-        while let parent = child.delegate as? ContainerOperation {
+        while let parent = child.delegate as? Operation {
             depth += 1
             child = parent
         }
         return depth
     }
     
-    func log(_ operation: ContainerOperation, message: String) {
+    func log(_ operation: Operation, message: String) {
         let depth = calculateDepth(operation)
         let padding = String(repeating: " ", count: depth * 4)
         logger.debug(padding + message)
     }
     
-    func operationDidStart(_ operation: ContainerOperation) {
+    func operationDidStart(_ operation: Operation) {
         let name = operation.name ?? "Unknown"
         log(operation, message: "\(name) {")
     }
     
-    func operationDidCancel(_ operation: ContainerOperation) {
+    func operationDidCancel(_ operation: Operation) {
         log(operation, message: "cancelled")
     }
     
-    func operationDidFinish(_ operation: ContainerOperation) {
+    func operationDidFinish(_ operation: Operation) {
         log(operation, message: "}")
     }
 }
 
-// MARK: EventsContainer
+// MARK: RoverEvents
 
-public protocol EventsContainer {
+public protocol RoverEvents {
     func trackEvent(name: String, attributes: Attributes?)
     func flushEvents()
     func configureEventQueue(flushAt: Int?, maxBatchSize: Int?, maxQueueSize: Int?)
 }
 
-extension Rover: EventsContainer {
+extension Rover: RoverEvents {
     
-    public static var events: EventsContainer {
+    public static var events: RoverEvents {
         return shared
     }
     
@@ -243,15 +243,15 @@ extension Rover: EventsContainer {
     }
 }
 
-// MARK: ExperiencesContainer {
+// MARK: RoverExperiences {
 
-public protocol ExperiencesContainer {
+public protocol RoverExperiences {
     func fetch(experienceID: ID, completionHandler: ((Experience?) -> Void)?)
 }
 
-extension Rover: ExperiencesContainer {
+extension Rover: RoverExperiences {
     
-    public static var experiences: ExperiencesContainer {
+    public static var experiences: RoverExperiences {
         return shared
     }
     
@@ -272,16 +272,16 @@ extension Rover: ExperiencesContainer {
     }
 }
 
-// MARK: PushContainer
+// MARK: RoverPush
 
-public protocol PushContainer {
+public protocol RoverPush {
     func addDeviceToken(_ data: Data)
     func removeDeviceToken()
 }
 
-extension Rover: PushContainer {
+extension Rover: RoverPush {
     
-    public static var push: PushContainer {
+    public static var push: RoverPush {
         return shared
     }
     
@@ -296,15 +296,15 @@ extension Rover: PushContainer {
     }
 }
 
-// MARK: SyncContainer
+// MARK: RoverSync
 
-public protocol SyncContainer {
+public protocol RoverSync {
     func now(completionHandler: (() -> Void)?)
 }
 
-extension Rover: SyncContainer {
+extension Rover: RoverSync {
     
-    public static var sync: SyncContainer {
+    public static var sync: RoverSync {
         return shared
     }
     
@@ -316,9 +316,9 @@ extension Rover: SyncContainer {
     }
 }
 
-// MARK: ProfileContainer
+// MARK: RoverProfile
 
-public protocol ProfileContainer {
+public protocol RoverProfile {
     var current: Profile { get }
     
     func anonymize()
@@ -326,9 +326,9 @@ public protocol ProfileContainer {
     func updateProfile(attributes: Attributes, completionHandler: (() -> Void)?)
 }
 
-extension Rover: ProfileContainer {
+extension Rover: RoverProfile {
     
-    static var profile: ProfileContainer {
+    static var profile: RoverProfile {
         return shared
     }
     
@@ -354,16 +354,16 @@ extension Rover: ProfileContainer {
     }
 }
 
-// MARK: UXCoordinator
+// MARK: RoverUX
 
-public protocol UXCoordinator {
+public protocol RoverUX {
     
     
 }
 
-extension Rover: UXCoordinator {
+extension Rover: RoverUX {
     
-    static var ux: UXCoordinator {
+    static var ux: RoverUX {
         return shared
     }
 }

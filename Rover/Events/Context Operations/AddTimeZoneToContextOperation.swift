@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AddTimeZoneToContextOperation: ContainerOperation {
+class AddTimeZoneToContextOperation: Operation {
     let timeZone: NSTimeZoneProtocol
     
     init(timeZone: NSTimeZoneProtocol = NSTimeZone.local as NSTimeZone) {

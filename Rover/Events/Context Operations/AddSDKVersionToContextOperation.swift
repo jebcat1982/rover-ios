@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AddSDKVersionToContextOperation: ContainerOperation {
+class AddSDKVersionToContextOperation: Operation {
     let bundleType: BundleProtocol.Type
     
     init(bundleType: BundleProtocol.Type = Bundle.self) {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AnonymizeOperation: ContainerOperation {
+class AnonymizeOperation: Operation {
     let userDefaults: UserDefaultsProtocol
     
     init(userDefaults: UserDefaultsProtocol = UserDefaults.standard) {

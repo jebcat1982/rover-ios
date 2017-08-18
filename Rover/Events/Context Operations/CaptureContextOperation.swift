@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-class CaptureContextOperation: ContainerOperation {
+class CaptureContextOperation: Operation {
     
     init() {
         super.init(operations: [

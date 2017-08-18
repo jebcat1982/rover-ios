@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AddApplicationInfoToContextOperation: ContainerOperation {
+class AddApplicationInfoToContextOperation: Operation {
     let bundle: BundleProtocol
     
     init(bundle: BundleProtocol = Bundle.main) {

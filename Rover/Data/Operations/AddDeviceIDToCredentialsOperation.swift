@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDeviceIDToCredentialsOperation: ContainerOperation {
+class AddDeviceIDToCredentialsOperation: Operation {
     let currentDevice: UIDeviceProtocol
     
     init(currentDevice: UIDeviceProtocol = UIDevice.current) {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FindExperienceOperation: ContainerOperation {
+class FindExperienceOperation: Operation {
     let experienceID: ID
     
     init(experienceID: ID) {

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-class AddAccountTokenToCredentialsOperation: ContainerOperation {
+class AddAccountTokenToCredentialsOperation: Operation {
     let accountToken: String
     
     init(accountToken: String) {

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-class QueryOperation<T>: ContainerOperation where T: GraphQLQuery {
+class QueryOperation<T>: Operation where T: GraphQLQuery {
     let query: T
     
     var credentials: Credentials?

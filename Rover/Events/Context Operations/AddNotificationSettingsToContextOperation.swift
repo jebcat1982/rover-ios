@@ -8,7 +8,7 @@
 
 import UserNotifications
 
-class AddNotificationSettingsToContextOperation: ContainerOperation {
+class AddNotificationSettingsToContextOperation: Operation {
     let notificationCenter: UNUserNotificationCenterProtocol
     
     init(notificationCenter: UNUserNotificationCenterProtocol = UNUserNotificationCenter.current()) {

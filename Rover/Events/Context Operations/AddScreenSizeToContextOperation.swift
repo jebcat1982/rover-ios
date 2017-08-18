@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddScreenSizeToContextOperation: ContainerOperation {
+class AddScreenSizeToContextOperation: Operation {
     let screen: UIScreenProtocol
     
     init(screen: UIScreenProtocol = UIScreen.main) {

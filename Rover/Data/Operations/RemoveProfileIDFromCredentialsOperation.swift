@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-class RemoveProfileIDFromCredentialsOperation: ContainerOperation {
+class RemoveProfileIDFromCredentialsOperation: Operation {
     
     init() {
         super.init()

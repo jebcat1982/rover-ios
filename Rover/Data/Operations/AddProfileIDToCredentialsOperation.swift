@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-class AddProfileIDToCredentialsOperation: ContainerOperation {
+class AddProfileIDToCredentialsOperation: Operation {
     let profileID: ID
     
     init(profileID: ID) {

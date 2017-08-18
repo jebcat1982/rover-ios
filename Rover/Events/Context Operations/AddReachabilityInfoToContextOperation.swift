@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-class AddReachabilityInfoToContextOperation: ContainerOperation {
+class AddReachabilityInfoToContextOperation: Operation {
     var reachability: ReachabilityProtocol?
     
     init(reachability: ReachabilityProtocol? = Reachability(hostname: "google.com")) {

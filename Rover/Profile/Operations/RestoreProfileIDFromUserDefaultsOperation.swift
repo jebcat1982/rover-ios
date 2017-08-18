@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RestoreProfileIDFromUserDefaultsOperation: ContainerOperation {
+class RestoreProfileIDFromUserDefaultsOperation: Operation {
     let userDefaults: UserDefaultsProtocol
     
     init(userDefaults: UserDefaultsProtocol = UserDefaults.standard) {

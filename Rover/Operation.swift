@@ -1,5 +1,5 @@
 //
-//  ContainerOperation.swift
+//  Operation.swift
 //  Rover
 //
 //  Created by Sean Rucker on 2017-08-11.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ContainerOperation: Operation {
+class Operation: Foundation.Operation {
     
     let serialQueue: OperationQueue = {
         let q = OperationQueue()
@@ -50,11 +50,11 @@ class ContainerOperation: Operation {
     
     var finishOperation: BlockOperation!
     
-    var delegate: ContainerOperationDelegate?
+    var delegate: OperationDelegate?
     var reducer: Reducer?
     var resolver: Resolver?
     
-    init(operations: [ContainerOperation]? = nil) {
+    init(operations: [Operation]? = nil) {
         super.init()
         
         finishOperation = BlockOperation {
@@ -68,11 +68,11 @@ class ContainerOperation: Operation {
         }
     }
     
-    func addOperations(_ operations: [ContainerOperation]) {
+    func addOperations(_ operations: [Operation]) {
         operations.forEach(addOperation)
     }
     
-    func addOperation(_ operation: ContainerOperation) {
+    func addOperation(_ operation: Operation) {
         guard !finishOperation.isFinished && !finishOperation.isExecuting else {
             logger.error("Cannot add new operations after the operation has completed")
             return
@@ -110,14 +110,14 @@ class ContainerOperation: Operation {
     
     private func execute() {
         guard let reducer = reducer, let resolver = resolver else {
-            logger.error("Container operation started with nil reducer and/or resolver")
+            logger.error("Operation started with nil reducer and/or resolver")
             finish()
             return
         }
         
         execute(reducer: reducer, resolver: resolver) {
             for operation in self.serialQueue.operations {
-                if let operation = operation as? ContainerOperation {
+                if let operation = operation as? Operation {
                     operation.reducer = reducer
                     operation.resolver = resolver
                 }
@@ -139,17 +139,17 @@ class ContainerOperation: Operation {
     }
 }
 
-extension ContainerOperation: ContainerOperationDelegate {
+extension Operation: OperationDelegate {
     
-    func operationDidStart(_ operation: ContainerOperation) {
+    func operationDidStart(_ operation: Operation) {
         delegate?.operationDidStart(operation)
     }
     
-    func operationDidCancel(_ operation: ContainerOperation) {
+    func operationDidCancel(_ operation: Operation) {
         delegate?.operationDidCancel(operation)
     }
     
-    func operationDidFinish(_ operation: ContainerOperation) {
+    func operationDidFinish(_ operation: Operation) {
         delegate?.operationDidFinish(operation)
     }
 }

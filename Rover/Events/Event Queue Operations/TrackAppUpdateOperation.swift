@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrackAppUpdateOperation: ContainerOperation {
+class TrackAppUpdateOperation: Operation {
     let timestamp: Date
     let userDefaults: UserDefaultsProtocol
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class IdentifyOperation: ContainerOperation {
+class IdentifyOperation: Operation {
     let profileID: ID
     let userDefaults: UserDefaultsProtocol
     

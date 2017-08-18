@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-class ConfigureEventQueueOperation: ContainerOperation {
+class ConfigureEventQueueOperation: Operation {
     let flushAt: Int?
     let maxBatchSize: Int?
     let maxQueueSize: Int?

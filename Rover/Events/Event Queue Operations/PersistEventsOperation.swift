@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-class PersistEventsOperation: ContainerOperation {
+class PersistEventsOperation: Operation {
     
     init() {
         super.init()

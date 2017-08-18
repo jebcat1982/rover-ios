@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrackPushTokenChangeOperation: ContainerOperation {
+class TrackPushTokenChangeOperation: Operation {
     let userDefaults: UserDefaultsProtocol
     
     init(userDefaults: UserDefaultsProtocol = UserDefaults.standard) {

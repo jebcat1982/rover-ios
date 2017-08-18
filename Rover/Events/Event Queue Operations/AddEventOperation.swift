@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AddEventOperation: ContainerOperation {
+class AddEventOperation: Operation {
     let eventName: String
     let attributes: Attributes?
     let timestamp: Date

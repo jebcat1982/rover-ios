@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ConfigureAPIClientOperation: ContainerOperation {
+class ConfigureAPIClientOperation: Operation {
     let baseURL: URL?
     let path: String?
     let session: HTTPSession?

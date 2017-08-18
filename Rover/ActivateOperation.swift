@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ActivateOperation: ContainerOperation {
+class ActivateOperation: Operation {
     
     init() {
         let timestamp = Date()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDeviceInfoToContextOperation: ContainerOperation {
+class AddDeviceInfoToContextOperation: Operation {
     let device: UIDeviceProtocol
     
     init(device: UIDeviceProtocol = UIDevice.current) {

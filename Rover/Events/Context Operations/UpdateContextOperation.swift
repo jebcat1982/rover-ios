@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UpdateContextOperation: ContainerOperation {
+class UpdateContextOperation: Operation {
     
     init() {
         super.init(operations: [

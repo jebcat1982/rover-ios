@@ -8,7 +8,7 @@
 
 import CoreLocation
 
-class AddLocationSettingsToContextOperation: ContainerOperation {
+class AddLocationSettingsToContextOperation: Operation {
     let locationManagerType: CLLocationManagerProtocol.Type
     
     init(locationManagerType: CLLocationManagerProtocol.Type = CLLocationManager.self) {

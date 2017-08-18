@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-class RemovePushTokenOperation: ContainerOperation {
+class RemovePushTokenOperation: Operation {
     
     init() {
         super.init()

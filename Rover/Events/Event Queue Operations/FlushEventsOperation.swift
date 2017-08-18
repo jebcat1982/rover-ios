@@ -6,7 +6,7 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-class FlushEventsOperation: ContainerOperation {
+class FlushEventsOperation: Operation {
     let minBatchSize: Int?
     
     init(minBatchSize: Int? = nil) {
