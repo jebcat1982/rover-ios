@@ -18,13 +18,13 @@ class RestoreProfileIDFromUserDefaultsOperation: Operation {
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
-        guard let profileID = userDefaults.string(forKey: "io.rover.profileID").map({ ID(rawValue: $0) }) else {
-            delegate?.debug("No profile ID found in UserDefaults", operation: self)
+        guard let identifier = userDefaults.string(forKey: "io.rover.profileIdentifier") else {
+            delegate?.debug("No profile identifier found in UserDefaults", operation: self)
             completionHandler()
             return
         }
         
-        let operation = AddProfileIDToCredentialsOperation(profileID: profileID)
+        let operation = AddProfileIDToCredentialsOperation(identifier: identifier)
         addOperation(operation)
         completionHandler()
     }

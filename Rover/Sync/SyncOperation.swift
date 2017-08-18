@@ -33,7 +33,7 @@ struct SyncQuery: GraphQLQuery {
             query {
                 sync {
                     profile {
-                        profileID
+                        identifier
                         attributes
                     }
                 }

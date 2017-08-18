@@ -57,8 +57,8 @@ class QueryOperation<T>: Operation where T: GraphQLQuery {
             authHeaders["x-rover-device-id"] = deviceID.rawValue
         }
         
-        if let profileID = credentials.profileID {
-            authHeaders["x-rover-profile-id"] = profileID.rawValue
+        if let profileIdentifier = credentials.profileIdentifier {
+            authHeaders["x-rover-profile-identifier"] = profileIdentifier
         }
         
         return authHeaders

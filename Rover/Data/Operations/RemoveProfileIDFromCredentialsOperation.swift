@@ -10,13 +10,13 @@ class RemoveProfileIDFromCredentialsOperation: Operation {
     
     init() {
         super.init()
-        self.name = "Remove Profile ID From Credentials"
+        self.name = "Remove Profile Identifier From Credentials"
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         reducer.reduce { state in
             var nextCredentials = state.credentials
-            nextCredentials.profileID = nil
+            nextCredentials.profileIdentifier = nil
             
             var nextState = state
             nextState.credentials = nextCredentials

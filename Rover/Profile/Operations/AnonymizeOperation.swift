@@ -21,7 +21,7 @@ class AnonymizeOperation: Operation {
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
-        userDefaults.removeObject(forKey: "io.rover.profileID")
+        userDefaults.removeObject(forKey: "io.rover.profileIdentifier")
         completionHandler()
     }
 }

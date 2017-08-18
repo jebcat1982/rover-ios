@@ -7,18 +7,20 @@
 //
 
 class AddProfileIDToCredentialsOperation: Operation {
-    let profileID: ID
+    let identifier: String
     
-    init(profileID: ID) {
-        self.profileID = profileID
+    init(identifier: String) {
+        self.identifier = identifier
         super.init()
-        self.name = "Add Profile ID To Credentials"
+        self.name = "Add Profile Identifier To Credentials"
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
+        delegate?.debug("Using identifier: \(identifier)", operation: self)
+        
         reducer.reduce { state in
             var nextCredentials = state.credentials
-            nextCredentials.profileID = profileID
+            nextCredentials.profileIdentifier = identifier
             
             var nextState = state
             nextState.credentials = nextCredentials

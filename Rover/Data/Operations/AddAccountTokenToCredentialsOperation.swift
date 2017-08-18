@@ -16,6 +16,8 @@ class AddAccountTokenToCredentialsOperation: Operation {
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
+        delegate?.debug("Using token: \(accountToken)", operation: self)
+        
         reducer.reduce { state in
             var nextCredentials = state.credentials
             nextCredentials.accountToken = accountToken

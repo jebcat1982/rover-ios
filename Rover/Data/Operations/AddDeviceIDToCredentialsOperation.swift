@@ -24,6 +24,8 @@ class AddDeviceIDToCredentialsOperation: Operation {
             return
         }
         
+        delegate?.debug("Using identifierForVendor: \(identifierForVendor)", operation: self)
+        
         let deviceID = ID(rawValue: identifierForVendor)
         
         reducer.reduce { state in

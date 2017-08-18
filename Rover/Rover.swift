@@ -351,13 +351,13 @@ public protocol RoverProfile {
     var current: Profile { get }
     
     func anonymize()
-    func identify(profileID: ID)
+    func identify(_ identifier: String)
     func updateProfile(attributes: Attributes, completionHandler: (() -> Void)?)
 }
 
 extension Rover: RoverProfile {
     
-    static var profile: RoverProfile {
+    public static var profile: RoverProfile {
         return shared
     }
     
@@ -370,8 +370,8 @@ extension Rover: RoverProfile {
         dispatch(operation)
     }
     
-    public func identify(profileID: ID) {
-        let operation = IdentifyOperation(profileID: profileID)
+    public func identify(_ identifier: String) {
+        let operation = IdentifyOperation(identifier: identifier)
         dispatch(operation)
     }
     

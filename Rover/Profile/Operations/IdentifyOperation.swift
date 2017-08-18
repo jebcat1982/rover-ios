@@ -9,21 +9,21 @@
 import Foundation
 
 class IdentifyOperation: Operation {
-    let profileID: ID
+    let identifier: String
     let userDefaults: UserDefaultsProtocol
     
-    init(profileID: ID, userDefaults: UserDefaultsProtocol = UserDefaults.standard) {
-        self.profileID = profileID
+    init(identifier: String, userDefaults: UserDefaultsProtocol = UserDefaults.standard) {
+        self.identifier = identifier
         self.userDefaults = userDefaults
         let operations = [
-            AddProfileIDToCredentialsOperation(profileID: profileID)
+            AddProfileIDToCredentialsOperation(identifier: identifier)
         ]
         super.init(operations: operations)
         self.name = "Identify"
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
-        userDefaults.set(profileID, forKey: "io.rover.profileID")
+        userDefaults.set(identifier, forKey: "io.rover.profileIdentifier")
         completionHandler()
     }
 }
