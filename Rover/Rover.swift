@@ -207,6 +207,9 @@ extension Rover: OperationDelegate {
     }
     
     func operationDidStart(_ operation: Operation) {
+        let newline = indentedMessage("", operation: operation)
+        logger.debug(newline)
+        
         let name = operation.name ?? "Unknown"
         let message = indentedMessage("\(name) {", operation: operation)
         logger.debug(message)
@@ -223,7 +226,7 @@ extension Rover: OperationDelegate {
     }
     
     func debug(_ message: String, operation: Operation) {
-        let message = logger.threshold == .debug ? bulletedMessage(message, operation: operation) : message
+        let message = bulletedMessage(message, operation: operation)
         logger.debug(message)
     }
     
