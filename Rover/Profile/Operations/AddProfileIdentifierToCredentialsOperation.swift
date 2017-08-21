@@ -16,7 +16,7 @@ class AddProfileIdentifierToCredentialsOperation: Operation {
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
-        delegate?.debug("Using identifier: \(identifier)", operation: self)
+        delegate?.debug("Setting profileIdentifier to: \(identifier)", operation: self)
         
         reducer.reduce { state in
             var nextCredentials = state.credentials

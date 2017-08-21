@@ -52,11 +52,13 @@ public class Rover {
         self.pulseInterval = pulseInterval
         self.application = application
         
+        notificationCenter.addObserver(forName: .UIApplicationDidFinishLaunching, object: application, queue: nil) { notification in
+            self.launch()
+        }
+        
         notificationCenter.addObserver(forName: .UIApplicationDidBecomeActive, object: application, queue: nil) { _ in
             self.startPulseTimer()
-            
-            let operation = ActivateOperation()
-            self.dispatch(operation)
+            self.activate()
         }
         
         notificationCenter.addObserver(forName: .UIApplicationWillResignActive, object: application, queue: nil) { _ in
@@ -68,6 +70,23 @@ public class Rover {
             self.flushEvents()
             self.endBackgroundTask()
         }
+    }
+    
+    func launch() {
+        let timestamp = Date()
+        let operation = LaunchOperation(timestamp: timestamp)
+        dispatch(operation)
+    }
+    
+    func activate() {
+        let timestamp = Date()
+        let operation = ActivateOperation(timestamp: timestamp)
+        dispatch(operation)
+    }
+    
+    func flushEvents() {
+        let operation = FlushEventsOperation(minBatchSize: 1)
+        dispatch(operation)
     }
     
     func startPulseTimer() {
@@ -241,11 +260,61 @@ extension Rover: OperationDelegate {
     }
 }
 
+// MARK: RoverData
+
+public protocol RoverData {
+    func configure(baseURL: URL?, path: String?, session: URLSession?)
+    
+    func configure(baseURL: URL?, path: String?)
+    func configure(baseURL: URL?, session: URLSession?)
+    func configure(path: String?, session: URLSession?)
+    
+    func configure(baseURL: URL?)
+    func configure(path: String?)
+    func configure(session: URLSession?)
+}
+
+extension Rover: RoverData {
+    
+    public static var data: RoverData {
+        return shared
+    }
+    
+    public func configure(baseURL: URL?, path: String?, session: URLSession?) {
+        let operation = ConfigureDataClientOperation(baseURL: baseURL, path: path, session: session)
+        dispatch(operation)
+    }
+    
+    public func configure(baseURL: URL?, path: String?) {
+        configure(baseURL: baseURL, path: path, session: nil)
+    }
+    
+    public func configure(baseURL: URL?, session: URLSession?) {
+        configure(baseURL: baseURL, path: nil, session: session)
+    }
+    
+    public func configure(path: String?, session: URLSession?) {
+        configure(baseURL: nil, path: path, session: session)
+    }
+    
+    public func configure(baseURL: URL?) {
+        configure(baseURL: baseURL, path: nil, session: nil)
+    }
+    
+    public func configure(path: String?) {
+        configure(baseURL: nil, path: path, session: nil)
+    }
+    
+    public func configure(session: URLSession?) {
+        configure(baseURL: nil, path: nil, session: session)
+    }
+}
+
 // MARK: RoverEvents
 
 public protocol RoverEvents {
     func trackEvent(name: String, attributes: Attributes?)
-    func flushEvents()
+    func flush()
     func configureEventQueue(flushAt: Int?, maxBatchSize: Int?, maxQueueSize: Int?)
 }
 
@@ -260,9 +329,8 @@ extension Rover: RoverEvents {
         dispatch(operation)
     }
     
-    public func flushEvents() {
-        let operation = FlushEventsOperation(minBatchSize: 1)
-        dispatch(operation)
+    public func flush() {
+        flushEvents()
     }
     
     public func trackEvent(name: String, attributes: Attributes? = nil) {
@@ -382,6 +450,8 @@ extension Rover: RoverProfile {
         }
     }
 }
+
+
 
 // MARK: RoverUX
 

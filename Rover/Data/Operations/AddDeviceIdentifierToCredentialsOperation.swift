@@ -24,7 +24,7 @@ class AddDeviceIdentifierToCredentialsOperation: Operation {
             return
         }
         
-        delegate?.debug("Using identifierForVendor: \(identifierForVendor)", operation: self)
+        delegate?.debug("Setting deviceIdentifier to: \(identifierForVendor)", operation: self)
         
         reducer.reduce { state in
             var nextCredentials = state.credentials

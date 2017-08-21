@@ -23,6 +23,7 @@ class IdentifyOperation: Operation {
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
+        delegate?.debug("Saving profile identifier \"\(identifier)\" to UserDefaults", operation: self)
         userDefaults.set(identifier, forKey: "io.rover.profileIdentifier")
         completionHandler()
     }

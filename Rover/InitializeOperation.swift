@@ -11,13 +11,11 @@ import Foundation
 class InitializeOperation: Operation {
     
     init(accountToken: String) {
-        let timestamp = Date()
         super.init(operations: [
             AddAccountTokenToCredentialsOperation(accountToken: accountToken),
             AddDeviceIdentifierToCredentialsOperation(),
             RestoreProfileIdentifierFromUserDefaultsOperation(),
-            CaptureContextOperation(),
-            TrackAppUpdateOperation(timestamp: timestamp)
+            CaptureContextOperation()
             ])
         self.name = "Initialize"
     }

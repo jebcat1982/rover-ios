@@ -15,6 +15,7 @@
 		DB2412A71F3CB32B0064F353 /* Rover.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2412991F3CB32B0064F353 /* Rover.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB2D531A1F4634BE003CB5F4 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D53191F4634BE003CB5F4 /* LogLevel.swift */; };
 		DB2D531C1F464366003CB5F4 /* OperationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D531B1F464366003CB5F4 /* OperationDelegate.swift */; };
+		DB459D011F4B4FF50085A10A /* LaunchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB459D001F4B4FF50085A10A /* LaunchOperation.swift */; };
 		DB4834711F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */; };
 		DB4834741F44F1CC00CC308A /* UNUserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */; };
 		DB4834761F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */; };
@@ -102,7 +103,7 @@
 		DBE1FC2C1F4211E6004B3C9D /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC2B1F4211E6004B3C9D /* Credentials.swift */; };
 		DBE1FC2E1F421217004B3C9D /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC2D1F421217004B3C9D /* ID.swift */; };
 		DBE1FC301F4212ED004B3C9D /* DataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC2F1F4212ED004B3C9D /* DataClient.swift */; };
-		DBE1FC331F421346004B3C9D /* ConfigureAPIClientOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC321F421346004B3C9D /* ConfigureAPIClientOperation.swift */; };
+		DBE1FC331F421346004B3C9D /* ConfigureDataClientOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC321F421346004B3C9D /* ConfigureDataClientOperation.swift */; };
 		DBF8B7991F4244A400359EC2 /* AddApplicationInfoToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7981F4244A400359EC2 /* AddApplicationInfoToContextOperation.swift */; };
 		DBF8B79B1F4244EB00359EC2 /* AddDeviceInfoToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B79A1F4244EB00359EC2 /* AddDeviceInfoToContextOperation.swift */; };
 		DBF8B79D1F42453500359EC2 /* AddSDKVersionToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B79C1F42453500359EC2 /* AddSDKVersionToContextOperation.swift */; };
@@ -146,6 +147,7 @@
 		DB2412A61F3CB32B0064F353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB2D53191F4634BE003CB5F4 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		DB2D531B1F464366003CB5F4 /* OperationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDelegate.swift; sourceTree = "<group>"; };
+		DB459D001F4B4FF50085A10A /* LaunchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchOperation.swift; sourceTree = "<group>"; };
 		DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotificationSettingsToContextOperation.swift; sourceTree = "<group>"; };
 		DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenter.swift; sourceTree = "<group>"; };
 		DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationSettingsToContextOperation.swift; sourceTree = "<group>"; };
@@ -233,7 +235,7 @@
 		DBE1FC2B1F4211E6004B3C9D /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		DBE1FC2D1F421217004B3C9D /* ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID.swift; sourceTree = "<group>"; };
 		DBE1FC2F1F4212ED004B3C9D /* DataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClient.swift; sourceTree = "<group>"; };
-		DBE1FC321F421346004B3C9D /* ConfigureAPIClientOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureAPIClientOperation.swift; sourceTree = "<group>"; };
+		DBE1FC321F421346004B3C9D /* ConfigureDataClientOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureDataClientOperation.swift; sourceTree = "<group>"; };
 		DBF8B7981F4244A400359EC2 /* AddApplicationInfoToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApplicationInfoToContextOperation.swift; sourceTree = "<group>"; };
 		DBF8B79A1F4244EB00359EC2 /* AddDeviceInfoToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceInfoToContextOperation.swift; sourceTree = "<group>"; };
 		DBF8B79C1F42453500359EC2 /* AddSDKVersionToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSDKVersionToContextOperation.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				DBE1FBFE1F41FD2E004B3C9D /* Attributes.swift */,
 				DBE1FC2D1F421217004B3C9D /* ID.swift */,
 				DBF8B7BC1F424C2B00359EC2 /* InitializeOperation.swift */,
+				DB459D001F4B4FF50085A10A /* LaunchOperation.swift */,
 				DBE1FBF01F3E4DAD004B3C9D /* Operation.swift */,
 				DB2D531B1F464366003CB5F4 /* OperationDelegate.swift */,
 				DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */,
@@ -623,7 +626,7 @@
 			children = (
 				DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */,
 				DBDE837A1F42359300FABDA6 /* AddDeviceIdentifierToCredentialsOperation.swift */,
-				DBE1FC321F421346004B3C9D /* ConfigureAPIClientOperation.swift */,
+				DBE1FC321F421346004B3C9D /* ConfigureDataClientOperation.swift */,
 				DBE1FC281F421178004B3C9D /* QueryOperation.swift */,
 			);
 			path = Operations;
@@ -785,6 +788,7 @@
 				DBDFE3101F424E92005E7850 /* SyncOperation.swift in Sources */,
 				DBF8B79F1F42466200359EC2 /* AddLocaleToContextOperation.swift in Sources */,
 				DB4834DA1F46234300CC308A /* RectangleBlockView.swift in Sources */,
+				DB459D011F4B4FF50085A10A /* LaunchOperation.swift in Sources */,
 				DB4834DD1F46234300CC308A /* WebViewBlockView.swift in Sources */,
 				DBE1FBF11F3E4DAD004B3C9D /* Operation.swift in Sources */,
 				DBF8B7AE1F4248C000359EC2 /* AddEventOperation.swift in Sources */,
@@ -813,7 +817,7 @@
 				DB4834791F45D32B00CC308A /* CLLocationManager.swift in Sources */,
 				DBE1FC251F421131004B3C9D /* GraphQLClient.swift in Sources */,
 				DBF8B7A31F4246C900359EC2 /* AddTelephonyInfoToContextOperation.swift in Sources */,
-				DBE1FC331F421346004B3C9D /* ConfigureAPIClientOperation.swift in Sources */,
+				DBE1FC331F421346004B3C9D /* ConfigureDataClientOperation.swift in Sources */,
 				DB4834D81F46234300CC308A /* ButtonBlockView.swift in Sources */,
 				DB48349C1F46058700CC308A /* ScreenViewController.swift in Sources */,
 				DBE1FBF31F3E4DFE004B3C9D /* ApplicationState.swift in Sources */,
