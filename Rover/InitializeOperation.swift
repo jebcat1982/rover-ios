@@ -14,7 +14,7 @@ class InitializeOperation: Operation {
         let timestamp = Date()
         super.init(operations: [
             AddAccountTokenToCredentialsOperation(accountToken: accountToken),
-            AddDeviceIDToCredentialsOperation(),
+            AddDeviceIdentifierToCredentialsOperation(),
             RestoreProfileIdentifierFromUserDefaultsOperation(),
             CaptureContextOperation(),
             TrackAppUpdateOperation(timestamp: timestamp)

@@ -62,7 +62,7 @@
 		DBA6928D1F462AD400178B12 /* FindExperienceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA6928C1F462AD400178B12 /* FindExperienceOperation.swift */; };
 		DBBC7DB21F3CBDC100E0E2EE /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */; };
 		DBDE83791F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */; };
-		DBDE837B1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837A1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift */; };
+		DBDE837B1F42359300FABDA6 /* AddDeviceIdentifierToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837A1F42359300FABDA6 /* AddDeviceIdentifierToCredentialsOperation.swift */; };
 		DBDE837D1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837C1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift */; };
 		DBDE837F1F42368100FABDA6 /* RemoveProfileIdentifierFromCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837E1F42368100FABDA6 /* RemoveProfileIdentifierFromCredentialsOperation.swift */; };
 		DBDE83821F4238B700FABDA6 /* AnonymizeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83811F4238B700FABDA6 /* AnonymizeOperation.swift */; };
@@ -193,7 +193,7 @@
 		DBA6928C1F462AD400178B12 /* FindExperienceOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindExperienceOperation.swift; sourceTree = "<group>"; };
 		DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTokenToCredentialsOperation.swift; sourceTree = "<group>"; };
-		DBDE837A1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceIDToCredentialsOperation.swift; sourceTree = "<group>"; };
+		DBDE837A1F42359300FABDA6 /* AddDeviceIdentifierToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceIdentifierToCredentialsOperation.swift; sourceTree = "<group>"; };
 		DBDE837C1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileIdentifierToCredentialsOperation.swift; sourceTree = "<group>"; };
 		DBDE837E1F42368100FABDA6 /* RemoveProfileIdentifierFromCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveProfileIdentifierFromCredentialsOperation.swift; sourceTree = "<group>"; };
 		DBDE83811F4238B700FABDA6 /* AnonymizeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymizeOperation.swift; sourceTree = "<group>"; };
@@ -620,7 +620,7 @@
 			isa = PBXGroup;
 			children = (
 				DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */,
-				DBDE837A1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift */,
+				DBDE837A1F42359300FABDA6 /* AddDeviceIdentifierToCredentialsOperation.swift */,
 				DBDE837C1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift */,
 				DBE1FC321F421346004B3C9D /* ConfigureAPIClientOperation.swift */,
 				DBE1FC281F421178004B3C9D /* QueryOperation.swift */,
@@ -857,7 +857,7 @@
 				DBE1FC0B1F420EC5004B3C9D /* UserDefaults.swift in Sources */,
 				DB4834A01F46062B00CC308A /* ScreenViewLayout.swift in Sources */,
 				DB4834CC1F46233D00CC308A /* ExperienceViewModel.swift in Sources */,
-				DBDE837B1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift in Sources */,
+				DBDE837B1F42359300FABDA6 /* AddDeviceIdentifierToCredentialsOperation.swift in Sources */,
 				DBE1FC2C1F4211E6004B3C9D /* Credentials.swift in Sources */,
 				DBE1FC141F420FEE004B3C9D /* HTTPError.swift in Sources */,
 				DBF8B7B41F42498800359EC2 /* SendEventsOperation.swift in Sources */,

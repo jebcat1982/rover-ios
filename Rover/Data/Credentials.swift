@@ -8,13 +8,13 @@
 
 struct Credentials {
     var accountToken: String?
-    var deviceID: ID?
+    var deviceIdentifier: String?
     var profileIdentifier: String?
 }
 
 extension Credentials: Equatable {
     
     static func == (lhs: Credentials, rhs: Credentials) -> Bool {
-        return lhs.accountToken == rhs.accountToken && lhs.deviceID == rhs.deviceID && lhs.profileIdentifier == rhs.profileIdentifier
+        return lhs.accountToken == rhs.accountToken && lhs.deviceIdentifier == rhs.deviceIdentifier && lhs.profileIdentifier == rhs.profileIdentifier
     }
 }

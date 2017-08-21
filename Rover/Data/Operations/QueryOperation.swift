@@ -53,8 +53,8 @@ class QueryOperation<T>: Operation where T: GraphQLQuery {
             authHeaders["x-rover-account-token"] = accountToken
         }
         
-        if let deviceID = credentials.deviceID {
-            authHeaders["x-rover-device-id"] = deviceID.rawValue
+        if let deviceIdentifier = credentials.deviceIdentifier {
+            authHeaders["x-rover-device-identifier"] = deviceIdentifier
         }
         
         if let profileIdentifier = credentials.profileIdentifier {

@@ -1,5 +1,5 @@
 //
-//  AddDeviceIDToCredentialsOperation.swift
+//  AddDeviceIdentifierToCredentialsOperation.swift
 //  Rover
 //
 //  Created by Sean Rucker on 2017-08-14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDeviceIDToCredentialsOperation: Operation {
+class AddDeviceIdentifierToCredentialsOperation: Operation {
     let currentDevice: UIDeviceProtocol
     
     init(currentDevice: UIDeviceProtocol = UIDevice.current) {
@@ -26,11 +26,9 @@ class AddDeviceIDToCredentialsOperation: Operation {
         
         delegate?.debug("Using identifierForVendor: \(identifierForVendor)", operation: self)
         
-        let deviceID = ID(rawValue: identifierForVendor)
-        
         reducer.reduce { state in
             var nextCredentials = state.credentials
-            nextCredentials.deviceID = deviceID
+            nextCredentials.deviceIdentifier = identifierForVendor
             
             var nextState = state
             nextState.credentials = nextCredentials
