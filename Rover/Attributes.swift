@@ -8,29 +8,113 @@
 
 import Foundation
 
-public typealias AttributeName = String
+typealias AttributeName = String
 
-public protocol AttributeValue { }
+struct AttributeValue: Codable {
+    let rawValue: Any
+    
+    enum CodingKeys: String, CodingKey {
+        case rawValue
+    }
+    
+    init?(rawValue: Any?) {
+        guard let rawValue = rawValue else {
+            return nil
+        }
+        
+        switch rawValue {
+        case is String, is Int, is UInt, is Double, is Float, is Bool, is Date, is URL:
+            self.rawValue = rawValue
+        default:
+            logger.error("Attribute values must of type String, Int, UInt, Double, Float, Bool, Date or URL – got \(type(of: rawValue))")
+            return nil
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if let string = try? container.decode(String.self, forKey: .rawValue) {
+            self.rawValue = string
+            return
+        }
+        
+        if let int = try? container.decode(Int.self, forKey: .rawValue) {
+            self.rawValue = int
+            return
+        }
+        
+        if let uint = try? container.decode(UInt.self, forKey: .rawValue) {
+            self.rawValue = uint
+            return
+        }
+        
+        if let double = try? container.decode(Double.self, forKey: .rawValue) {
+            self.rawValue = double
+            return
+        }
+        
+        if let float = try? container.decode(Float.self, forKey: .rawValue) {
+            self.rawValue = float
+            return
+        }
+        
+        if let bool = try? container.decode(Bool.self, forKey: .rawValue) {
+            self.rawValue = bool
+            return
+        }
+        
+        if let date = try? container.decode(Date.self, forKey: .rawValue) {
+            self.rawValue = date
+            return
+        }
+        
+        if let url = try? container.decode(URL.self, forKey: .rawValue) {
+            self.rawValue = url
+            return
+        }
+        
+        throw DecodingError.dataCorruptedError(forKey: .rawValue, in: container, debugDescription: "Attribute values must of type String, Int, UInt, Double, Float, Bool, Date or URL")
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        if let string = rawValue as? String {
+            try container.encode(string, forKey: .rawValue)
+        }
+        
+        if let int = rawValue as? Int {
+            try container.encode(int, forKey: .rawValue)
+        }
+        
+        if let uint = rawValue as? UInt {
+            try container.encode(uint, forKey: .rawValue)
+        }
+        
+        if let double = rawValue as? Double {
+            try container.encode(double, forKey: .rawValue)
+        }
+        
+        if let float = rawValue as? Float {
+            try container.encode(float, forKey: .rawValue)
+        }
+        
+        if let bool = rawValue as? Bool {
+            try container.encode(bool, forKey: .rawValue)
+        }
+        
+        if let date = rawValue as? Date {
+            try container.encode(date, forKey: .rawValue)
+        }
+        
+        if let url = rawValue as? URL {
+            try container.encode(url, forKey: .rawValue)
+        }
+    }
+}
 
-extension String: AttributeValue { }
-
-extension Int: AttributeValue { }
-
-extension UInt: AttributeValue { }
-
-extension Double: AttributeValue { }
-
-extension Float: AttributeValue { }
-
-extension Bool: AttributeValue { }
-
-extension Date: AttributeValue { }
-
-extension URL: AttributeValue { }
-
-extension NSNull: AttributeValue { }
-
-public struct Attributes {
+public struct Attributes: Codable {
     var contents = [AttributeName: AttributeValue]()
     
     public init() { }
@@ -38,92 +122,23 @@ public struct Attributes {
 
 extension Attributes {
     
-    subscript(name: AttributeName) -> AttributeValue? {
+    subscript(name: String) -> Any? {
         get {
             return contents[name]
         }
         
         set {
-            guard let newValue = newValue else {
-                contents[name] = nil
-                return
-            }
-            
-            guard let attributeValue = Attributes.attributeValue(newValue) else {
-                logger.error("Attribute values must of type String, Int, UInt, Double, Float, Bool, Date, URL or NSNull – got \(type(of: newValue))")
-                return
-            }
-            
-            contents[name] = attributeValue
+            contents[name] = AttributeValue(rawValue: newValue)
         }
     }
 }
 
 extension Attributes: ExpressibleByDictionaryLiteral {
     
-    public init(dictionaryLiteral elements: (AttributeName, AttributeValue)...) {
+    public init(dictionaryLiteral elements: (String, Any)...) {
         self.init()
         for (name, value) in elements {
             self[name] = value
         }
-    }
-}
-
-extension Attributes: Codable {
-    
-    static func attributeValue(_ value: Any) -> AttributeValue? {
-        guard let value = value as? AttributeValue else {
-            return nil
-        }
-        
-        switch value {
-        case _ as String:
-            fallthrough
-        case _ as Int:
-            fallthrough
-        case _ as UInt:
-            fallthrough
-        case _ as Double:
-            fallthrough
-        case _ as Float:
-            fallthrough
-        case _ as Bool:
-            fallthrough
-        case _ as Date:
-            fallthrough
-        case _ as URL:
-            fallthrough
-        case _ as NSNull:
-            return value
-        default:
-            return nil
-        }
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case contents
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let dictionary = try values.decode([String: Any].self, forKey: .contents)
-        
-        contents = dictionary.reduce([AttributeName: AttributeValue](), { (result, element) in
-            var nextResult = result
-            nextResult[element.key] = Attributes.attributeValue(element.value)
-            return nextResult
-        })
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        let dictionary = contents.reduce([String: Any]()) { (result, element) in
-            var nextResult = result
-            nextResult[element.key] = Attributes.attributeValue(element.value)
-            return nextResult
-        }
-        
-        try container.encode(dictionary, forKey: .contents)
     }
 }
