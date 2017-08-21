@@ -13,6 +13,7 @@ class TrackPushTokenChangeOperation: Operation {
     let userDefaults: UserDefaultsProtocol
     
     init(timestamp: Date = Date(), userDefaults: UserDefaultsProtocol = UserDefaults.standard) {
+        self.timestamp = timestamp
         self.userDefaults = userDefaults
         super.init()
         self.name = "Track Push Token Change"
