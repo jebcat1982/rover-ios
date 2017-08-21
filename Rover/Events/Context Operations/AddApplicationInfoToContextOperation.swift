@@ -38,29 +38,38 @@ class AddApplicationInfoToContextOperation: Operation {
             var nextContext = state.context
             
             if let displayName = info["CFBundleDisplayName"] as? String {
+                delegate?.debug("Setting appName to: \(displayName)", operation: self)
                 nextContext.appName = displayName
             } else if let bundleName = info["CFBundleName"] as? String {
+                delegate?.debug("Setting appName to: \(bundleName)", operation: self)
                 nextContext.appName = bundleName
             } else {
                 delegate?.warn("Failed to capture app name", operation: self)
+                nextContext.appName = nil
             }
             
             if let shortVersion = info["CFBundleShortVersionString"] as? String {
+                delegate?.debug("Setting appVersion to: \(shortVersion)", operation: self)
                 nextContext.appVersion = shortVersion
             } else {
-                delegate?.warn("Failed to capture app version", operation: self)
+                delegate?.warn("Failed to capture appVersion", operation: self)
+                nextContext.appVersion = nil
             }
             
             if let bundleVersion = info["CFBundleVersion"] as? String {
+                delegate?.debug("Setting appBuild to: \(bundleVersion)", operation: self)
                 nextContext.appBuild = bundleVersion
             } else {
-                delegate?.warn("Failed to capture app build", operation: self)
+                delegate?.warn("Failed to capture appBuild", operation: self)
+                nextContext.appBuild = nil
             }
             
             if let bundleIdentifier = bundle.bundleIdentifier {
+                delegate?.debug("Setting appNamespace to: \(bundleIdentifier)", operation: self)
                 nextContext.appNamespace = bundleIdentifier
             } else {
-                delegate?.warn("Failed to capture app namespace", operation: self)
+                delegate?.warn("Failed to capture appNamespace", operation: self)
+                nextContext.appNamespace = nil
             }
             
             var nextState = state

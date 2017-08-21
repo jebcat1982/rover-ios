@@ -20,7 +20,13 @@ class AddPushEnvironmentToContextOperation: Operation {
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         reducer.reduce { state in
             var nextContext = state.context
-            nextContext.pushEnvironment = pushEnvironment
+            
+            if let pushEnvironment = self.pushEnvironment {
+                delegate?.debug("Setting pushEnvironment to: \(pushEnvironment)", operation: self)
+                nextContext.pushEnvironment = pushEnvironment
+            } else {
+                delegate?.warn("Failed to determine pushEnvironment – this is expected behaviour if you are running a simulator", operation: self)
+            }
             
             var nextState = state
             nextState.context = nextContext

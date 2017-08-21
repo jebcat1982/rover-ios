@@ -478,8 +478,10 @@
 		DBDE83871F423A2900FABDA6 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				DBDE837C1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift */,
 				DBDE83811F4238B700FABDA6 /* AnonymizeOperation.swift */,
 				DBDE83831F4239B100FABDA6 /* IdentifyOperation.swift */,
+				DBDE837E1F42368100FABDA6 /* RemoveProfileIdentifierFromCredentialsOperation.swift */,
 				DBDE83851F4239ED00FABDA6 /* RestoreProfileIdentifierFromUserDefaultsOperation.swift */,
 				DBDE838A1F423A8300FABDA6 /* UpdateProfileOperation.swift */,
 			);
@@ -621,10 +623,8 @@
 			children = (
 				DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */,
 				DBDE837A1F42359300FABDA6 /* AddDeviceIdentifierToCredentialsOperation.swift */,
-				DBDE837C1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift */,
 				DBE1FC321F421346004B3C9D /* ConfigureAPIClientOperation.swift */,
 				DBE1FC281F421178004B3C9D /* QueryOperation.swift */,
-				DBDE837E1F42368100FABDA6 /* RemoveProfileIdentifierFromCredentialsOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";

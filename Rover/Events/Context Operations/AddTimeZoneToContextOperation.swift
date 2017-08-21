@@ -20,7 +20,10 @@ class AddTimeZoneToContextOperation: Operation {
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         reducer.reduce { state in
             var nextContext = state.context
-            nextContext.timeZone = timeZone.name
+            
+            let timeZone = self.timeZone.name
+            delegate?.debug("Setting timeZone to: \(timeZone)", operation: self)
+            nextContext.timeZone = timeZone
             
             var nextState = state
             nextState.context = nextContext

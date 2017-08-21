@@ -46,15 +46,21 @@ class AddTelephonyInfoToContextOperation: Operation {
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         reducer.reduce { state in
             var nextContext = state.context
-            nextContext.carrierName = carrier?.carrierName
-            nextContext.radio = currentRadio
             
-            if nextContext.carrierName == nil {
-                delegate?.warn("Failed to capture carrier name", operation: self)
+            if let carrierName = carrier?.carrierName {
+                delegate?.debug("Setting carrierName to: \(carrierName)", operation: self)
+                nextContext.carrierName = carrierName
+            } else {
+                delegate?.warn("Failed to capture carrier name – this is expected behaviour if you are running a simulator", operation: self)
+                nextContext.carrierName = nil
             }
             
-            if nextContext.radio == nil {
-                delegate?.warn("Failed to capture radio type", operation: self)
+            if let radio = currentRadio {
+                delegate?.debug("Setting radio to: \(radio)", operation: self)
+                nextContext.radio = radio
+            } else {
+                delegate?.warn("Failed to capture radio", operation: self)
+                nextContext.radio = nil
             }
             
             var nextState = state

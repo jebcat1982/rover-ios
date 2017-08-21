@@ -21,16 +21,27 @@ class AddLocaleToContextOperation: Operation {
         reducer.reduce { state in
             var nextContext = state.context
             
-            nextContext.localeLanguage = locale.languageCode
-            nextContext.localeRegion = locale.regionCode
-            nextContext.localeScript = locale.scriptCode
-            
-            if nextContext.localeLanguage == nil {
+            if let languageCode = locale.languageCode {
+                delegate?.debug("Setting localeLanguage to: \(languageCode)", operation: self)
+                nextContext.localeLanguage = locale.languageCode
+            } else {
                 delegate?.warn("Failed to capture locale language", operation: self)
+                nextContext.localeLanguage = nil
             }
             
-            if nextContext.localeRegion == nil {
+            if let regionCode = locale.regionCode {
+                delegate?.debug("Setting localeRegion to: \(regionCode)", operation: self)
+                nextContext.localeRegion = locale.regionCode
+            } else {
                 delegate?.warn("Failed to capture locale region", operation: self)
+                nextContext.localeRegion = nil
+            }
+            
+            if let scriptCode = locale.scriptCode {
+                delegate?.debug("Setting localeScript to: \(scriptCode)", operation: self)
+                nextContext.localeScript = locale.scriptCode
+            } else {
+                nextContext.localeScript = nil
             }
             
             var nextState = state

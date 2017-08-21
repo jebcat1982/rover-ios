@@ -14,27 +14,33 @@ class AddLocationSettingsToContextOperation: Operation {
     init(locationManagerType: CLLocationManagerProtocol.Type = CLLocationManager.self) {
         self.locationManagerType = locationManagerType
         super.init()
-        self.name = "Add Location Authorization To Context"
+        self.name = "Add Location Settings To Context"
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         reducer.reduce { state in
             var nextContext = state.context
             
+            let authorizationStatus: String
             switch locationManagerType.authorizationStatus() {
             case .authorizedAlways:
-                nextContext.locationAuthorization = "authorizedAlways"
+                authorizationStatus = "authorizedAlways"
             case .authorizedWhenInUse:
-                nextContext.locationAuthorization = "authorizedWhenInUse"
+                authorizationStatus = "authorizedWhenInUse"
             case .denied:
-                nextContext.locationAuthorization = "denied"
+                authorizationStatus = "denied"
             case .notDetermined:
-                nextContext.locationAuthorization = "notDetermined"
+                authorizationStatus = "notDetermined"
             case .restricted:
-                nextContext.locationAuthorization = "restricted"
+                authorizationStatus = "restricted"
             }
             
-            nextContext.isLocationServicesEnabled = locationManagerType.locationServicesEnabled()
+            delegate?.debug("Setting locationAuthorization to: \(authorizationStatus)", operation: self)
+            nextContext.locationAuthorization = authorizationStatus
+            
+            let locationServicesEnabled = locationManagerType.locationServicesEnabled()
+            delegate?.debug("Setting isLocationServicesEnabled to: \(locationServicesEnabled)", operation: self)
+            nextContext.isLocationServicesEnabled = locationServicesEnabled
             
             var nextState = state
             nextState.context = nextContext

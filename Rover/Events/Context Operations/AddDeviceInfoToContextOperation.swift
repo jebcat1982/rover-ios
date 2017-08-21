@@ -20,14 +20,22 @@ class AddDeviceInfoToContextOperation: Operation {
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         reducer.reduce { state in
             var nextContext = state.context
+            
+            delegate?.debug("Setting operatingSystemName to: \(device.systemName)", operation: self)
             nextContext.operatingSystemName = device.systemName
+            
+            delegate?.debug("Setting operatingSystemVersion to: \(device.systemVersion)", operation: self)
             nextContext.operatingSystemVersion = device.systemVersion
+            
+            delegate?.debug("Setting deviceManufacturer to: Apple", operation: self)
             nextContext.deviceManufacturer = "Apple"
             
             if let deviceModel = self.deviceModel() {
+                delegate?.debug("Setting deviceModel to: \(deviceModel)", operation: self)
                 nextContext.deviceModel = deviceModel
             } else {
                 delegate?.warn("Failed to capture device model", operation: self)
+                nextContext.deviceModel = nil
             }
             
             var nextState = state

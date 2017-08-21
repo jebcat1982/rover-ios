@@ -20,8 +20,14 @@ class AddScreenSizeToContextOperation: Operation {
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         reducer.reduce { state in
             var nextContext = state.context
-            nextContext.screenHeight = Int(screen.bounds.height)
-            nextContext.screenWidth = Int(screen.bounds.width)
+            
+            let screenHeight = Int(screen.bounds.height)
+            delegate?.debug("Setting screenHeight to: \(screenHeight)", operation: self)
+            nextContext.screenHeight = screenHeight
+            
+            let screenWidth = Int(screen.bounds.width)
+            delegate?.debug("Setting screenWidth to: \(screenWidth)", operation: self)
+            nextContext.screenWidth = screenWidth
             
             var nextState = state
             nextState.context = nextContext

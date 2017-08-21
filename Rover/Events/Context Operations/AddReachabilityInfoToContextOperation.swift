@@ -24,8 +24,14 @@ class AddReachabilityInfoToContextOperation: Operation {
         
         reducer.reduce { state in
             var nextContext = state.context
-            nextContext.isWifiEnabled = reachability.isReachableViaWiFi
-            nextContext.isCellularEnabled = reachability.isReachableViaWWAN
+            
+            let isWifiEnabled = reachability.isReachableViaWiFi
+            delegate?.debug("Setting isWifiEnabled to: \(isWifiEnabled)", operation: self)
+            nextContext.isWifiEnabled = isWifiEnabled
+            
+            let isCellularEnabled = reachability.isReachableViaWWAN
+            delegate?.debug("Setting isCellularEnabled to: \(isCellularEnabled)", operation: self)
+            nextContext.isCellularEnabled = isCellularEnabled
             
             var nextState = state
             nextState.context = nextContext

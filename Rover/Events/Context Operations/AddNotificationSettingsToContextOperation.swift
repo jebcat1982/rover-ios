@@ -22,14 +22,18 @@ class AddNotificationSettingsToContextOperation: Operation {
             reducer.reduce { state  in
                 var nextContext = state.context
                 
+                let authorizationStatus: String
                 switch settings.authorizationStatus {
                 case .authorized:
-                    nextContext.notificationAuthorization = "authorized"
+                    authorizationStatus = "authorized"
                 case .denied:
-                    nextContext.notificationAuthorization = "denied"
+                    authorizationStatus = "denied"
                 case .notDetermined:
-                    nextContext.notificationAuthorization = "notDetermined"
+                    authorizationStatus = "notDetermined"
                 }
+                
+                self.delegate?.debug("Setting notificationAuthorization to: \(authorizationStatus)", operation: self)
+                nextContext.notificationAuthorization = authorizationStatus
                 
                 var nextState = state
                 nextState.context = nextContext

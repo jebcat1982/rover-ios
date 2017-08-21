@@ -24,6 +24,8 @@ class RestoreProfileIdentifierFromUserDefaultsOperation: Operation {
             return
         }
         
+        delegate?.debug("Found profile identifier: \(identifier)", operation: self)
+        
         let operation = AddProfileIdentifierToCredentialsOperation(identifier: identifier)
         addOperation(operation)
         completionHandler()
