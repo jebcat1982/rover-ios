@@ -14,7 +14,7 @@ class AnonymizeOperation: Operation {
     init(userDefaults: UserDefaultsProtocol = UserDefaults.standard) {
         self.userDefaults = userDefaults
         let operations = [
-            RemoveProfileIDFromCredentialsOperation()
+            RemoveProfileIdentifierFromCredentialsOperation()
         ]
         super.init(operations: operations)
         self.name = "Anonymize"

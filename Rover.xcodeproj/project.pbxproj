@@ -64,10 +64,10 @@
 		DBDE83791F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */; };
 		DBDE837B1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837A1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift */; };
 		DBDE837D1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837C1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift */; };
-		DBDE837F1F42368100FABDA6 /* RemoveProfileIDFromCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837E1F42368100FABDA6 /* RemoveProfileIDFromCredentialsOperation.swift */; };
+		DBDE837F1F42368100FABDA6 /* RemoveProfileIdentifierFromCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837E1F42368100FABDA6 /* RemoveProfileIdentifierFromCredentialsOperation.swift */; };
 		DBDE83821F4238B700FABDA6 /* AnonymizeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83811F4238B700FABDA6 /* AnonymizeOperation.swift */; };
 		DBDE83841F4239B100FABDA6 /* IdentifyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83831F4239B100FABDA6 /* IdentifyOperation.swift */; };
-		DBDE83861F4239ED00FABDA6 /* RestoreProfileIDFromUserDefaultsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83851F4239ED00FABDA6 /* RestoreProfileIDFromUserDefaultsOperation.swift */; };
+		DBDE83861F4239ED00FABDA6 /* RestoreProfileIdentifierFromUserDefaultsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83851F4239ED00FABDA6 /* RestoreProfileIdentifierFromUserDefaultsOperation.swift */; };
 		DBDE83891F423A5600FABDA6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83881F423A5600FABDA6 /* Profile.swift */; };
 		DBDE838B1F423A8300FABDA6 /* UpdateProfileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE838A1F423A8300FABDA6 /* UpdateProfileOperation.swift */; };
 		DBDFE3101F424E92005E7850 /* SyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFE30F1F424E92005E7850 /* SyncOperation.swift */; };
@@ -195,10 +195,10 @@
 		DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTokenToCredentialsOperation.swift; sourceTree = "<group>"; };
 		DBDE837A1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceIDToCredentialsOperation.swift; sourceTree = "<group>"; };
 		DBDE837C1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileIdentifierToCredentialsOperation.swift; sourceTree = "<group>"; };
-		DBDE837E1F42368100FABDA6 /* RemoveProfileIDFromCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveProfileIDFromCredentialsOperation.swift; sourceTree = "<group>"; };
+		DBDE837E1F42368100FABDA6 /* RemoveProfileIdentifierFromCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveProfileIdentifierFromCredentialsOperation.swift; sourceTree = "<group>"; };
 		DBDE83811F4238B700FABDA6 /* AnonymizeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymizeOperation.swift; sourceTree = "<group>"; };
 		DBDE83831F4239B100FABDA6 /* IdentifyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyOperation.swift; sourceTree = "<group>"; };
-		DBDE83851F4239ED00FABDA6 /* RestoreProfileIDFromUserDefaultsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreProfileIDFromUserDefaultsOperation.swift; sourceTree = "<group>"; };
+		DBDE83851F4239ED00FABDA6 /* RestoreProfileIdentifierFromUserDefaultsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreProfileIdentifierFromUserDefaultsOperation.swift; sourceTree = "<group>"; };
 		DBDE83881F423A5600FABDA6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		DBDE838A1F423A8300FABDA6 /* UpdateProfileOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileOperation.swift; sourceTree = "<group>"; };
 		DBDFE30F1F424E92005E7850 /* SyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncOperation.swift; sourceTree = "<group>"; };
@@ -480,7 +480,7 @@
 			children = (
 				DBDE83811F4238B700FABDA6 /* AnonymizeOperation.swift */,
 				DBDE83831F4239B100FABDA6 /* IdentifyOperation.swift */,
-				DBDE83851F4239ED00FABDA6 /* RestoreProfileIDFromUserDefaultsOperation.swift */,
+				DBDE83851F4239ED00FABDA6 /* RestoreProfileIdentifierFromUserDefaultsOperation.swift */,
 				DBDE838A1F423A8300FABDA6 /* UpdateProfileOperation.swift */,
 			);
 			path = Operations;
@@ -624,7 +624,7 @@
 				DBDE837C1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift */,
 				DBE1FC321F421346004B3C9D /* ConfigureAPIClientOperation.swift */,
 				DBE1FC281F421178004B3C9D /* QueryOperation.swift */,
-				DBDE837E1F42368100FABDA6 /* RemoveProfileIDFromCredentialsOperation.swift */,
+				DBDE837E1F42368100FABDA6 /* RemoveProfileIdentifierFromCredentialsOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -818,7 +818,7 @@
 				DB48349C1F46058700CC308A /* ScreenViewController.swift in Sources */,
 				DBE1FBF31F3E4DFE004B3C9D /* ApplicationState.swift in Sources */,
 				DB01C6121F4243280047D1D5 /* EventQueue.swift in Sources */,
-				DBDE83861F4239ED00FABDA6 /* RestoreProfileIDFromUserDefaultsOperation.swift in Sources */,
+				DBDE83861F4239ED00FABDA6 /* RestoreProfileIdentifierFromUserDefaultsOperation.swift in Sources */,
 				DB4834CB1F46233D00CC308A /* ButtonBlockViewModel.swift in Sources */,
 				DBDFE31A1F44AEAF005E7850 /* RemovePushTokenOperation.swift in Sources */,
 				DBDFE3161F44ADA2005E7850 /* AddPushTokenOperation.swift in Sources */,
@@ -834,7 +834,7 @@
 				DBE1FC161F420FFF004B3C9D /* HTTPResult.swift in Sources */,
 				DBE1FC0E1F420F58004B3C9D /* CTCarrier.swift in Sources */,
 				DB2D531C1F464366003CB5F4 /* OperationDelegate.swift in Sources */,
-				DBDE837F1F42368100FABDA6 /* RemoveProfileIDFromCredentialsOperation.swift in Sources */,
+				DBDE837F1F42368100FABDA6 /* RemoveProfileIdentifierFromCredentialsOperation.swift in Sources */,
 				DBE1FC2E1F421217004B3C9D /* ID.swift in Sources */,
 				DB4834D11F46233D00CC308A /* TextBlockViewModel.swift in Sources */,
 				DBF8B7B81F424A8300359EC2 /* TrackEventOperation.swift in Sources */,

@@ -15,7 +15,7 @@ class InitializeOperation: Operation {
         super.init(operations: [
             AddAccountTokenToCredentialsOperation(accountToken: accountToken),
             AddDeviceIDToCredentialsOperation(),
-            RestoreProfileIDFromUserDefaultsOperation(),
+            RestoreProfileIdentifierFromUserDefaultsOperation(),
             CaptureContextOperation(),
             TrackAppUpdateOperation(timestamp: timestamp)
             ])

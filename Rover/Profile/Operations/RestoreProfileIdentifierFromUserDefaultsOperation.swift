@@ -1,5 +1,5 @@
 //
-//  RestoreProfileIDFromUserDefaultsOperation.swift
+//  RestoreProfileIdentifierFromUserDefaultsOperation.swift
 //  Rover
 //
 //  Created by Sean Rucker on 2017-08-14.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RestoreProfileIDFromUserDefaultsOperation: Operation {
+class RestoreProfileIdentifierFromUserDefaultsOperation: Operation {
     let userDefaults: UserDefaultsProtocol
     
     init(userDefaults: UserDefaultsProtocol = UserDefaults.standard) {
