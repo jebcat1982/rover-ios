@@ -17,8 +17,13 @@ class SendEventsOperation: QueryOperation<SendEventsQuery> {
         self.name = "Send Events"
     }
     
+    override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
+        delegate?.debug("Uploading \(query.events.count) event(s) to server", operation: self)
+        super.execute(reducer: reducer, resolver: resolver, completionHandler: completionHandler)
+    }
+    
     override func handleResponse(_ response: SendEventsResponse, reducer: Reducer, resolver: Resolver) {
-        delegate?.debug("Successfully uploaded \(query.events.count) events", operation: self)
+        delegate?.debug("Successfully uploaded \(query.events.count) event(s)", operation: self)
         removeEvents(reducer: reducer)
     }
     
@@ -38,6 +43,8 @@ class SendEventsOperation: QueryOperation<SendEventsQuery> {
             nextQueue.events = nextQueue.events.filter { event in
                 !query.events.contains() { $0.uuid == event.uuid }
             }
+            
+            delegate?.debug("Removed \(query.events.count) event(s) from queue – queue now contains \(nextQueue.events.count) event(s)", operation: self)
             
             var nextState = state
             nextState.eventQueue = nextQueue

@@ -14,7 +14,8 @@ class PersistEventsOperation: Operation {
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
-        // TODO: Persist events
+        // TODO: Persist event queue to disk – https://github.com/RoverPlatform/rover-ios/issues/148
+        delegate?.debug("TODO: Persist event queue to disk - https://github.com/RoverPlatform/rover-ios/issues/148", operation: self)
         completionHandler()
     }
 }
