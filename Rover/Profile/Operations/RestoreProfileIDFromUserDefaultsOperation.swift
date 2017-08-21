@@ -24,7 +24,7 @@ class RestoreProfileIDFromUserDefaultsOperation: Operation {
             return
         }
         
-        let operation = AddProfileIDToCredentialsOperation(identifier: identifier)
+        let operation = AddProfileIdentifierToCredentialsOperation(identifier: identifier)
         addOperation(operation)
         completionHandler()
     }

@@ -16,7 +16,7 @@ class IdentifyOperation: Operation {
         self.identifier = identifier
         self.userDefaults = userDefaults
         let operations = [
-            AddProfileIDToCredentialsOperation(identifier: identifier)
+            AddProfileIdentifierToCredentialsOperation(identifier: identifier)
         ]
         super.init(operations: operations)
         self.name = "Identify"

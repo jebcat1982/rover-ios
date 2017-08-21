@@ -1,12 +1,12 @@
 //
-//  AddProfileIDToCredentialsOperation.swift
+//  AddProfileIdentifierToCredentialsOperation.swift
 //  Rover
 //
 //  Created by Sean Rucker on 2017-08-14.
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-class AddProfileIDToCredentialsOperation: Operation {
+class AddProfileIdentifierToCredentialsOperation: Operation {
     let identifier: String
     
     init(identifier: String) {

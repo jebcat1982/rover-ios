@@ -63,7 +63,7 @@
 		DBBC7DB21F3CBDC100E0E2EE /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */; };
 		DBDE83791F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */; };
 		DBDE837B1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837A1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift */; };
-		DBDE837D1F4235DD00FABDA6 /* AddProfileIDToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837C1F4235DD00FABDA6 /* AddProfileIDToCredentialsOperation.swift */; };
+		DBDE837D1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837C1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift */; };
 		DBDE837F1F42368100FABDA6 /* RemoveProfileIDFromCredentialsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE837E1F42368100FABDA6 /* RemoveProfileIDFromCredentialsOperation.swift */; };
 		DBDE83821F4238B700FABDA6 /* AnonymizeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83811F4238B700FABDA6 /* AnonymizeOperation.swift */; };
 		DBDE83841F4239B100FABDA6 /* IdentifyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83831F4239B100FABDA6 /* IdentifyOperation.swift */; };
@@ -194,7 +194,7 @@
 		DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTokenToCredentialsOperation.swift; sourceTree = "<group>"; };
 		DBDE837A1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceIDToCredentialsOperation.swift; sourceTree = "<group>"; };
-		DBDE837C1F4235DD00FABDA6 /* AddProfileIDToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileIDToCredentialsOperation.swift; sourceTree = "<group>"; };
+		DBDE837C1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileIdentifierToCredentialsOperation.swift; sourceTree = "<group>"; };
 		DBDE837E1F42368100FABDA6 /* RemoveProfileIDFromCredentialsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveProfileIDFromCredentialsOperation.swift; sourceTree = "<group>"; };
 		DBDE83811F4238B700FABDA6 /* AnonymizeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymizeOperation.swift; sourceTree = "<group>"; };
 		DBDE83831F4239B100FABDA6 /* IdentifyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyOperation.swift; sourceTree = "<group>"; };
@@ -621,7 +621,7 @@
 			children = (
 				DBDE83781F42353D00FABDA6 /* AddAccountTokenToCredentialsOperation.swift */,
 				DBDE837A1F42359300FABDA6 /* AddDeviceIDToCredentialsOperation.swift */,
-				DBDE837C1F4235DD00FABDA6 /* AddProfileIDToCredentialsOperation.swift */,
+				DBDE837C1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift */,
 				DBE1FC321F421346004B3C9D /* ConfigureAPIClientOperation.swift */,
 				DBE1FC281F421178004B3C9D /* QueryOperation.swift */,
 				DBDE837E1F42368100FABDA6 /* RemoveProfileIDFromCredentialsOperation.swift */,
@@ -780,7 +780,7 @@
 				DBDE838B1F423A8300FABDA6 /* UpdateProfileOperation.swift in Sources */,
 				DB4834A21F4606EB00CC308A /* ScreenViewLayoutAttributes.swift in Sources */,
 				DBE1FC291F421178004B3C9D /* QueryOperation.swift in Sources */,
-				DBDE837D1F4235DD00FABDA6 /* AddProfileIDToCredentialsOperation.swift in Sources */,
+				DBDE837D1F4235DD00FABDA6 /* AddProfileIdentifierToCredentialsOperation.swift in Sources */,
 				DB48348C1F4602CA00CC308A /* Length.swift in Sources */,
 				DBDFE3101F424E92005E7850 /* SyncOperation.swift in Sources */,
 				DBF8B79F1F42466200359EC2 /* AddLocaleToContextOperation.swift in Sources */,
