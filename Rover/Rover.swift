@@ -265,13 +265,13 @@ extension Rover: OperationDelegate {
 public protocol RoverData {
     func configure(baseURL: URL?, path: String?, session: URLSession?)
     
-    func configure(baseURL: URL?, path: String?)
-    func configure(baseURL: URL?, session: URLSession?)
-    func configure(path: String?, session: URLSession?)
+    func configure(baseURL: URL, path: String)
+    func configure(baseURL: URL, session: URLSession)
+    func configure(path: String, session: URLSession)
     
-    func configure(baseURL: URL?)
-    func configure(path: String?)
-    func configure(session: URLSession?)
+    func configure(baseURL: URL)
+    func configure(path: String)
+    func configure(session: URLSession)
 }
 
 extension Rover: RoverData {
@@ -285,27 +285,27 @@ extension Rover: RoverData {
         dispatch(operation)
     }
     
-    public func configure(baseURL: URL?, path: String?) {
+    public func configure(baseURL: URL, path: String) {
         configure(baseURL: baseURL, path: path, session: nil)
     }
     
-    public func configure(baseURL: URL?, session: URLSession?) {
+    public func configure(baseURL: URL, session: URLSession) {
         configure(baseURL: baseURL, path: nil, session: session)
     }
     
-    public func configure(path: String?, session: URLSession?) {
+    public func configure(path: String, session: URLSession) {
         configure(baseURL: nil, path: path, session: session)
     }
     
-    public func configure(baseURL: URL?) {
+    public func configure(baseURL: URL) {
         configure(baseURL: baseURL, path: nil, session: nil)
     }
     
-    public func configure(path: String?) {
+    public func configure(path: String) {
         configure(baseURL: nil, path: path, session: nil)
     }
     
-    public func configure(session: URLSession?) {
+    public func configure(session: URLSession) {
         configure(baseURL: nil, path: nil, session: session)
     }
 }
@@ -313,9 +313,10 @@ extension Rover: RoverData {
 // MARK: RoverEvents
 
 public protocol RoverEvents {
-    func trackEvent(name: String, attributes: Attributes?)
+    func track(name: String, attributes: Attributes?)
+    func track(name: String)
     func flush()
-    func configureEventQueue(flushAt: Int?, maxBatchSize: Int?, maxQueueSize: Int?)
+    func configure(flushAt: Int?, maxBatchSize: Int?, maxQueueSize: Int?)
 }
 
 extension Rover: RoverEvents {
@@ -324,7 +325,7 @@ extension Rover: RoverEvents {
         return shared
     }
     
-    public func configureEventQueue(flushAt: Int? = nil, maxBatchSize: Int? = nil, maxQueueSize: Int? = nil) {
+    public func configure(flushAt: Int? = nil, maxBatchSize: Int? = nil, maxQueueSize: Int? = nil) {
         let operation = ConfigureEventQueueOperation(flushAt: flushAt, maxBatchSize: maxBatchSize, maxQueueSize: maxQueueSize)
         dispatch(operation)
     }
@@ -333,17 +334,22 @@ extension Rover: RoverEvents {
         flushEvents()
     }
     
-    public func trackEvent(name: String, attributes: Attributes? = nil) {
+    public func track(name: String, attributes: Attributes? = nil) {
         let timestamp = Date()
         let operation = TrackEventOperation(eventName: name, attributes: attributes, timestamp: timestamp)
         dispatch(operation)
+    }
+    
+    public func track(name: String) {
+        track(name: name, attributes: nil)
     }
 }
 
 // MARK: RoverExperiences {
 
 public protocol RoverExperiences {
-    func fetch(experienceID: ID, completionHandler: ((Experience?) -> Void)?)
+    func fetch(experienceID: ID, completionHandler: @escaping (Experience?) -> Void)
+    func find(experienceID: ID, completionHandler: @escaping (Experience?) -> Void)
 }
 
 extension Rover: RoverExperiences {
@@ -352,19 +358,57 @@ extension Rover: RoverExperiences {
         return shared
     }
     
-    public func find(experienceID: ID, completionHandler: ((Experience?) -> Void)?) {
+    public func find(experienceID: ID, completionHandler: @escaping (Experience?) -> Void) {
         let operation = FindExperienceOperation(experienceID: experienceID)
         dispatch(operation) { (previousState, currentState) in
             let experience = currentState.experiences[experienceID]
-            completionHandler?(experience)
+            completionHandler(experience)
         }
     }
     
-    public func fetch(experienceID: ID, completionHandler: ((Experience?) -> Void)?) {
+    public func fetch(experienceID: ID, completionHandler: @escaping (Experience?) -> Void) {
         let operation = FetchExperienceOperation(experienceID: experienceID)
         dispatch(operation) { (previousState, currentState) in
             let experience = currentState.experiences[experienceID]
-            completionHandler?(experience)
+            completionHandler(experience)
+        }
+    }
+}
+
+// MARK: RoverProfile
+
+public protocol RoverProfile {
+    var current: Profile { get }
+    
+    func anonymize()
+    func identify(_ identifier: String)
+    func update(attributes: Attributes, completionHandler: (() -> Void)?)
+}
+
+extension Rover: RoverProfile {
+    
+    public static var profile: RoverProfile {
+        return shared
+    }
+    
+    public var current: Profile {
+        return currentState.profile
+    }
+    
+    public func anonymize() {
+        let operation = AnonymizeOperation()
+        dispatch(operation)
+    }
+    
+    public func identify(_ identifier: String) {
+        let operation = IdentifyOperation(identifier: identifier)
+        dispatch(operation)
+    }
+    
+    public func update(attributes: Attributes, completionHandler: (() -> Void)?) {
+        let operation = UpdateProfileOperation(attributes: attributes)
+        dispatch(operation) { (previousState, currentState) in
+            completionHandler?()
         }
     }
 }
@@ -412,46 +456,6 @@ extension Rover: RoverSync {
         }
     }
 }
-
-// MARK: RoverProfile
-
-public protocol RoverProfile {
-    var current: Profile { get }
-    
-    func anonymize()
-    func identify(_ identifier: String)
-    func updateProfile(attributes: Attributes, completionHandler: (() -> Void)?)
-}
-
-extension Rover: RoverProfile {
-    
-    public static var profile: RoverProfile {
-        return shared
-    }
-    
-    public var current: Profile {
-        return currentState.profile
-    }
-    
-    public func anonymize() {
-        let operation = AnonymizeOperation()
-        dispatch(operation)
-    }
-    
-    public func identify(_ identifier: String) {
-        let operation = IdentifyOperation(identifier: identifier)
-        dispatch(operation)
-    }
-    
-    public func updateProfile(attributes: Attributes, completionHandler: (() -> Void)?) {
-        let operation = UpdateProfileOperation(attributes: attributes)
-        dispatch(operation) { (previousState, currentState) in
-            completionHandler?()
-        }
-    }
-}
-
-
 
 // MARK: RoverUX
 
