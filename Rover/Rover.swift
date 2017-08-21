@@ -6,6 +6,7 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
+import CoreLocation
 import UIKit
 
 public class Rover {
@@ -369,6 +370,42 @@ extension Rover: RoverExperiences {
             let experience = currentState.experiences[experienceID]
             completionHandler(experience)
         }
+    }
+}
+
+// MARK: RoverLocation
+
+public protocol RoverLocation {
+    func trackVisit(_ visit: CLVisit)
+    func trackEnterRegion(_ region: CLRegion)
+    func trackExitRegion(_ region: CLRegion)
+    func trackUpdateLocations(_ locations: [CLLocation])
+}
+
+extension Rover: RoverLocation {
+    
+    public static var location: RoverLocation {
+        return shared
+    }
+    
+    public func trackVisit(_ visit: CLVisit) {
+        let operation = TrackVisitOperation(visit: visit)
+        dispatch(operation)
+    }
+    
+    public func trackEnterRegion(_ region: CLRegion) {
+        let operation = TrackEnterRegionOperation(region: region)
+        dispatch(operation)
+    }
+    
+    public func trackExitRegion(_ region: CLRegion) {
+        let operation = TrackExitRegionOperation(region: region)
+        dispatch(operation)
+    }
+    
+    public func trackUpdateLocations(_ locations: [CLLocation]) {
+        let operation = TrackUpdateLocationsOperation(locations: locations)
+        dispatch(operation)
     }
 }
 
