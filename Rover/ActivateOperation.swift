@@ -12,7 +12,7 @@ class ActivateOperation: Operation {
     
     init(timestamp: Date) {
         super.init(operations: [
-            TrackEventOperation(eventName: "App Opened", attributes: nil, timestamp: timestamp),
+            TrackEventOperation(eventName: "Open App", attributes: nil, timestamp: timestamp),
             SyncOperation()
             ])
         self.name = "Activate"

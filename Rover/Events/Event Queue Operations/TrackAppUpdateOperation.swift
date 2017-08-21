@@ -37,7 +37,7 @@ class TrackAppUpdateOperation: Operation {
             delegate?.debug("Previous version not found – first time running app with Rover", operation: self)
             
             let timestamp = Date()
-            let operation = TrackEventOperation(eventName: "App Installed", attributes: nil, timestamp: timestamp)
+            let operation = TrackEventOperation(eventName: "Install App", attributes: nil, timestamp: timestamp)
             addOperation(operation)
         } else if currentVersion != previousVersion || currentBuild != previousBuild {
             delegate?.debug("Current and previous versions do not match – app has been updated", operation: self)
@@ -53,7 +53,7 @@ class TrackAppUpdateOperation: Operation {
             }
             
             let timestamp = Date()
-            let operation = TrackEventOperation(eventName: "App Updated", attributes: attributes, timestamp: timestamp)
+            let operation = TrackEventOperation(eventName: "Update App", attributes: attributes, timestamp: timestamp)
             addOperation(operation)
         } else {
             delegate?.debug("Current and previous versions match – nothing to track", operation: self)

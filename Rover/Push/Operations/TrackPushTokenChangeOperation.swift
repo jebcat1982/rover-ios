@@ -25,14 +25,14 @@ class TrackPushTokenChangeOperation: Operation {
             let attributes: Attributes = ["previousToken": previousToken]
             
             if currentToken == nil {
-                let operation = TrackEventOperation(eventName: "Device Token Removed", attributes: attributes, timestamp: timestamp)
+                let operation = TrackEventOperation(eventName: "Remove Device Token", attributes: attributes, timestamp: timestamp)
                 addOperation(operation)
             } else if currentToken != previousToken {
-                let operation = TrackEventOperation(eventName: "Device Token Updated", attributes: attributes, timestamp: timestamp)
+                let operation = TrackEventOperation(eventName: "Update Device Token", attributes: attributes, timestamp: timestamp)
                 addOperation(operation)
             }
         } else if currentToken != nil {
-            let operation = TrackEventOperation(eventName: "Device Token Added", attributes: nil, timestamp: timestamp)
+            let operation = TrackEventOperation(eventName: "Add Device Token", attributes: nil, timestamp: timestamp)
             addOperation(operation)
         }
         

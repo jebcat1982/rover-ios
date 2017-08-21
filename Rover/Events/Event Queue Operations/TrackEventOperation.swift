@@ -13,7 +13,7 @@ class TrackEventOperation: Operation {
     let attributes: Attributes?
     let timestamp: Date
     
-    init(eventName: String, attributes: Attributes?, timestamp: Date) {
+    init(eventName: String, attributes: Attributes?, timestamp: Date = Date()) {
         self.eventName = eventName
         self.attributes = attributes
         self.timestamp = timestamp
