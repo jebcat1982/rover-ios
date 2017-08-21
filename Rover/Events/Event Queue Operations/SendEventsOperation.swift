@@ -66,12 +66,12 @@ struct SendEventsQuery: GraphQLQuery {
     
     var query: String {
         return """
-        mutation {
-        TrackEvents($events: [Event]!) {
-        trackEvents(events: $events)
-        }
-        }
-        """
+            mutation {
+                TrackEvents($events: [Event]!) {
+                    trackEvents(events: $events)
+                }
+            }
+            """
     }
     
     var variables: Encodable? {
