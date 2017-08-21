@@ -9,9 +9,10 @@
 import Foundation
 
 class TrackPushTokenChangeOperation: Operation {
+    let timestamp: Date
     let userDefaults: UserDefaultsProtocol
     
-    init(userDefaults: UserDefaultsProtocol = UserDefaults.standard) {
+    init(timestamp: Date = Date(), userDefaults: UserDefaultsProtocol = UserDefaults.standard) {
         self.userDefaults = userDefaults
         super.init()
         self.name = "Track Push Token Change"
@@ -19,7 +20,6 @@ class TrackPushTokenChangeOperation: Operation {
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
         let currentToken = resolver.currentState.context.pushToken
-        let timestamp = Date()
         
         if let previousToken = userDefaults.string(forKey: "io.rover.deviceToken") {
             let attributes: Attributes = ["previousToken": previousToken]

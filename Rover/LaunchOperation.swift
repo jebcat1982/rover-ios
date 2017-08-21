@@ -10,7 +10,7 @@ import Foundation
 
 class LaunchOperation: Operation {
     
-    init(timestamp: Date) {
+    init(timestamp: Date = Date()) {
         super.init(operations: [
             TrackAppUpdateOperation(timestamp: timestamp)
             ])

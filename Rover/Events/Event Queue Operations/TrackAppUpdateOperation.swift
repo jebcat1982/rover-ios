@@ -12,7 +12,7 @@ class TrackAppUpdateOperation: Operation {
     let timestamp: Date
     let userDefaults: UserDefaultsProtocol
     
-    init(timestamp: Date, userDefaults: UserDefaultsProtocol = UserDefaults.standard) {
+    init(timestamp: Date = Date(), userDefaults: UserDefaultsProtocol = UserDefaults.standard) {
         self.timestamp = timestamp
         self.userDefaults = userDefaults
         super.init()
@@ -36,7 +36,6 @@ class TrackAppUpdateOperation: Operation {
         if previousVersion == nil || previousBuild == nil {
             delegate?.debug("Previous version not found – first time running app with Rover", operation: self)
             
-            let timestamp = Date()
             let operation = TrackEventOperation(eventName: "Install App", attributes: nil, timestamp: timestamp)
             addOperation(operation)
         } else if currentVersion != previousVersion || currentBuild != previousBuild {
@@ -52,7 +51,6 @@ class TrackAppUpdateOperation: Operation {
                 attributes["previousBuild"] = previousBuild
             }
             
-            let timestamp = Date()
             let operation = TrackEventOperation(eventName: "Update App", attributes: attributes, timestamp: timestamp)
             addOperation(operation)
         } else {

@@ -10,7 +10,7 @@ import Foundation
 
 class ActivateOperation: Operation {
     
-    init(timestamp: Date) {
+    init(timestamp: Date = Date()) {
         super.init(operations: [
             TrackEventOperation(eventName: "Open App", attributes: nil, timestamp: timestamp),
             SyncOperation()

@@ -73,14 +73,12 @@ public class Rover {
     }
     
     func launch() {
-        let timestamp = Date()
-        let operation = LaunchOperation(timestamp: timestamp)
+        let operation = LaunchOperation()
         dispatch(operation)
     }
     
     func activate() {
-        let timestamp = Date()
-        let operation = ActivateOperation(timestamp: timestamp)
+        let operation = ActivateOperation()
         dispatch(operation)
     }
     
@@ -335,8 +333,7 @@ extension Rover: RoverEvents {
     }
     
     public func track(name: String, attributes: Attributes? = nil) {
-        let timestamp = Date()
-        let operation = TrackEventOperation(eventName: name, attributes: attributes, timestamp: timestamp)
+        let operation = TrackEventOperation(eventName: name, attributes: attributes)
         dispatch(operation)
     }
     
