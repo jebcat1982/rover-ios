@@ -9,6 +9,20 @@
 import CoreLocation
 import UIKit
 
+public protocol RoverDelegate: class {
+    func rover(_ rover: Rover, didUpdateProfile profile: Profile)
+    func rover(_ rover: Rover, didUpdateRegions regions: Set<CLRegion>)
+}
+
+extension RoverDelegate {
+    
+    public func rover(_ rover: Rover, didUpdateProfile profile: Profile) {
+    }
+    
+    public func rover(_ rover: Rover, didUpdateRegions regions: Set<CLRegion>) {
+    }
+}
+
 public class Rover {
     static var sharedInstance: Rover?
     
@@ -20,7 +34,7 @@ public class Rover {
         return sharedInstance
     }
     
-    public static func initialize(accountToken: String, logLevel: LogLevel = .warn) {
+    public static func initialize(accountToken: String, delegate: RoverDelegate? = nil, logLevel: LogLevel = .warn) {
         logger.threshold = logLevel
         logger.warnUnlessMainThread("Rover must be initialized on the main thread")
         
@@ -43,6 +57,8 @@ public class Rover {
     let pulseInterval: Double
     let application: UIApplicationProtocol
     let notificationCenter: NotificationCenterProtocol
+    
+    public weak var delegate: RoverDelegate?
     
     var currentState = ApplicationState()
     var previousState = ApplicationState()
@@ -100,17 +116,19 @@ public class Rover {
         let operation = SyncOperation()
         dispatch(operation) { (previousState, currentState) in
             if currentState.profile != previousState.profile {
+                self.delegate?.rover(self, didUpdateProfile: currentState.profile)
+                
                 let userInfo = [
-                    "previousProfile": previousState.profile,
-                    "currentProfile": currentState.profile
+                    "profile": currentState.profile
                 ]
                 self.notificationCenter.post(name: .RoverDidUpdateProfile, object: self, userInfo: userInfo)
             }
             
             if currentState.regions != previousState.regions {
+                self.delegate?.rover(self, didUpdateRegions: currentState.regions)
+                
                 let userInfo = [
-                    "previousRegions": previousState.regions,
-                    "currentRegions": currentState.regions
+                    "regions": currentState.regions
                 ]
                 self.notificationCenter.post(name: .RoverDidUpdateRegions, object: self, userInfo: userInfo)
             }

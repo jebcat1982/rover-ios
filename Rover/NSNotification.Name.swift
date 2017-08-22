@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NSNotification.Name {
+public extension NSNotification.Name {
     static let RoverDidUpdateProfile = NSNotification.Name(rawValue: "RoverDidUpdateProfile")
     static let RoverDidUpdateRegions = NSNotification.Name(rawValue: "RoverDidUpdateRegions")
 }
