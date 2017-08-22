@@ -6,6 +6,8 @@
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
+import CoreLocation
+
 struct ApplicationState {
     var dataClient = DataClient()
     var credentials = Credentials()
@@ -13,5 +15,5 @@ struct ApplicationState {
     var context = Context()
     var profile = Profile()
     var experiences = ExperienceCache()
-    var regions = Set<AnyRegion>()
+    var regions = Set<CLRegion>()
 }

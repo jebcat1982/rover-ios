@@ -108,14 +108,9 @@ public class Rover {
             }
             
             if currentState.regions != previousState.regions {
-                let previousRegions = Set<CLRegion>(previousState.regions.map({ $0.clRegion }))
-                let currentRegions = Set<CLRegion>(currentState.regions.map({ $0.clRegion }))
-                
                 let userInfo = [
-                    "previousRegions": previousRegions,
-                    "currentRegions": currentRegions,
-                    "regionsToAdd": currentRegions.subtracting(previousRegions),
-                    "regionsToRemove": previousRegions.subtracting(currentRegions)
+                    "previousRegions": previousState.regions,
+                    "currentRegions": currentState.regions
                 ]
                 self.notificationCenter.post(name: .RoverDidUpdateRegions, object: self, userInfo: userInfo)
             }
