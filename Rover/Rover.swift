@@ -150,7 +150,6 @@ public class Rover {
             
             let timer = Timer(timeInterval: self.pulseInterval, repeats: true) { _ in
                 self.flushEvents()
-                self.performSync()
             }
             
             DispatchQueue.main.async {
