@@ -14,7 +14,7 @@ class AddDeviceIdentifierToCredentialsOperation: Operation {
     init(currentDevice: UIDeviceProtocol = UIDevice.current) {
         self.currentDevice = currentDevice
         super.init()
-        self.name = "Add Device ID To Credentials"
+        self.name = "Add Device Identifier To Credentials"
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {

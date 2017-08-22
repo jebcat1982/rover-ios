@@ -14,7 +14,7 @@ class RestoreProfileIdentifierFromUserDefaultsOperation: Operation {
     init(userDefaults: UserDefaultsProtocol = UserDefaults.standard) {
         self.userDefaults = userDefaults
         super.init()
-        self.name = "Restore Profile ID From UserDefaults"
+        self.name = "Restore Profile Identifier From UserDefaults"
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
