@@ -15,7 +15,6 @@
 		DB2412A71F3CB32B0064F353 /* Rover.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2412991F3CB32B0064F353 /* Rover.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB2D531A1F4634BE003CB5F4 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D53191F4634BE003CB5F4 /* LogLevel.swift */; };
 		DB2D531C1F464366003CB5F4 /* OperationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D531B1F464366003CB5F4 /* OperationDelegate.swift */; };
-		DB459D011F4B4FF50085A10A /* LaunchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB459D001F4B4FF50085A10A /* LaunchOperation.swift */; };
 		DB4834711F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */; };
 		DB4834741F44F1CC00CC308A /* UNUserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */; };
 		DB4834761F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */; };
@@ -125,8 +124,6 @@
 		DBF8B7B61F4249AA00359EC2 /* PersistEventsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7B51F4249AA00359EC2 /* PersistEventsOperation.swift */; };
 		DBF8B7B81F424A8300359EC2 /* TrackEventOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7B71F424A8300359EC2 /* TrackEventOperation.swift */; };
 		DBF8B7BB1F424AD500359EC2 /* TrackAppUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7BA1F424AD500359EC2 /* TrackAppUpdateOperation.swift */; };
-		DBF8B7BD1F424C2B00359EC2 /* InitializeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7BC1F424C2B00359EC2 /* InitializeOperation.swift */; };
-		DBF8B7BF1F424CB500359EC2 /* ActivateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7BE1F424CB500359EC2 /* ActivateOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,7 +148,6 @@
 		DB2412A61F3CB32B0064F353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB2D53191F4634BE003CB5F4 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		DB2D531B1F464366003CB5F4 /* OperationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDelegate.swift; sourceTree = "<group>"; };
-		DB459D001F4B4FF50085A10A /* LaunchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchOperation.swift; sourceTree = "<group>"; };
 		DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotificationSettingsToContextOperation.swift; sourceTree = "<group>"; };
 		DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenter.swift; sourceTree = "<group>"; };
 		DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationSettingsToContextOperation.swift; sourceTree = "<group>"; };
@@ -261,8 +257,6 @@
 		DBF8B7B51F4249AA00359EC2 /* PersistEventsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistEventsOperation.swift; sourceTree = "<group>"; };
 		DBF8B7B71F424A8300359EC2 /* TrackEventOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackEventOperation.swift; sourceTree = "<group>"; };
 		DBF8B7BA1F424AD500359EC2 /* TrackAppUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAppUpdateOperation.swift; sourceTree = "<group>"; };
-		DBF8B7BC1F424C2B00359EC2 /* InitializeOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializeOperation.swift; sourceTree = "<group>"; };
-		DBF8B7BE1F424CB500359EC2 /* ActivateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivateOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,12 +323,9 @@
 				DBE1FBE61F3E4A86004B3C9D /* Protocol Shims */,
 				DBE1FC1D1F421082004B3C9D /* Vendor */,
 				DBE1FC221F4210D8004B3C9D /* Supporting Files */,
-				DBF8B7BE1F424CB500359EC2 /* ActivateOperation.swift */,
 				DBE1FBF21F3E4DFE004B3C9D /* ApplicationState.swift */,
 				DBE1FBFE1F41FD2E004B3C9D /* Attributes.swift */,
 				DBE1FC2D1F421217004B3C9D /* ID.swift */,
-				DBF8B7BC1F424C2B00359EC2 /* InitializeOperation.swift */,
-				DB459D001F4B4FF50085A10A /* LaunchOperation.swift */,
 				DBE1FBF01F3E4DAD004B3C9D /* Operation.swift */,
 				DB2D531B1F464366003CB5F4 /* OperationDelegate.swift */,
 				DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */,
@@ -497,6 +488,14 @@
 			path = Operations;
 			sourceTree = "<group>";
 		};
+		DB83FFE21F4B9A9E006ACB23 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				DBDFE30F1F424E92005E7850 /* SyncOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
 		DBDE83801F42389900FABDA6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,7 +521,7 @@
 		DBDFE30E1F424E7D005E7850 /* Sync */ = {
 			isa = PBXGroup;
 			children = (
-				DBDFE30F1F424E92005E7850 /* SyncOperation.swift */,
+				DB83FFE21F4B9A9E006ACB23 /* Operations */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -816,14 +815,12 @@
 				DBDFE3101F424E92005E7850 /* SyncOperation.swift in Sources */,
 				DBF8B79F1F42466200359EC2 /* AddLocaleToContextOperation.swift in Sources */,
 				DB4834DA1F46234300CC308A /* RectangleBlockView.swift in Sources */,
-				DB459D011F4B4FF50085A10A /* LaunchOperation.swift in Sources */,
 				DB4834DD1F46234300CC308A /* WebViewBlockView.swift in Sources */,
 				DBE1FBF11F3E4DAD004B3C9D /* Operation.swift in Sources */,
 				DBF8B7AE1F4248C000359EC2 /* AddEventOperation.swift in Sources */,
 				DBF8B7A11F42469300359EC2 /* AddScreenSizeToContextOperation.swift in Sources */,
 				DB48347F1F46019700CC308A /* FetchExperienceOperation.swift in Sources */,
 				DBDFE3141F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift in Sources */,
-				DBF8B7BF1F424CB500359EC2 /* ActivateOperation.swift in Sources */,
 				DB48348E1F4602EF00CC308A /* UICollectionReusableView.swift in Sources */,
 				DBDE83841F4239B100FABDA6 /* IdentifyOperation.swift in Sources */,
 				DB4834CF1F46233D00CC308A /* RowViewModel.swift in Sources */,
@@ -906,7 +903,6 @@
 				DB83FFD91F4B93F2006ACB23 /* TrackEnterRegionOperation.swift in Sources */,
 				DB4834D91F46234300CC308A /* ImageBlockView.swift in Sources */,
 				DBF8B7AB1F4247DB00359EC2 /* UpdateContextOperation.swift in Sources */,
-				DBF8B7BD1F424C2B00359EC2 /* InitializeOperation.swift in Sources */,
 				DBE1FC181F421016004B3C9D /* HTTPSession.swift in Sources */,
 				DBE1FC091F420EB5004B3C9D /* NSTimeZone.swift in Sources */,
 				DB48349E1F4605D100CC308A /* ExperienceViewController.swift in Sources */,

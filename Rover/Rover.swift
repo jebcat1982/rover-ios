@@ -30,8 +30,7 @@ public class Rover {
         }
         
         let rover = Rover()
-        let operation = InitializeOperation(accountToken: accountToken)
-        rover.dispatch(operation)
+        rover.initialize(accountToken: accountToken)
         sharedInstance = rover
     }
     
@@ -73,13 +72,30 @@ public class Rover {
         }
     }
     
+    func initialize(accountToken: String) {
+        let operations = [
+            AddAccountTokenToCredentialsOperation(accountToken: accountToken),
+            AddDeviceIdentifierToCredentialsOperation(),
+            RestoreProfileIdentifierFromUserDefaultsOperation(),
+            CaptureContextOperation()
+        ]
+        operations.forEach(dispatch)
+    }
+    
     func launch() {
-        let operation = LaunchOperation()
+        let operation = TrackAppUpdateOperation()
         dispatch(operation)
     }
     
     func activate() {
-        let operation = ActivateOperation()
+        let operation = TrackEventOperation(eventName: "Open App", attributes: nil)
+        dispatch(operation)
+        
+        performSync()
+    }
+    
+    func performSync() {
+        let operation = SyncOperation()
         dispatch(operation)
     }
     
@@ -98,6 +114,7 @@ public class Rover {
             
             let timer = Timer(timeInterval: self.pulseInterval, repeats: true) { _ in
                 self.flushEvents()
+                self.performSync()
             }
             
             DispatchQueue.main.async {
