@@ -99,12 +99,25 @@ public class Rover {
     func performSync() {
         let operation = SyncOperation()
         dispatch(operation) { (previousState, currentState) in
-            if previousState.profile != currentState.profile {
+            if currentState.profile != previousState.profile {
                 let userInfo = [
                     "previousProfile": previousState.profile,
                     "currentProfile": currentState.profile
                 ]
-                self.notificationCenter.post(name: NSNotification.Name.RoverDidUpdateProfile, object: self, userInfo: userInfo)
+                self.notificationCenter.post(name: .RoverDidUpdateProfile, object: self, userInfo: userInfo)
+            }
+            
+            if currentState.regions != previousState.regions {
+                let previousRegions = Set<CLRegion>(previousState.regions.map({ $0.clRegion }))
+                let currentRegions = Set<CLRegion>(currentState.regions.map({ $0.clRegion }))
+                
+                let userInfo = [
+                    "previousRegions": previousRegions,
+                    "currentRegions": currentRegions,
+                    "regionsToAdd": currentRegions.subtracting(previousRegions),
+                    "regionsToRemove": previousRegions.subtracting(currentRegions)
+                ]
+                self.notificationCenter.post(name: .RoverDidUpdateRegions, object: self, userInfo: userInfo)
             }
         }
     }

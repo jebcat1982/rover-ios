@@ -13,4 +13,5 @@ struct ApplicationState {
     var context = Context()
     var profile = Profile()
     var experiences = ExperienceCache()
+    var regions = Set<AnyRegion>()
 }

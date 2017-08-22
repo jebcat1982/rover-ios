@@ -16,6 +16,7 @@
 		DB2D531A1F4634BE003CB5F4 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D53191F4634BE003CB5F4 /* LogLevel.swift */; };
 		DB2D531C1F464366003CB5F4 /* OperationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D531B1F464366003CB5F4 /* OperationDelegate.swift */; };
 		DB3AF73C1F4C793E00565D28 /* NSNotification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3AF73B1F4C793E00565D28 /* NSNotification.Name.swift */; };
+		DB3AF73E1F4C7C6B00565D28 /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3AF73D1F4C7C6B00565D28 /* Region.swift */; };
 		DB4834711F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */; };
 		DB4834741F44F1CC00CC308A /* UNUserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */; };
 		DB4834761F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */; };
@@ -150,6 +151,7 @@
 		DB2D53191F4634BE003CB5F4 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		DB2D531B1F464366003CB5F4 /* OperationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDelegate.swift; sourceTree = "<group>"; };
 		DB3AF73B1F4C793E00565D28 /* NSNotification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotification.Name.swift; sourceTree = "<group>"; };
+		DB3AF73D1F4C7C6B00565D28 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotificationSettingsToContextOperation.swift; sourceTree = "<group>"; };
 		DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenter.swift; sourceTree = "<group>"; };
 		DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationSettingsToContextOperation.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				DB83FFD71F4B93E8006ACB23 /* Operations */,
+				DB3AF73D1F4C7C6B00565D28 /* Region.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -915,6 +918,7 @@
 				DBF8B7991F4244A400359EC2 /* AddApplicationInfoToContextOperation.swift in Sources */,
 				DBDE83821F4238B700FABDA6 /* AnonymizeOperation.swift in Sources */,
 				DBDFE3181F44AE36005E7850 /* TrackPushTokenChangeOperation.swift in Sources */,
+				DB3AF73E1F4C7C6B00565D28 /* Region.swift in Sources */,
 				DBF8B7A71F42473100359EC2 /* AddReachabilityInfoToContextOperation.swift in Sources */,
 				DBF8B79B1F4244EB00359EC2 /* AddDeviceInfoToContextOperation.swift in Sources */,
 				DB4834C71F46233D00CC308A /* BackgroundViewModel.swift in Sources */,

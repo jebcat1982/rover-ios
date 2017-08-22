@@ -36,6 +36,20 @@ struct SyncQuery: GraphQLQuery {
                         identifier
                         attributes
                     }
+                    regions {
+                        __typename
+                        identifier
+                        ... on BeaconRegion {
+                            uuid
+                            major
+                            minor
+                        }
+                        ... on GeofenceRegion {
+                            latitude
+                            longitude
+                            radius
+                        }
+                    }
                 }
             }
             """
@@ -46,4 +60,16 @@ struct SyncQuery: GraphQLQuery {
 
 struct SyncResponse: Decodable {
     var profile: Profile
+    var regions: [AnyRegion]
+    
+    enum CodingKeys: String, CodingKey {
+        case profile
+        case regions
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        profile = try container.decode(Profile.self, forKey: .profile)
+        regions = try container.decode([AnyRegion].self, forKey: .regions)
+    }
 }
