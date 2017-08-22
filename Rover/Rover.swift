@@ -42,6 +42,7 @@ public class Rover {
     
     let pulseInterval: Double
     let application: UIApplicationProtocol
+    let notificationCenter: NotificationCenterProtocol
     
     var currentState = ApplicationState()
     var previousState = ApplicationState()
@@ -51,8 +52,9 @@ public class Rover {
     init(pulseInterval: Double = 30.0, application: UIApplicationProtocol = UIApplication.shared, notificationCenter: NotificationCenterProtocol = NotificationCenter.default) {
         self.pulseInterval = pulseInterval
         self.application = application
+        self.notificationCenter = notificationCenter
         
-        notificationCenter.addObserver(forName: .UIApplicationDidFinishLaunching, object: application, queue: nil) { notification in
+        notificationCenter.addObserver(forName: .UIApplicationDidFinishLaunching, object: application, queue: nil) { _ in
             self.launch()
         }
         
@@ -96,7 +98,15 @@ public class Rover {
     
     func performSync() {
         let operation = SyncOperation()
-        dispatch(operation)
+        dispatch(operation) { (previousState, currentState) in
+            if previousState.profile != currentState.profile {
+                let userInfo = [
+                    "previousProfile": previousState.profile,
+                    "currentProfile": currentState.profile
+                ]
+                self.notificationCenter.post(name: NSNotification.Name.RoverDidUpdateProfile, object: self, userInfo: userInfo)
+            }
+        }
     }
     
     func flushEvents() {
@@ -491,7 +501,7 @@ extension Rover: RoverPush {
 // MARK: RoverSync
 
 public protocol RoverSync {
-    func now(completionHandler: (() -> Void)?)
+    func now()
 }
 
 extension Rover: RoverSync {
@@ -500,11 +510,8 @@ extension Rover: RoverSync {
         return shared
     }
     
-    public func now(completionHandler: (() -> Void)?) {
-        let operation = SyncOperation()
-        dispatch(operation) { (previousState, currentState) in
-            completionHandler?()
-        }
+    public func now() {
+        performSync()
     }
 }
 

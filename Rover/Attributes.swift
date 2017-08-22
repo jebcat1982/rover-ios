@@ -114,6 +114,32 @@ struct AttributeValue: Codable {
     }
 }
 
+extension AttributeValue: Equatable {
+    
+    static func == (lhs: AttributeValue, rhs: AttributeValue) -> Bool {
+        switch (lhs.rawValue, rhs.rawValue) {
+        case (let lhs as String, let rhs as String):
+            return lhs == rhs
+        case (let lhs as Int, let rhs as Int):
+            return lhs == rhs
+        case (let lhs as UInt, let rhs as UInt):
+            return lhs == rhs
+        case (let lhs as Double, let rhs as Double):
+            return lhs == rhs
+        case (let lhs as Float, let rhs as Float):
+            return lhs == rhs
+        case (let lhs as Bool, let rhs as Bool):
+            return lhs == rhs
+        case (let lhs as Date, let rhs as Date):
+            return lhs == rhs
+        case (let lhs as URL, let rhs as URL):
+            return lhs == rhs
+        default:
+            return false
+        }
+    }
+}
+
 public struct Attributes: Codable {
     var contents = [AttributeName: AttributeValue]()
     
@@ -140,5 +166,12 @@ extension Attributes: ExpressibleByDictionaryLiteral {
         for (name, value) in elements {
             self[name] = value
         }
+    }
+}
+
+extension Attributes: Equatable {
+    
+    public static func == (lhs: Attributes, rhs: Attributes) -> Bool {
+        return lhs.contents == rhs.contents
     }
 }

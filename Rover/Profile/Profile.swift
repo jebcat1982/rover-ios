@@ -9,6 +9,13 @@
 import Foundation
 
 public struct Profile: Codable {
-    public var id: ID?
+    public var identifier: String?
     public var attributes = Attributes()
+}
+
+extension Profile: Equatable {
+    
+    public static func == (lhs: Profile, rhs: Profile) -> Bool {
+        return lhs.identifier == rhs.identifier && lhs.attributes == rhs.attributes
+    }
 }
