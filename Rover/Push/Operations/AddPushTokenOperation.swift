@@ -18,9 +18,12 @@ class AddPushTokenOperation: Operation {
     }
     
     override func execute(reducer: Reducer, resolver: Resolver, completionHandler: @escaping () -> Void) {
+        let pushToken = data.map { String(format: "%02.2hhx", $0) }.joined()
+        delegate?.debug("Setting pushToken to: \(pushToken)", operation: self)
+        
         reducer.reduce { state in
             var nextContext = state.context
-            nextContext.pushToken = data.map { String(format: "%02.2hhx", $0) }.joined()
+            nextContext.pushToken = pushToken
             
             var nextState = state
             nextState.context = nextContext

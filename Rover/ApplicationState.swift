@@ -13,7 +13,9 @@ struct ApplicationState {
     var credentials = Credentials()
     var eventQueue = EventQueue()
     var context = Context()
-    var profile = Profile()
     var experiences = ExperienceCache()
+    
+    // Server State
+    var profile = Profile()
     var regions = Set<CLRegion>()
 }
