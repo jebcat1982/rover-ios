@@ -8,10 +8,10 @@
 
 import Foundation
 
-class SendEventsOperation: QueryOperation<SendEventsQuery> {
+class SendEventsOperation: QueryOperation<SendEventsQueryx> {
     
     init(events: [Event]) {
-        let query = SendEventsQuery(events: events)
+        let query = SendEventsQueryx(events: events)
         super.init(query: query)
         self.credentials = events.first?.credentials
         self.name = "Send Events"
@@ -22,7 +22,7 @@ class SendEventsOperation: QueryOperation<SendEventsQuery> {
         super.execute(reducer: reducer, resolver: resolver, completionHandler: completionHandler)
     }
     
-    override func handleResponse(_ response: SendEventsResponse, reducer: Reducer, resolver: Resolver) {
+    override func handleResponse(_ response: SendEventsResponsex, reducer: Reducer, resolver: Resolver) {
         delegate?.debug("Successfully uploaded \(query.events.count) event(s)", operation: self)
         removeEvents(reducer: reducer)
     }
@@ -55,8 +55,8 @@ class SendEventsOperation: QueryOperation<SendEventsQuery> {
 
 // MARK: SendEventsQuery
 
-struct SendEventsQuery: GraphQLQuery {
-    typealias Response = SendEventsResponse
+struct SendEventsQueryx: GraphQLQuery {
+    typealias Response = SendEventsResponsex
     
     var events: [Event]
     
@@ -83,4 +83,4 @@ struct SendEventsQuery: GraphQLQuery {
 
 // MARK: SendEventsResponse
 
-struct SendEventsResponse: Decodable { }
+struct SendEventsResponsex: Decodable { }

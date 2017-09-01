@@ -10,7 +10,12 @@ import Foundation
 
 public struct Profile: Codable {
     public var identifier: String?
-    public var attributes = Attributes()
+    public var attributes: Attributes
+    
+    public init(identifier: String? = nil, attributes: Attributes = Attributes()) {
+        self.identifier = identifier
+        self.attributes = attributes
+    }
 }
 
 extension Profile: Equatable {

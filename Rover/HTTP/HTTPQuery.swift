@@ -1,12 +1,12 @@
 //
-//  GraphQLQuery.swift
+//  HTTPQuery.swift
 //  Rover
 //
 //  Created by Sean Rucker on 2017-08-14.
 //  Copyright © 2017 Rover Labs Inc. All rights reserved.
 //
 
-protocol GraphQLQuery: Encodable {
+protocol HTTPQuery: Encodable {
     associatedtype Response: Decodable
     
     var operationName: String? { get }
@@ -14,7 +14,7 @@ protocol GraphQLQuery: Encodable {
     var variables: Encodable? { get }
 }
 
-extension GraphQLQuery {
+extension HTTPQuery {
     
     var operationName: String? {
         return nil
