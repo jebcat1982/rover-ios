@@ -14,13 +14,3 @@ public protocol HTTPSession: class {
     
     func uploadTask(with request: URLRequest, from bodyData: Data?, completionHandler: @escaping UploadTaskHandler) -> HTTPTask
 }
-
-// MARK: URLSession
-
-//extension URLSession: HTTPSession {
-//    
-//    public func uploadTask(with request: URLRequest, from bodyData: Data?, completionHandler: @escaping UploadTaskHandler) -> HTTPTask {
-//        return (uploadTask(with: request, from: bodyData, completionHandler: completionHandler) as URLSessionUploadTask) as HTTPTask
-//    }
-//}
-

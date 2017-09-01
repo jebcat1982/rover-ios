@@ -12,7 +12,3 @@ public protocol HTTPTask {
     func cancel()
     func resume()
 }
-
-// MARK: URLSessionUploadTask
-
-//extension URLSessionUploadTask: HTTPTask { }

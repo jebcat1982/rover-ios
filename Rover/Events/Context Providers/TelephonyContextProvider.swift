@@ -11,26 +11,6 @@ import Foundation
 struct TelephonyContextProvider {
     let telephonyNetworkInfo: CTTelephonyNetworkInfoProtocol
     let carrier: CTCarrierProtocol?
-    
-//    init(telephonyNetworkInfo: CTTelephonyNetworkInfoProtocol? = nil, carrier: CTCarrierProtocol? = nil) {
-//        switch (telephonyNetworkInfo, carrier) {
-//        case let (telephonyNetworkInfo?, carrier?):
-//            self.telephonyNetworkInfo = telephonyNetworkInfo
-//            self.carrier = carrier
-//        case (_, let carrier?):
-//            self.telephonyNetworkInfo = CTTelephonyNetworkInfo()
-//            self.carrier = carrier
-//        case (let telephonyNetworkInfo?, _):
-//            self.telephonyNetworkInfo = telephonyNetworkInfo
-//            self.carrier = CTTelephonyNetworkInfo().subscriberCellularProvider
-//        case (_, _):
-//            let telephonyNetworkInfo = CTTelephonyNetworkInfo()
-//            self.telephonyNetworkInfo = telephonyNetworkInfo
-//            self.carrier = telephonyNetworkInfo.subscriberCellularProvider
-//        }
-//        super.init()
-//        self.name = "Add Telephony Info To Context"
-//    }
 }
 
 extension TelephonyContextProvider: ContextProvider {

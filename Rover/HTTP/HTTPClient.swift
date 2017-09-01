@@ -11,15 +11,15 @@ import Foundation
 public class HTTPClient {
     let endpoint: URL
     let session: HTTPSession
-    let deviceIdentifier: DeviceIdentifier
+    let device: UIDeviceProtocol
     
     public var credentials: Credentials
     
-    public init(accountToken: String, endpoint: URL = URL(string: "https://api.rover.io/")!, session: HTTPSession, deviceIdentifier: DeviceIdentifier) {
+    public init(accountToken: String, endpoint: URL, session: HTTPSession, device: UIDeviceProtocol) {
         self.credentials = Credentials(accountToken: accountToken)
         self.endpoint = endpoint
         self.session = session
-        self.deviceIdentifier = deviceIdentifier
+        self.device = device
     }
     
     typealias AuthHeaders = [String: String]
@@ -28,8 +28,8 @@ public class HTTPClient {
         var authHeaders = AuthHeaders()
         authHeaders["x-rover-account-token"] = credentials.accountToken
         
-        if let deviceIdentifier = deviceIdentifier.identify() {
-            authHeaders["x-rover-device-identifier"] = deviceIdentifier
+        if let identifierForVendor = device.identifierForVendor?.uuidString {
+            authHeaders["x-rover-device-identifier"] = identifierForVendor
         } else {
             logger.error("Failed to obtain device identifier")
         }
@@ -146,12 +146,6 @@ public class HTTPClient {
             completionHandler?(httpResult)
         })
     }
-}
-
-// MARK: DeviceIdentifier
-
-public protocol DeviceIdentifier {
-    func identify() -> String?
 }
 
 // MARK: Task Factories

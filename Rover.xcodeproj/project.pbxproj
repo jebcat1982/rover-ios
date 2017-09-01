@@ -14,7 +14,6 @@
 		DB2412A71F3CB32B0064F353 /* Rover.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2412991F3CB32B0064F353 /* Rover.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB2D531A1F4634BE003CB5F4 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D53191F4634BE003CB5F4 /* LogLevel.swift */; };
 		DB31B5481F5A1DFF00F3DAF5 /* EventsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB31B5471F5A1DFF00F3DAF5 /* EventsConfiguration.swift */; };
-		DB3AF73C1F4C793E00565D28 /* NSNotification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3AF73B1F4C793E00565D28 /* NSNotification.Name.swift */; };
 		DB43313B1F58A1AD00FCA387 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43313A1F58A1AD00FCA387 /* HTTPClient.swift */; };
 		DB43313F1F58B0AA00FCA387 /* SendEventsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43313E1F58B0AA00FCA387 /* SendEventsQuery.swift */; };
 		DB4331421F59AF7B00FCA387 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4331411F59AF7B00FCA387 /* Event.swift */; };
@@ -125,7 +124,6 @@
 		DB2412A61F3CB32B0064F353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB2D53191F4634BE003CB5F4 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		DB31B5471F5A1DFF00F3DAF5 /* EventsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsConfiguration.swift; sourceTree = "<group>"; };
-		DB3AF73B1F4C793E00565D28 /* NSNotification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotification.Name.swift; sourceTree = "<group>"; };
 		DB43313A1F58A1AD00FCA387 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		DB43313E1F58B0AA00FCA387 /* SendEventsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEventsQuery.swift; sourceTree = "<group>"; };
 		DB4331411F59AF7B00FCA387 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -237,8 +235,8 @@
 		DB01C60E1F42430C0047D1D5 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				DBF8B7971F42449C00359EC2 /* Context Operations */,
-				DBF8B7AC1F42482200359EC2 /* Event Queue Operations */,
+				DBF8B7971F42449C00359EC2 /* Context Providers */,
+				DB76E6AB1F5A2A6F00D7ADAE /* Factories */,
 				DB5F0DC81F5A08270066B97A /* EventBatch.swift */,
 				DB01C60F1F42431E0047D1D5 /* EventSnapshot.swift */,
 				DB01C6111F4243280047D1D5 /* EventQueue.swift */,
@@ -273,12 +271,11 @@
 				DB4331451F59BCA300FCA387 /* Foundation */,
 				DBE1FC111F420FA3004B3C9D /* HTTP */,
 				DB01C60E1F42430C0047D1D5 /* Events */,
-				DB83FFD61F4B93E2006ACB23 /* Location */,
 				DB4834801F46023900CC308A /* UI */,
 				DBE1FC1D1F421082004B3C9D /* Vendor */,
 				DBE1FC221F4210D8004B3C9D /* Supporting Files */,
 				DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */,
-				DB3AF73B1F4C793E00565D28 /* NSNotification.Name.swift */,
+				DBF8B7BA1F424AD500359EC2 /* TrackAppUpdateOperation.swift */,
 			);
 			path = Rover;
 			sourceTree = "<group>";
@@ -437,12 +434,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DB83FFD61F4B93E2006ACB23 /* Location */ = {
+		DB76E6AB1F5A2A6F00D7ADAE /* Factories */ = {
 			isa = PBXGroup;
 			children = (
 				DB4331961F59DA0D00E54C3C /* LocationEventFactory.swift */,
 			);
-			path = Location;
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		DBE1FBE61F3E4A86004B3C9D /* Protocol Shims */ = {
@@ -529,7 +526,7 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DBF8B7971F42449C00359EC2 /* Context Operations */ = {
+		DBF8B7971F42449C00359EC2 /* Context Providers */ = {
 			isa = PBXGroup;
 			children = (
 				DBF8B7981F4244A400359EC2 /* ApplicationContextProvider.swift */,
@@ -543,15 +540,7 @@
 				DBF8B7A21F4246C900359EC2 /* TelephonyContextProvider.swift */,
 				DBF8B7A41F42470100359EC2 /* TimeZoneContextProvider.swift */,
 			);
-			path = "Context Operations";
-			sourceTree = "<group>";
-		};
-		DBF8B7AC1F42482200359EC2 /* Event Queue Operations */ = {
-			isa = PBXGroup;
-			children = (
-				DBF8B7BA1F424AD500359EC2 /* TrackAppUpdateOperation.swift */,
-			);
-			path = "Event Queue Operations";
+			path = "Context Providers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -724,7 +713,6 @@
 				DBBC7DB21F3CBDC100E0E2EE /* Rover.swift in Sources */,
 				DB5F0DC71F59FE790066B97A /* UpdateProfileQuery.swift in Sources */,
 				DBE1FBE81F3E4A9A004B3C9D /* NotificationCenter.swift in Sources */,
-				DB3AF73C1F4C793E00565D28 /* NSNotification.Name.swift in Sources */,
 				DBE1FC271F421144004B3C9D /* HTTPQuery.swift in Sources */,
 				DB4834CA1F46233D00CC308A /* BorderViewModel.swift in Sources */,
 				DB5F0DCB1F5A142B0066B97A /* ContextProvider.swift in Sources */,

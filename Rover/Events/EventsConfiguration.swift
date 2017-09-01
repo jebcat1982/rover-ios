@@ -14,7 +14,7 @@ public struct EventsConfiguration {
     public var minBatchSize: Int
     public var flushInterval: Double
     
-    public init(minBatchSize: Int = 20, maxBatchSize: Int = 100, maxQueueSize: Int = 1000, flushInterval: Double = 30.0) {
+    public init(minBatchSize: Int, maxBatchSize: Int, maxQueueSize: Int, flushInterval: Double) {
         self.minBatchSize = minBatchSize
         self.maxBatchSize = maxBatchSize
         self.maxQueueSize = maxQueueSize
