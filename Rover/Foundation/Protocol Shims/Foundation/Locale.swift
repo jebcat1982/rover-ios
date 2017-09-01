@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol LocaleProtocol {
+public protocol LocaleProtocol {
     var languageCode: String? { get }
     var regionCode: String? { get }
     var scriptCode: String? { get }

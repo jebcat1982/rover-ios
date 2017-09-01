@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol NSTimeZoneProtocol {
+public protocol NSTimeZoneProtocol {
     var name: String { get }
 }
 

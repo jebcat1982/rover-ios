@@ -176,7 +176,7 @@ extension HTTPClient {
         })
     }
     
-    public func sendEventsTask(events: [Event], context: Context, credentials: Credentials?, completionHandler: ((HTTPResult<String>) -> Void)?) -> HTTPTask {
+    public func sendEventsTask(events: [Event], context: Context, credentials: Credentials, completionHandler: ((HTTPResult<String>) -> Void)?) -> HTTPTask {
         let query = SendEventsQuery(events: events, context: context)
         return uploadTask(with: query, credentials: credentials) { result in
             DispatchQueue.main.async {

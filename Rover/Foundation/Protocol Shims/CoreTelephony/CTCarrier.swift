@@ -8,7 +8,7 @@
 
 import CoreTelephony
 
-protocol CTCarrierProtocol {
+public protocol CTCarrierProtocol {
     var carrierName: String? { get }
 }
 

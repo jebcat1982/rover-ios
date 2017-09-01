@@ -8,12 +8,9 @@
 
 import Foundation
 
-protocol UserDefaultsProtocol {
-    
+public protocol UserDefaultsProtocol {
     func string(forKey defaultName: String) -> String?
-    
     func set(_ value: Any?, forKey defaultName: String)
-    
     func removeObject(forKey defaultName: String)
 }
 

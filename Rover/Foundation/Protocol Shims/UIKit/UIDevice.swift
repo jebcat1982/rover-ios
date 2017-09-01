@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol UIDeviceProtocol {
+public protocol UIDeviceProtocol {
     var identifierForVendor: UUID? { get }
     var systemName: String { get }
     var systemVersion: String { get }

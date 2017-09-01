@@ -8,12 +8,9 @@
 
 import Foundation
 
-protocol NotificationCenterProtocol {
-    
+public protocol NotificationCenterProtocol {
     @discardableResult func addObserver(forName name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping (Notification) -> Void) -> NSObjectProtocol
-    
     func post(name aName: NSNotification.Name, object anObject: Any?)
-    
     func post(name aName: NSNotification.Name, object anObject: Any?, userInfo aUserInfo: [AnyHashable : Any]?)
 }
 

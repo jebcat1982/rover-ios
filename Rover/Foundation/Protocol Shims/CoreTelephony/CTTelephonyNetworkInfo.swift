@@ -8,7 +8,7 @@
 
 import CoreTelephony
 
-protocol CTTelephonyNetworkInfoProtocol {
+public protocol CTTelephonyNetworkInfoProtocol {
     var currentRadioAccessTechnology: String? { get }
 }
 

@@ -8,10 +8,8 @@
 
 import UIKit
 
-protocol UIApplicationProtocol {
-    
+public protocol UIApplicationProtocol {
     func beginBackgroundTask(expirationHandler handler: (() -> Void)?) -> UIBackgroundTaskIdentifier
-    
     func endBackgroundTask(_ identifier: UIBackgroundTaskIdentifier)
 }
 

@@ -8,8 +8,7 @@
 
 import UserNotifications
 
-protocol UNUserNotificationCenterProtocol {
-    
+public protocol UNUserNotificationCenterProtocol {
     func getNotificationSettings(completionHandler: @escaping (UNNotificationSettings) -> Void)
 }
 

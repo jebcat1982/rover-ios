@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol UIScreenProtocol {
+public protocol UIScreenProtocol {
     var bounds: CGRect { get }
 }
 

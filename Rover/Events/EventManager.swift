@@ -9,9 +9,12 @@
 import UIKit
 
 public class EventManager {
-    let application: UIApplication
+    let application: UIApplicationProtocol
     let httpClient: HTTPClient
-    let notificationCenter: NotificationCenter
+    let notificationCenter: NotificationCenterProtocol
+    
+    let staticContextProviders: [ContextProvider]
+    let dynamicContextProviders: [ContextProvider]
     
     let flushInterval: Double
     let serialQueue: OperationQueue
@@ -25,14 +28,17 @@ public class EventManager {
     var eventQueue: EventQueue
     var uploadTask: HTTPTask?
     
-    public init(minBatchSize: Int = 20, maxBatchSize: Int = 100, maxQueueSize: Int = 1000, flushInterval: Double = 30.0, application: UIApplication, httpClient: HTTPClient, notificationCenter: NotificationCenter) {
+    public init(configuration: EventsConfiguration, staticContextProviders: [ContextProvider], dynamicContextProviders: [ContextProvider], application: UIApplicationProtocol, httpClient: HTTPClient, notificationCenter: NotificationCenterProtocol) {
         self.application = application
         self.httpClient = httpClient
         self.notificationCenter = notificationCenter
         
-        self.flushInterval = flushInterval
+        self.staticContextProviders = staticContextProviders
+        self.dynamicContextProviders = dynamicContextProviders
         
-        eventQueue = EventQueue(minBatchSize: minBatchSize, maxBatchSize: maxBatchSize, maxQueueSize: maxQueueSize)
+        self.flushInterval = configuration.flushInterval
+        
+        eventQueue = EventQueue(minBatchSize: configuration.minBatchSize, maxBatchSize: configuration.maxBatchSize, maxQueueSize: configuration.maxQueueSize)
         
         self.serialQueue = OperationQueue()
         serialQueue.maxConcurrentOperationCount = 1
@@ -65,7 +71,7 @@ public class EventManager {
     
     public func flushNow() {
         serialQueue.addOperation {
-            self.flushEvents()
+            self.flushEvents(minBatchSize: 1)
         }
     }
 }
@@ -142,26 +148,12 @@ extension EventManager {
 extension EventManager {
     
     func captureContext() {
-//        AddApplicationInfoToContextOperation(),
-//        AddDeviceInfoToContextOperation(),
-//        AddSDKVersionToContextOperation(),
-//        AddLocaleToContextOperation(),
-//        AddLocationSettingsToContextOperation(),
-//        AddNotificationSettingsToContextOperation(),
-//        AddPushEnvironmentToContextOperation(),
-//        AddScreenSizeToContextOperation(),
-//        AddTelephonyInfoToContextOperation(),
-//        AddTimeZoneToContextOperation(),
-//        AddReachabilityInfoToContextOperation()
+        let contextProviders = staticContextProviders + dynamicContextProviders
+        context = contextProviders.reduce(context, { $1.captureContext($0) })
     }
     
     func updateContext() {
-//        AddLocaleToContextOperation(),
-//        AddLocationSettingsToContextOperation(),
-//        AddNotificationSettingsToContextOperation(),
-//        AddTelephonyInfoToContextOperation(),
-//        AddTimeZoneToContextOperation(),
-//        AddReachabilityInfoToContextOperation()
+        context = dynamicContextProviders.reduce(context, { $1.captureContext($0) })
     }
     
     func addEvent(_ event: Event) {
@@ -185,33 +177,36 @@ extension EventManager {
         }
         
         logger.debug("Uploading \(batch.events.count) event(s) to server")
-
-        let uploadTask = httpClient.sendEventsTask(events: batch.events, context: batch.context, credentials: batch.credentials) { result in
+        
+        uploadTask = httpClient.sendEventsTask(events: batch.events, context: batch.context, credentials: batch.credentials) { result in
             switch result {
             case let .error(error, shouldRetry):
+                if let error = error {
+                    logger.error(error.localizedDescription)
+                }
+                
                 if shouldRetry {
                     logger.error("Failed to upload events - will retry")
                     self.serialQueue.addOperation {
-                        flushEvents(minBatchSize: minBatchSize)
+                        self.flushEvents(minBatchSize: minBatchSize)
                     }
                 } else {
                     logger.error("Failed to upload events - discarding events")
-                    serialQueue.addOperation {
-                        removeEvents()
+                    self.serialQueue.addOperation {
+                        self.removeEvents(batch.events)
                     }
                 }
             case .success:
                 logger.debug("Successfully uploaded \(batch.events.count) event(s)")
-                serialQueue.addOperation {
-                    removeEvents()
+                self.serialQueue.addOperation {
+                    self.removeEvents(batch.events)
                 }
             }
             
             self.uploadTask = nil
         }
         
-        uploadTask.resume()
-        self.uploadTask = uploadTask
+        uploadTask!.resume()
     }
     
     func removeEvents(_ events: [Event]) {
@@ -220,3 +215,46 @@ extension EventManager {
         persistEvents()
     }
 }
+
+/*
+ func flushEvents(minBatchSize: Int? = nil) {
+ guard uploadTask == nil else {
+ logger.debug("Skipping flush – upload already in progress")
+ return
+ }
+ 
+ guard let batch = eventQueue.nextBatch(minBatchSize: minBatchSize) else {
+ logger.debug("Skipping flush – less than \(minBatchSize ?? eventQueue.minBatchSize) events in the queue")
+ return
+ }
+ 
+ logger.debug("Uploading \(batch.events.count) event(s) to server")
+ 
+ let uploadTask = httpClient.sendEventsTask(events: batch.events, context: batch.context, credentials: batch.credentials) { result in
+ switch result {
+ case let .error(error, shouldRetry):
+ if shouldRetry {
+ logger.error("Failed to upload events - will retry")
+ self.serialQueue.addOperation {
+ flushEvents(minBatchSize: minBatchSize)
+ }
+ } else {
+ logger.error("Failed to upload events - discarding events")
+ serialQueue.addOperation {
+ removeEvents()
+ }
+ }
+ case .success:
+ logger.debug("Successfully uploaded \(batch.events.count) event(s)")
+ serialQueue.addOperation {
+ removeEvents()
+ }
+ }
+ 
+ self.uploadTask = nil
+ }
+ 
+ uploadTask.resume()
+ self.uploadTask = uploadTask
+ }
+ */

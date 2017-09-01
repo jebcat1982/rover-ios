@@ -79,13 +79,6 @@ public class Rover {
         // TODO: Add profile identifier to user defaults
     }
     
-    public func update(attributes: Attributes, completionHandler: (() -> Void)?) {
-        let operation = UpdateProfileOperation(attributes: attributes)
-        dispatch(operation) { (previousState, currentState) in
-            completionHandler?()
-        }
-    }
-    
     public func addDeviceToken(_ data: Data) {
         // let pushToken = data.map { String(format: "%02.2hhx", $0) }.joined()
         

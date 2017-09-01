@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol BundleProtocol {
+public protocol BundleProtocol {
     var infoDictionary: [String: Any]? { get }
     var localizedInfoDictionary: [String: Any]? { get }
     var bundleIdentifier: String? { get }

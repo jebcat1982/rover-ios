@@ -13,6 +13,7 @@
 		DB2412A51F3CB32B0064F353 /* RoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2412A41F3CB32B0064F353 /* RoverTests.swift */; };
 		DB2412A71F3CB32B0064F353 /* Rover.h in Headers */ = {isa = PBXBuildFile; fileRef = DB2412991F3CB32B0064F353 /* Rover.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB2D531A1F4634BE003CB5F4 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D53191F4634BE003CB5F4 /* LogLevel.swift */; };
+		DB31B5481F5A1DFF00F3DAF5 /* EventsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB31B5471F5A1DFF00F3DAF5 /* EventsConfiguration.swift */; };
 		DB3AF73C1F4C793E00565D28 /* NSNotification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3AF73B1F4C793E00565D28 /* NSNotification.Name.swift */; };
 		DB43313B1F58A1AD00FCA387 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43313A1F58A1AD00FCA387 /* HTTPClient.swift */; };
 		DB43313F1F58B0AA00FCA387 /* SendEventsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43313E1F58B0AA00FCA387 /* SendEventsQuery.swift */; };
@@ -24,9 +25,9 @@
 		DB4331501F59CF7B00FCA387 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB43314F1F59CF7B00FCA387 /* State.swift */; };
 		DB4331521F59D04400FCA387 /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4331511F59D04400FCA387 /* Region.swift */; };
 		DB4331971F59DA0D00E54C3C /* LocationEventFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4331961F59DA0D00E54C3C /* LocationEventFactory.swift */; };
-		DB4834711F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */; };
+		DB4834711F44F16400CC308A /* NotificationsContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834701F44F16400CC308A /* NotificationsContextProvider.swift */; };
 		DB4834741F44F1CC00CC308A /* UNUserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */; };
-		DB4834761F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */; };
+		DB4834761F45D2AD00CC308A /* LocationContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834751F45D2AD00CC308A /* LocationContextProvider.swift */; };
 		DB4834791F45D32B00CC308A /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834781F45D32B00CC308A /* CLLocationManager.swift */; };
 		DB48347C1F46016000CC308A /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB48347B1F46016000CC308A /* Experience.swift */; };
 		DB4834881F46029200CC308A /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834871F46029200CC308A /* CGFloat.swift */; };
@@ -68,9 +69,9 @@
 		DB4834DD1F46234300CC308A /* WebViewBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4834AE1F460A1F00CC308A /* WebViewBlockView.swift */; };
 		DB5F0DC71F59FE790066B97A /* UpdateProfileQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5F0DC61F59FE790066B97A /* UpdateProfileQuery.swift */; };
 		DB5F0DC91F5A08270066B97A /* EventBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5F0DC81F5A08270066B97A /* EventBatch.swift */; };
+		DB5F0DCB1F5A142B0066B97A /* ContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5F0DCA1F5A142B0066B97A /* ContextProvider.swift */; };
 		DBBC7DB21F3CBDC100E0E2EE /* Rover.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */; };
 		DBDE83891F423A5600FABDA6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE83881F423A5600FABDA6 /* Profile.swift */; };
-		DBDFE3141F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFE3131F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift */; };
 		DBE1FBE81F3E4A9A004B3C9D /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBE71F3E4A9A004B3C9D /* NotificationCenter.swift */; };
 		DBE1FBEC1F3E4AC6004B3C9D /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBEB1F3E4AC6004B3C9D /* UIApplication.swift */; };
 		DBE1FBEF1F3E4C9C004B3C9D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FBEE1F3E4C9C004B3C9D /* Logger.swift */; };
@@ -92,14 +93,14 @@
 		DBE1FC271F421144004B3C9D /* HTTPQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC261F421144004B3C9D /* HTTPQuery.swift */; };
 		DBE1FC2C1F4211E6004B3C9D /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC2B1F4211E6004B3C9D /* Credentials.swift */; };
 		DBE1FC2E1F421217004B3C9D /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE1FC2D1F421217004B3C9D /* ID.swift */; };
-		DBF8B7991F4244A400359EC2 /* AddApplicationInfoToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7981F4244A400359EC2 /* AddApplicationInfoToContextOperation.swift */; };
-		DBF8B79B1F4244EB00359EC2 /* AddDeviceInfoToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B79A1F4244EB00359EC2 /* AddDeviceInfoToContextOperation.swift */; };
-		DBF8B79D1F42453500359EC2 /* AddSDKVersionToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B79C1F42453500359EC2 /* AddSDKVersionToContextOperation.swift */; };
-		DBF8B79F1F42466200359EC2 /* AddLocaleToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B79E1F42466200359EC2 /* AddLocaleToContextOperation.swift */; };
-		DBF8B7A11F42469300359EC2 /* AddScreenSizeToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7A01F42469300359EC2 /* AddScreenSizeToContextOperation.swift */; };
-		DBF8B7A31F4246C900359EC2 /* AddTelephonyInfoToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7A21F4246C900359EC2 /* AddTelephonyInfoToContextOperation.swift */; };
-		DBF8B7A51F42470100359EC2 /* AddTimeZoneToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7A41F42470100359EC2 /* AddTimeZoneToContextOperation.swift */; };
-		DBF8B7A71F42473100359EC2 /* AddReachabilityInfoToContextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7A61F42473100359EC2 /* AddReachabilityInfoToContextOperation.swift */; };
+		DBF8B7991F4244A400359EC2 /* ApplicationContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7981F4244A400359EC2 /* ApplicationContextProvider.swift */; };
+		DBF8B79B1F4244EB00359EC2 /* DeviceContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B79A1F4244EB00359EC2 /* DeviceContextProvider.swift */; };
+		DBF8B79D1F42453500359EC2 /* FrameworkContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B79C1F42453500359EC2 /* FrameworkContextProvider.swift */; };
+		DBF8B79F1F42466200359EC2 /* LocaleContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B79E1F42466200359EC2 /* LocaleContextProvider.swift */; };
+		DBF8B7A11F42469300359EC2 /* ScreenContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7A01F42469300359EC2 /* ScreenContextProvider.swift */; };
+		DBF8B7A31F4246C900359EC2 /* TelephonyContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7A21F4246C900359EC2 /* TelephonyContextProvider.swift */; };
+		DBF8B7A51F42470100359EC2 /* TimeZoneContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7A41F42470100359EC2 /* TimeZoneContextProvider.swift */; };
+		DBF8B7A71F42473100359EC2 /* ReachabilityContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7A61F42473100359EC2 /* ReachabilityContextProvider.swift */; };
 		DBF8B7BB1F424AD500359EC2 /* TrackAppUpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8B7BA1F424AD500359EC2 /* TrackAppUpdateOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		DB2412A41F3CB32B0064F353 /* RoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverTests.swift; sourceTree = "<group>"; };
 		DB2412A61F3CB32B0064F353 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB2D53191F4634BE003CB5F4 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		DB31B5471F5A1DFF00F3DAF5 /* EventsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsConfiguration.swift; sourceTree = "<group>"; };
 		DB3AF73B1F4C793E00565D28 /* NSNotification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotification.Name.swift; sourceTree = "<group>"; };
 		DB43313A1F58A1AD00FCA387 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		DB43313E1F58B0AA00FCA387 /* SendEventsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEventsQuery.swift; sourceTree = "<group>"; };
@@ -134,9 +136,9 @@
 		DB43314F1F59CF7B00FCA387 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		DB4331511F59D04400FCA387 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		DB4331961F59DA0D00E54C3C /* LocationEventFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEventFactory.swift; sourceTree = "<group>"; };
-		DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotificationSettingsToContextOperation.swift; sourceTree = "<group>"; };
+		DB4834701F44F16400CC308A /* NotificationsContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsContextProvider.swift; sourceTree = "<group>"; };
 		DB4834731F44F1CC00CC308A /* UNUserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenter.swift; sourceTree = "<group>"; };
-		DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationSettingsToContextOperation.swift; sourceTree = "<group>"; };
+		DB4834751F45D2AD00CC308A /* LocationContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationContextProvider.swift; sourceTree = "<group>"; };
 		DB4834781F45D32B00CC308A /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		DB48347B1F46016000CC308A /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		DB4834871F46029200CC308A /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
@@ -178,9 +180,9 @@
 		DB4834BD1F460ADC00CC308A /* ExperienceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceViewModel.swift; sourceTree = "<group>"; };
 		DB5F0DC61F59FE790066B97A /* UpdateProfileQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileQuery.swift; sourceTree = "<group>"; };
 		DB5F0DC81F5A08270066B97A /* EventBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBatch.swift; sourceTree = "<group>"; };
+		DB5F0DCA1F5A142B0066B97A /* ContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProvider.swift; sourceTree = "<group>"; };
 		DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rover.swift; sourceTree = "<group>"; };
 		DBDE83881F423A5600FABDA6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		DBDFE3131F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPushEnvironmentToContextOperation.swift; sourceTree = "<group>"; };
 		DBE1FBE71F3E4A9A004B3C9D /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		DBE1FBEB1F3E4AC6004B3C9D /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		DBE1FBEE1F3E4C9C004B3C9D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -202,14 +204,14 @@
 		DBE1FC261F421144004B3C9D /* HTTPQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPQuery.swift; sourceTree = "<group>"; };
 		DBE1FC2B1F4211E6004B3C9D /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		DBE1FC2D1F421217004B3C9D /* ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID.swift; sourceTree = "<group>"; };
-		DBF8B7981F4244A400359EC2 /* AddApplicationInfoToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApplicationInfoToContextOperation.swift; sourceTree = "<group>"; };
-		DBF8B79A1F4244EB00359EC2 /* AddDeviceInfoToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceInfoToContextOperation.swift; sourceTree = "<group>"; };
-		DBF8B79C1F42453500359EC2 /* AddSDKVersionToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSDKVersionToContextOperation.swift; sourceTree = "<group>"; };
-		DBF8B79E1F42466200359EC2 /* AddLocaleToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocaleToContextOperation.swift; sourceTree = "<group>"; };
-		DBF8B7A01F42469300359EC2 /* AddScreenSizeToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScreenSizeToContextOperation.swift; sourceTree = "<group>"; };
-		DBF8B7A21F4246C900359EC2 /* AddTelephonyInfoToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTelephonyInfoToContextOperation.swift; sourceTree = "<group>"; };
-		DBF8B7A41F42470100359EC2 /* AddTimeZoneToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeZoneToContextOperation.swift; sourceTree = "<group>"; };
-		DBF8B7A61F42473100359EC2 /* AddReachabilityInfoToContextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReachabilityInfoToContextOperation.swift; sourceTree = "<group>"; };
+		DBF8B7981F4244A400359EC2 /* ApplicationContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationContextProvider.swift; sourceTree = "<group>"; };
+		DBF8B79A1F4244EB00359EC2 /* DeviceContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceContextProvider.swift; sourceTree = "<group>"; };
+		DBF8B79C1F42453500359EC2 /* FrameworkContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkContextProvider.swift; sourceTree = "<group>"; };
+		DBF8B79E1F42466200359EC2 /* LocaleContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleContextProvider.swift; sourceTree = "<group>"; };
+		DBF8B7A01F42469300359EC2 /* ScreenContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenContextProvider.swift; sourceTree = "<group>"; };
+		DBF8B7A21F4246C900359EC2 /* TelephonyContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelephonyContextProvider.swift; sourceTree = "<group>"; };
+		DBF8B7A41F42470100359EC2 /* TimeZoneContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneContextProvider.swift; sourceTree = "<group>"; };
+		DBF8B7A61F42473100359EC2 /* ReachabilityContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityContextProvider.swift; sourceTree = "<group>"; };
 		DBF8B7BA1F424AD500359EC2 /* TrackAppUpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackAppUpdateOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -241,6 +243,8 @@
 				DB01C60F1F42431E0047D1D5 /* EventSnapshot.swift */,
 				DB01C6111F4243280047D1D5 /* EventQueue.swift */,
 				DB4331471F59BFCF00FCA387 /* EventManager.swift */,
+				DB5F0DCA1F5A142B0066B97A /* ContextProvider.swift */,
+				DB31B5471F5A1DFF00F3DAF5 /* EventsConfiguration.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -271,7 +275,6 @@
 				DB01C60E1F42430C0047D1D5 /* Events */,
 				DB83FFD61F4B93E2006ACB23 /* Location */,
 				DB4834801F46023900CC308A /* UI */,
-				DBE1FBE61F3E4A86004B3C9D /* Protocol Shims */,
 				DBE1FC1D1F421082004B3C9D /* Vendor */,
 				DBE1FC221F4210D8004B3C9D /* Supporting Files */,
 				DBBC7DB11F3CBDC100E0E2EE /* Rover.swift */,
@@ -304,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				DBE1FBED1F3E4C91004B3C9D /* Logger */,
+				DBE1FBE61F3E4A86004B3C9D /* Protocol Shims */,
 				DB4331461F59BD3200FCA387 /* Values */,
 			);
 			path = Foundation;
@@ -528,17 +532,16 @@
 		DBF8B7971F42449C00359EC2 /* Context Operations */ = {
 			isa = PBXGroup;
 			children = (
-				DBF8B7981F4244A400359EC2 /* AddApplicationInfoToContextOperation.swift */,
-				DBF8B79A1F4244EB00359EC2 /* AddDeviceInfoToContextOperation.swift */,
-				DBF8B79E1F42466200359EC2 /* AddLocaleToContextOperation.swift */,
-				DB4834751F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift */,
-				DB4834701F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift */,
-				DBDFE3131F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift */,
-				DBF8B7A01F42469300359EC2 /* AddScreenSizeToContextOperation.swift */,
-				DBF8B79C1F42453500359EC2 /* AddSDKVersionToContextOperation.swift */,
-				DBF8B7A21F4246C900359EC2 /* AddTelephonyInfoToContextOperation.swift */,
-				DBF8B7A41F42470100359EC2 /* AddTimeZoneToContextOperation.swift */,
-				DBF8B7A61F42473100359EC2 /* AddReachabilityInfoToContextOperation.swift */,
+				DBF8B7981F4244A400359EC2 /* ApplicationContextProvider.swift */,
+				DBF8B79A1F4244EB00359EC2 /* DeviceContextProvider.swift */,
+				DBF8B79C1F42453500359EC2 /* FrameworkContextProvider.swift */,
+				DBF8B79E1F42466200359EC2 /* LocaleContextProvider.swift */,
+				DB4834751F45D2AD00CC308A /* LocationContextProvider.swift */,
+				DB4834701F44F16400CC308A /* NotificationsContextProvider.swift */,
+				DBF8B7A61F42473100359EC2 /* ReachabilityContextProvider.swift */,
+				DBF8B7A01F42469300359EC2 /* ScreenContextProvider.swift */,
+				DBF8B7A21F4246C900359EC2 /* TelephonyContextProvider.swift */,
+				DBF8B7A41F42470100359EC2 /* TimeZoneContextProvider.swift */,
 			);
 			path = "Context Operations";
 			sourceTree = "<group>";
@@ -667,14 +670,14 @@
 				DB4834881F46029200CC308A /* CGFloat.swift in Sources */,
 				DB4834A21F4606EB00CC308A /* ScreenViewLayoutAttributes.swift in Sources */,
 				DB48348C1F4602CA00CC308A /* Length.swift in Sources */,
-				DBF8B79F1F42466200359EC2 /* AddLocaleToContextOperation.swift in Sources */,
+				DBF8B79F1F42466200359EC2 /* LocaleContextProvider.swift in Sources */,
 				DB4834DA1F46234300CC308A /* RectangleBlockView.swift in Sources */,
+				DB31B5481F5A1DFF00F3DAF5 /* EventsConfiguration.swift in Sources */,
 				DB4331521F59D04400FCA387 /* Region.swift in Sources */,
 				DB4834DD1F46234300CC308A /* WebViewBlockView.swift in Sources */,
-				DBF8B7A11F42469300359EC2 /* AddScreenSizeToContextOperation.swift in Sources */,
+				DBF8B7A11F42469300359EC2 /* ScreenContextProvider.swift in Sources */,
 				DB4331421F59AF7B00FCA387 /* Event.swift in Sources */,
 				DB43313F1F58B0AA00FCA387 /* SendEventsQuery.swift in Sources */,
-				DBDFE3141F44A7E4005E7850 /* AddPushEnvironmentToContextOperation.swift in Sources */,
 				DB48348E1F4602EF00CC308A /* UICollectionReusableView.swift in Sources */,
 				DB43314A1F59CBAD00FCA387 /* FetchExperienceQuery.swift in Sources */,
 				DB43314E1F59CF5100FCA387 /* FetchStateQuery.swift in Sources */,
@@ -688,12 +691,12 @@
 				DB4834D21F46233D00CC308A /* TextViewModel.swift in Sources */,
 				DBE1FC031F420E50004B3C9D /* UIScreen.swift in Sources */,
 				DB48347C1F46016000CC308A /* Experience.swift in Sources */,
-				DBF8B7A51F42470100359EC2 /* AddTimeZoneToContextOperation.swift in Sources */,
+				DBF8B7A51F42470100359EC2 /* TimeZoneContextProvider.swift in Sources */,
 				DB01C6101F42431E0047D1D5 /* EventSnapshot.swift in Sources */,
 				DB2D531A1F4634BE003CB5F4 /* LogLevel.swift in Sources */,
-				DBF8B79D1F42453500359EC2 /* AddSDKVersionToContextOperation.swift in Sources */,
+				DBF8B79D1F42453500359EC2 /* FrameworkContextProvider.swift in Sources */,
 				DB4834791F45D32B00CC308A /* CLLocationManager.swift in Sources */,
-				DBF8B7A31F4246C900359EC2 /* AddTelephonyInfoToContextOperation.swift in Sources */,
+				DBF8B7A31F4246C900359EC2 /* TelephonyContextProvider.swift in Sources */,
 				DB4834D81F46234300CC308A /* ButtonBlockView.swift in Sources */,
 				DB4331481F59BFCF00FCA387 /* EventManager.swift in Sources */,
 				DB48349C1F46058700CC308A /* ScreenViewController.swift in Sources */,
@@ -701,8 +704,8 @@
 				DB4331441F59B00900FCA387 /* Context.swift in Sources */,
 				DB4834CB1F46233D00CC308A /* ButtonBlockViewModel.swift in Sources */,
 				DBE1FC071F420EA3004B3C9D /* Locale.swift in Sources */,
-				DB4834761F45D2AD00CC308A /* AddLocationSettingsToContextOperation.swift in Sources */,
-				DB4834711F44F16400CC308A /* AddNotificationSettingsToContextOperation.swift in Sources */,
+				DB4834761F45D2AD00CC308A /* LocationContextProvider.swift in Sources */,
+				DB4834711F44F16400CC308A /* NotificationsContextProvider.swift in Sources */,
 				DBE1FC1F1F421095004B3C9D /* Data+Gzip.swift in Sources */,
 				DB4834C81F46233D00CC308A /* BarcodeBlockViewModel.swift in Sources */,
 				DBE1FC161F420FFF004B3C9D /* HTTPResult.swift in Sources */,
@@ -724,6 +727,7 @@
 				DB3AF73C1F4C793E00565D28 /* NSNotification.Name.swift in Sources */,
 				DBE1FC271F421144004B3C9D /* HTTPQuery.swift in Sources */,
 				DB4834CA1F46233D00CC308A /* BorderViewModel.swift in Sources */,
+				DB5F0DCB1F5A142B0066B97A /* ContextProvider.swift in Sources */,
 				DBE1FBFF1F41FD2E004B3C9D /* Attributes.swift in Sources */,
 				DB4331501F59CF7B00FCA387 /* State.swift in Sources */,
 				DBDE83891F423A5600FABDA6 /* Profile.swift in Sources */,
@@ -745,10 +749,10 @@
 				DBF8B7BB1F424AD500359EC2 /* TrackAppUpdateOperation.swift in Sources */,
 				DB4834CD1F46233D00CC308A /* ImageBlockViewModel.swift in Sources */,
 				DB4331971F59DA0D00E54C3C /* LocationEventFactory.swift in Sources */,
-				DBF8B7991F4244A400359EC2 /* AddApplicationInfoToContextOperation.swift in Sources */,
+				DBF8B7991F4244A400359EC2 /* ApplicationContextProvider.swift in Sources */,
 				DB5F0DC91F5A08270066B97A /* EventBatch.swift in Sources */,
-				DBF8B7A71F42473100359EC2 /* AddReachabilityInfoToContextOperation.swift in Sources */,
-				DBF8B79B1F4244EB00359EC2 /* AddDeviceInfoToContextOperation.swift in Sources */,
+				DBF8B7A71F42473100359EC2 /* ReachabilityContextProvider.swift in Sources */,
+				DBF8B79B1F4244EB00359EC2 /* DeviceContextProvider.swift in Sources */,
 				DB4834C71F46233D00CC308A /* BackgroundViewModel.swift in Sources */,
 				DB4834C91F46233D00CC308A /* BlockViewModel.swift in Sources */,
 			);
